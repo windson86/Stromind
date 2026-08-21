@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="b" width="200.45" height="40.36" viewBox="0 0 200.45 40.36">
+  <g id="c">
+    <path id="d" d="m21.72.04v16.61H6.79V.04H0v40.3h6.79v-17.77h14.93v17.76h6.79V.04h-6.79Z" style="fill:#fff; stroke-width:0px;"></path>
+    <path id="e" d="m34.96,40.33V.04h22.33v5.86h-15.54v10.93h15.11v5.92h-15.11v11.66h15.54v5.92h-22.33Z" style="fill:#fff; stroke-width:0px;"></path>
+    <path id="f" d="m63.09,40.33V.04h6.79v34.38h14.13v5.92h-20.92Z" style="fill:#fff; stroke-width:0px;"></path>
+    <path id="g" d="m89.39,40.36V0h12.04c10.83,0,17,8.47,17,20.21s-6.11,20.15-17,20.15h-12.04Zm22.15-20.15c0-8.47-3.39-14.34-10.1-14.34h-5.33v28.56h5.32c6.6,0,10.1-5.93,10.1-14.22" style="fill:#fff; stroke-width:0px;"></path>
+    <path id="h" d="m123.55,40.36V0h22.09v5.87h-15.37v10.95h14.94v5.93h-14.94v11.68h15.37v5.93h-22.09Z" style="fill:#fff; stroke-width:0px;"></path>
+    <path id="i" d="m152.11,40.36V0h6.72v34.43h13.98v5.93h-20.69Z" style="fill:#fff; stroke-width:0px;"></path>
+    <path id="j" d="m178.36,40.36V0h22.09v5.87h-15.37v10.95h14.94v5.93h-14.94v11.68h15.37v5.93h-22.09Z" style="fill:#fff; stroke-width:0px;"></path>
+  </g>
+</svg>
