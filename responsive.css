@@ -1,0 +1,78 @@
+/* Keep the layout stable when browser translation produces longer text. */
+html,
+body {
+  max-width: 100%;
+}
+
+main,
+section,
+header,
+footer,
+.home-hero > *,
+.home-path > *,
+.skill-strip > *,
+.names > *,
+.home-final > *,
+.form-row > * {
+  min-width: 0;
+}
+
+h1,
+h2,
+h3,
+.btn,
+.home-path b,
+.links a,
+.contact-type,
+.question,
+.option {
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.home-actions .btn {
+  min-height: 50px;
+  text-align: center;
+}
+
+.hero-secondary {
+  background: transparent;
+  border-color: #737d76;
+  color: #101412;
+}
+
+@media (max-width: 560px) {
+  .home-hero h1,
+  .subhero h1 {
+    font-size: clamp(38px, 12vw, 46px);
+    letter-spacing: -2.5px;
+  }
+
+  .home-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .home-actions .btn {
+    width: 100%;
+  }
+
+  .eyebrow,
+  .contact-type {
+    letter-spacing: 1.5px;
+  }
+}
+
