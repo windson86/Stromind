@@ -30,6 +30,13 @@ h3,
   hyphens: auto;
 }
 
+/* Keep highlighted hero words intact; they may wrap at spaces, never inside a word. */
+.home-hero h1 span {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 img,
 svg,
 video {
@@ -75,4 +82,3 @@ video {
     letter-spacing: 1.5px;
   }
 }
-
