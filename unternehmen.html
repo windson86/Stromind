@@ -6,28 +6,14 @@
   <title>Für Unternehmen | STROMIND</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="responsive.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/css/intlTelInput.css">
+  <link rel="stylesheet" href="legal.css">
   <style>
     .subhero{padding:160px max(24px,calc((100vw - var(--max))/2)) 90px;background:#101412;color:#fff}
     .subhero h1{font-size:clamp(52px,7vw,92px);letter-spacing:-4px;line-height:.95;margin:0;max-width:1000px}
     .subhero p{max-width:760px;color:#aab1ac;font-size:19px;line-height:1.7}
-    .back{color:var(--acid);font-weight:700}
-    .field-note{display:block;color:#8f9992;font-size:12px;margin:-5px 0 2px}
-    .email-wrap{margin:0}
-    .email-wrap input{width:100%;margin-bottom:0}
-    .email-note{display:none;color:#ff8f8f;font-size:12px;margin:6px 0 2px}
-    .email-note.show{display:block}
-    .email-wrap.invalid input{border-color:#c96b6b}
-    .phone-wrap{margin-top:0}
-    .phone-wrap .iti{width:100%}
-    .phone-wrap input{width:100%}
-    .city-wrap{position:relative}
-    .city-results{display:none;position:absolute;left:0;right:0;top:100%;z-index:120;background:#151a17;border:1px solid #343c37;box-shadow:0 18px 50px rgba(0,0,0,.45);max-height:260px;overflow:auto}
-    .city-results.open{display:block}
-    .city-option{display:block;width:100%;border:0;border-bottom:1px solid #2b332e;background:#151a17;color:#d7ddd9;text-align:left;padding:12px 14px;font:inherit;cursor:pointer}
-    .city-option:hover,.city-option:focus{background:#222a25;outline:0}
-    .city-option small{display:block;color:#8f9992;margin-top:3px}
-    [data-netlify-recaptcha="true"]{margin:18px 0 20px}
+    .back{color:var(--acid);font-weight:700}.field-note{display:block;color:#8f9992;font-size:12px;margin:-5px 0 12px}
+    .email-wrap{margin:0}.email-wrap input{width:100%;margin-bottom:0}.email-note{display:none;color:#ff8f8f;font-size:12px;margin:6px 0 2px}.email-note.show{display:block}.email-wrap.invalid input{border-color:#c96b6b}
+    .city-wrap{position:relative}.city-results{display:none;position:absolute;left:0;right:0;top:100%;z-index:120;background:#151a17;border:1px solid #343c37;box-shadow:0 18px 50px rgba(0,0,0,.45);max-height:260px;overflow:auto}.city-results.open{display:block}.city-option{display:block;width:100%;border:0;border-bottom:1px solid #2b332e;background:#151a17;color:#d7ddd9;text-align:left;padding:12px 14px;font:inherit;cursor:pointer}.city-option:hover,.city-option:focus{background:#222a25;outline:0}.city-option small{display:block;color:#8f9992;margin-top:3px}
   </style>
 </head>
 <body>
@@ -54,7 +40,7 @@
       <div class="contact-type" data-i18n="request">PERSONAL ANFRAGEN</div>
       <h3 data-i18n="sendNeed">Projektbedarf senden</h3>
 
-      <form name="unternehmen-detail" method="POST" action="/danke.html" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
+      <form name="unternehmen-detail" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="unternehmen-detail">
         <p class="hidden-field"><input name="bot-field" tabindex="-1" autocomplete="off"></p>
 
@@ -66,10 +52,22 @@
           <span id="email-note" class="email-note" aria-live="polite"></span>
         </div>
 
-        <div class="phone-wrap">
-          <input type="tel" class="phone-input" name="phone_display" required maxlength="40" autocomplete="tel" placeholder="Telefon">
-          <input type="hidden" class="phone-full" name="phone">
+        <div class="phone-local">
+          <select name="phone_country" required aria-label="Ländervorwahl">
+            <option value="">Ländervorwahl</option>
+            <option value="+49">🇩🇪 +49 Deutschland</option>
+            <option value="+385">🇭🇷 +385 Hrvatska</option>
+            <option value="+387">🇧🇦 +387 BiH</option>
+            <option value="+381">🇷🇸 +381 Srbija</option>
+            <option value="+386">🇸🇮 +386 Slovenija</option>
+            <option value="+43">🇦🇹 +43 Österreich</option>
+            <option value="+41">🇨🇭 +41 Schweiz</option>
+            <option value="+382">🇲🇪 +382 Crna Gora</option>
+            <option value="+389">🇲🇰 +389 S. Makedonija</option>
+          </select>
+          <input type="tel" name="phone_display" required maxlength="32" autocomplete="tel-national" inputmode="tel" placeholder="Telefon">
         </div>
+        <input type="hidden" class="phone-full" name="phone">
 
         <div class="form-row">
           <div class="city-wrap">
@@ -78,8 +76,7 @@
           </div>
           <input name="workers" required type="number" min="1" max="500" inputmode="numeric" data-i18n-placeholder="workers" placeholder="Anzahl Fachkräfte">
         </div>
-
-        <span class="field-note">Beim Projektort reicht die nächstgelegene Stadt.</span>
+        <span class="field-note">Beim Projektort reicht die nächstgelegene Stadt. Bitte keine unnötigen personenbezogenen Daten von Mitarbeitern oder Kandidaten eintragen.</span>
 
         <div class="form-row">
           <input name="start" maxlength="120" autocomplete="off" placeholder="Projektstart / Zeitraum">
@@ -88,7 +85,10 @@
 
         <textarea name="message" required maxlength="3000" data-i18n-placeholder="projectMsg" placeholder="Projekt und Tätigkeiten kurz beschreiben..."></textarea>
 
-        <div data-netlify-recaptcha="true"></div>
+        <div class="privacy-confirmation" data-privacy-context="company">
+          <p class="form-privacy-notice"><span data-privacy-notice>Wir verwenden Ihre Angaben zur Bearbeitung Ihrer Projektanfrage.</span> <a data-privacy-link href="datenschutz.html">Datenschutz</a>.</p>
+          <label><input type="checkbox" name="privacy_notice_read" value="yes" required> <span data-privacy-read>Ich bestätige, dass ich die Datenschutzerklärung gelesen habe.</span></label>
+        </div>
 
         <button class="btn primary" type="submit" data-i18n="sendWorkforce">Personalbedarf senden</button>
       </form>
@@ -103,67 +103,23 @@
 </footer>
 
 <script src="subpages.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/js/intlTelInput.min.js"></script>
+<script src="form-privacy.js"></script>
+<script src="legal-links.js"></script>
 <script>
 const form=document.querySelector('form[name="unternehmen-detail"]');
-const phoneInput=form.querySelector('.phone-input');
-const iti=window.intlTelInput(phoneInput,{initialCountry:"",separateDialCode:true,nationalMode:true,loadUtils:()=>import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/js/utils.js")});
-const emailInput=form.querySelector('input[name="email"]');
-const emailWrap=form.querySelector('.email-wrap');
-const emailNote=form.querySelector('.email-note');
-const emailMessages={de:'Bitte geben Sie eine gültige E-Mail-Adresse ein.',en:'Please enter a valid email address.',hr:'Molimo unesite ispravnu E-Mail adresu.'};
-function currentLang(){return localStorage.getItem('stromind-lang')||document.documentElement.lang||'de'}
-function validateEmail(showEmpty=false){
-  const value=emailInput.value.trim();
-  const valid=value!==''&&emailInput.validity.valid;
-  if(valid||(!value&&!showEmpty)){
-    emailWrap.classList.remove('invalid');
-    emailNote.classList.remove('show');
-    emailNote.textContent='';
-    return valid;
-  }
-  emailWrap.classList.add('invalid');
-  emailNote.textContent=emailMessages[currentLang()]||emailMessages.de;
-  emailNote.classList.add('show');
-  return false;
-}
-emailInput.addEventListener('blur',()=>validateEmail(true));
-emailInput.addEventListener('input',()=>{if(emailNote.classList.contains('show'))validateEmail(false)});
-document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>{if(emailNote.classList.contains('show'))setTimeout(()=>{emailNote.textContent=emailMessages[currentLang()]||emailMessages.de},0)}));
+const emailInput=form.querySelector('input[name="email"]');const emailWrap=form.querySelector('.email-wrap');const emailNote=form.querySelector('.email-note');
+const emailMessages={de:'Bitte geben Sie eine gültige E-Mail-Adresse ein.',en:'Please enter a valid email address.',hr:'Molimo unesite ispravnu e-mail adresu.'};
+function currentLang(){return document.documentElement.lang||localStorage.getItem('stromindLang')||'de'}
+function validateEmail(showEmpty=false){const value=emailInput.value.trim();const valid=value!==''&&emailInput.validity.valid;if(valid||(!value&&!showEmpty)){emailWrap.classList.remove('invalid');emailNote.classList.remove('show');emailNote.textContent='';return valid}emailWrap.classList.add('invalid');emailNote.textContent=emailMessages[currentLang()]||emailMessages.de;emailNote.classList.add('show');return false}
+emailInput.addEventListener('blur',()=>validateEmail(true));emailInput.addEventListener('input',()=>{if(emailNote.classList.contains('show'))validateEmail(false)});
 
-const cityInput=form.querySelector('.city-input');
-const cityResults=form.querySelector('.city-results');
-const ascii=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').toLowerCase();
+const cityInput=form.querySelector('.city-input');const cityResults=form.querySelector('.city-results');const ascii=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').toLowerCase();
 const germanCities=['Berlin','Hamburg','München','Köln','Frankfurt am Main','Stuttgart','Düsseldorf','Leipzig','Dortmund','Essen','Bremen','Dresden','Hannover','Nürnberg','Duisburg','Bochum','Wuppertal','Bielefeld','Bonn','Münster'];
 function closeCities(){cityResults.classList.remove('open');cityResults.innerHTML=''}
-cityInput.addEventListener('input',()=>{
-  const q=ascii(cityInput.value.trim());
-  if(q.length<2){closeCities();return}
-  const matches=germanCities.filter(city=>ascii(city).startsWith(q)).slice(0,6);
-  cityResults.innerHTML='';
-  if(!matches.length){closeCities();return}
-  matches.forEach(city=>{
-    const b=document.createElement('button');
-    b.type='button';
-    b.className='city-option';
-    b.innerHTML='<span></span><small>Deutschland</small>';
-    b.querySelector('span').textContent=city;
-    b.addEventListener('click',()=>{cityInput.value=city;closeCities()});
-    cityResults.appendChild(b);
-  });
-  cityResults.classList.add('open');
-});
+cityInput.addEventListener('input',()=>{const q=ascii(cityInput.value.trim());if(q.length<2){closeCities();return}const matches=germanCities.filter(city=>ascii(city).startsWith(q)).slice(0,6);cityResults.innerHTML='';if(!matches.length){closeCities();return}matches.forEach(city=>{const b=document.createElement('button');b.type='button';b.className='city-option';b.innerHTML='<span></span><small>Deutschland</small>';b.querySelector('span').textContent=city;b.addEventListener('click',()=>{cityInput.value=city;closeCities()});cityResults.appendChild(b)});cityResults.classList.add('open')});
 cityInput.addEventListener('blur',()=>setTimeout(closeCities,180));
 
-form.addEventListener('submit',e=>{
-  if(!validateEmail(true)){
-    e.preventDefault();
-    emailInput.focus();
-    return;
-  }
-  if(!form.checkValidity())return;
-  form.querySelector('.phone-full').value=iti.getNumber();
-});
+form.addEventListener('submit',e=>{if(!validateEmail(true)){e.preventDefault();emailInput.focus();return}if(!form.checkValidity()){e.preventDefault();form.reportValidity();return}const code=form.querySelector('[name="phone_country"]').value;const local=form.querySelector('[name="phone_display"]').value.trim().replace(/^0+/,'');form.querySelector('.phone-full').value=`${code}${local}`},true);
 </script>
 </body>
 </html>

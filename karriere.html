@@ -1,1 +1,119 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Karriere | STROMIND</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="responsive.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/css/intlTelInput.css"><style>.subhero{padding:160px max(24px,calc((100vw - var(--max))/2)) 90px;background:#101412;color:#fff}.subhero h1{font-size:clamp(52px,7vw,92px);letter-spacing:-4px;line-height:.95;margin:0;max-width:1000px}.subhero p{max-width:760px;color:#aab1ac;font-size:19px;line-height:1.7}.application{display:none}.application.open{display:block}.task-box{border:1px solid #343c37;padding:22px;margin:18px 0;background:#0f1311}.question{padding:20px 0;border-bottom:1px solid #29302c}.question:last-child{border-bottom:0}.question>strong{display:block;margin-bottom:12px;color:#fff}.option{display:block!important;margin:8px 0!important;padding:11px 13px;border:1px solid #303833;color:#d7ddd9!important;cursor:pointer}.option:hover{border-color:#657068}.option input{width:auto!important;margin-right:9px}.upload-label{display:block;color:#aab1ac;font-size:13px;margin-top:5px}.phone-wrap{margin-top:12px}.phone-wrap .iti{width:100%}.phone-wrap input{width:100%}.back{color:var(--acid);font-weight:700}</style></head><body><header class="nav"><a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a><nav class="links"><a href="leistungen.html" data-i18n="navServices">Leistungen</a><a href="projekterfahrung.html" data-i18n="navExperience">Projekterfahrung</a><a href="unternehmen.html" data-i18n="navCompanies">Für Unternehmen</a><a href="index.html#career" data-i18n="navCareer">Karriere</a></nav><div class="lang"><button data-lang="de">DE</button><button data-lang="en">EN</button><button data-lang="hr">HR</button></div></header><main><section class="subhero"><div class="eyebrow" data-i18n="careerEyebrow">KARRIERE</div><h1 data-i18n="careerTitle">Arbeiten mit STROMIND.</h1><p data-i18n="careerIntro">Wir suchen Fachkräfte mit praktischer Industrieerfahrung – vom Monteur bis zur Projektleitung.</p></section><section id="application" class="section dark-section application open"><div class="contact-panel" style="max-width:800px"><div class="contact-type" id="role-label">INDUSTRIEELEKTRIKER / MONTEUR</div><h3 data-i18n="appCheck">Bewerbung & Praxis-Check</h3><form name="bewerbung-karriere" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data"><input type="hidden" name="form-name" value="bewerbung-karriere"><input type="hidden" name="position" id="position" value="monteur"><input type="hidden" name="praxis_score" class="praxis-score"><input type="hidden" name="falsche_antworten" class="wrong-answers"><p class="hidden-field"><input name="bot-field"></p><div class="form-row"><input name="name" required data-i18n-placeholder="name" placeholder="Vor- und Nachname"><input type="email" name="email" required placeholder="E-Mail"></div><div class="phone-wrap"><input type="tel" class="phone-input" name="phone_display" required autocomplete="tel" placeholder="Telefon"><input type="hidden" class="phone-full" name="phone"></div><input name="experience" required data-i18n-placeholder="experience" placeholder="Berufserfahrung (Jahre)"><div class="task-box"><b data-i18n="checkTitle">Kurzer Praxis-Check · 5 Fragen</b><div class="question"><strong data-i18n="q1">1. Du möchtest ein M8-Gewinde schneiden. Welchen Bohrer verwendest du?</strong><label class="option"><input type="radio" name="q1_m8" value="5,0 mm" required>5,0 mm</label><label class="option"><input type="radio" name="q1_m8" value="6,8 mm">6,8 mm</label><label class="option"><input type="radio" name="q1_m8" value="8,0 mm">8,0 mm</label><label class="option"><input type="radio" name="q1_m8" value="10,0 mm">10,0 mm</label></div><div class="question"><strong data-i18n="q2">2. Du sollst einen Drehstrommotor anschließen. Was prüfst du zuerst?</strong><label class="option"><input type="radio" name="q2_motor" value="cable" required><span data-i18n="q2a">Die Kabelfarbe</span></label><label class="option"><input type="radio" name="q2_motor" value="nameplate"><span data-i18n="q2b">Typenschild, Spannung und Schaltplan</span></label><label class="option"><input type="radio" name="q2_motor" value="weight"><span data-i18n="q2c">Das Motorgewicht</span></label><label class="option"><input type="radio" name="q2_motor" value="rotation"><span data-i18n="q2d">Nur die Drehrichtung</span></label></div><div class="question"><strong data-i18n="q3">3. Welche Potentiale erwartest du normalerweise bei 24 V DC?</strong><label class="option"><input type="radio" name="q3_24v" value="L1/N" required>L1 / N</label><label class="option"><input type="radio" name="q3_24v" value="L1/L2">L1 / L2</label><label class="option"><input type="radio" name="q3_24v" value="24V/0V">+24 V / 0 V (M)</label><label class="option"><input type="radio" name="q3_24v" value="PE/N">PE / N</label></div><div class="question"><strong data-i18n="q4">4. Ein Sensor funktioniert nicht. Was machst du zuerst?</strong><label class="option"><input type="radio" name="q4_sensor" value="replace" required><span data-i18n="q4a">Sensor sofort austauschen</span></label><label class="option"><input type="radio" name="q4_sensor" value="plc"><span data-i18n="q4b">SPS neu starten</span></label><label class="option"><input type="radio" name="q4_sensor" value="check"><span data-i18n="q4c">Versorgung, Anschluss und Signal/LED prüfen</span></label><label class="option"><input type="radio" name="q4_sensor" value="cut"><span data-i18n="q4d">Kabel abschneiden und neu anschließen</span></label></div><div class="question"><strong data-i18n="q5">5. Ein Kabel ist nicht eindeutig gekennzeichnet. Was machst du?</strong><label class="option"><input type="radio" name="q5_cable" value="colour" required><span data-i18n="q5a">Nach Kabelfarbe anschließen</span></label><label class="option"><input type="radio" name="q5_cable" value="guess"><span data-i18n="q5b">Vermuten, wo es hingehört</span></label><label class="option"><input type="radio" name="q5_cable" value="identify"><span data-i18n="q5c">Plan/Kabelliste prüfen und Kabel eindeutig identifizieren</span></label><label class="option"><input type="radio" name="q5_cable" value="later"><span data-i18n="q5d">Anschließen und später testen</span></label></div></div><textarea name="message" data-i18n-placeholder="workerMsg" placeholder="Kurz zu Erfahrung, Verfügbarkeit und Einsatzgebiet..."></textarea><label class="upload-label" data-i18n="cv">Lebenslauf hochladen (PDF oder Word, max. 5 MB)</label><input type="file" name="cv" data-max-size="5242880" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><button class="btn primary" type="submit" data-i18n="sendApp">Bewerbung senden</button></form></div></section></main><footer><a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a><p>Industrial Electrical Solutions</p><p><a class="back" href="index.html" data-i18n="back">← Startseite</a></p></footer><script src="subpages.js"></script><script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/js/intlTelInput.min.js"></script><script>const form=document.querySelector('form[name="bewerbung-karriere"]');const correct={q1_m8:'6,8 mm',q2_motor:'nameplate',q3_24v:'24V/0V',q4_sensor:'check',q5_cable:'identify'};function calculateTest(){let score=0;const wrong=[];Object.entries(correct).forEach(([name,answer],i)=>{const chosen=form.querySelector(`input[name="${name}"]:checked`);if(!chosen)return;if(chosen.value===answer)score++;else{const label=chosen.closest('label');wrong.push(`Frage ${i+1}: ${(label?label.textContent:chosen.value).trim().replace(/\s+/g,' ')}`)}});form.querySelector('.praxis-score').value=`${score}/5 richtig`;form.querySelector('.wrong-answers').value=wrong.length?wrong.join(' | '):'Keine';return score}form.querySelectorAll('.task-box input[type=radio]').forEach(r=>r.addEventListener('change',calculateTest));const params=new URLSearchParams(location.search);const role=params.get('role')||'monteur';const roles={monteur:{de:'INDUSTRIEELEKTRIKER / MONTEUR',en:'INDUSTRIAL ELECTRICIAN / INSTALLER',hr:'INDUSTRIJSKI ELEKTRIČAR / MONTER'},team:{de:'GRUPPENFÜHRER / TEAMLEITER',en:'GROUP LEADER / TEAM LEADER',hr:'VOĐA GRUPE / TEAMLEITER'},lead:{de:'BAULEITER / PROJEKTLEITER',en:'SITE MANAGER / PROJECT MANAGER',hr:'BAULEITER / PROJEKTLEITER'}};document.getElementById('position').value=role;function setRole(){document.getElementById('role-label').textContent=(roles[role]||roles.monteur)[stromindLang()]||roles.monteur.de}setRole();document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',setRole));const input=form.querySelector('.phone-input');const iti=window.intlTelInput(input,{initialCountry:"",separateDialCode:true,nationalMode:true,loadUtils:()=>import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/js/utils.js")});form.addEventListener('submit',e=>{if(!form.checkValidity())return;form.querySelector('.phone-full').value=iti.getNumber();const score=calculateTest();if(score===0){e.preventDefault();window.location.href='/danke.html'}} ,true);</script></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Karriere | STROMIND</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
+  <link rel="stylesheet" href="legal.css">
+  <style>
+    .subhero{padding:160px max(24px,calc((100vw - var(--max))/2)) 90px;background:#101412;color:#fff}
+    .subhero h1{font-size:clamp(52px,7vw,92px);letter-spacing:-4px;line-height:.95;margin:0;max-width:1000px}
+    .subhero p{max-width:760px;color:#aab1ac;font-size:19px;line-height:1.7}
+    .application{display:none}.application.open{display:block}
+    .task-box{border:1px solid #343c37;padding:22px;margin:18px 0;background:#0f1311}
+    .question{padding:20px 0;border-bottom:1px solid #29302c}.question:last-child{border-bottom:0}
+    .question>strong{display:block;margin-bottom:12px;color:#fff}
+    .option{display:block!important;margin:8px 0!important;padding:11px 13px;border:1px solid #303833;color:#d7ddd9!important;cursor:pointer}
+    .option:hover{border-color:#657068}.option input{width:auto!important;margin-right:9px}
+    .upload-label{display:block;color:#aab1ac;font-size:13px;margin-top:5px}.back{color:var(--acid);font-weight:700}
+  </style>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a>
+  <nav class="links">
+    <a href="leistungen.html" data-i18n="navServices">Leistungen</a>
+    <a href="projekterfahrung.html" data-i18n="navExperience">Projekterfahrung</a>
+    <a href="unternehmen.html" data-i18n="navCompanies">Für Unternehmen</a>
+    <a href="index.html#career" data-i18n="navCareer">Karriere</a>
+  </nav>
+  <div class="lang"><button data-lang="de">DE</button><button data-lang="en">EN</button><button data-lang="hr">HR</button></div>
+</header>
+
+<main>
+  <section class="subhero">
+    <div class="eyebrow" data-i18n="careerEyebrow">KARRIERE</div>
+    <h1 data-i18n="careerTitle">Arbeiten mit STROMIND.</h1>
+    <p data-i18n="careerIntro">Wir suchen Fachkräfte mit praktischer Industrieerfahrung – vom Monteur bis zur Projektleitung.</p>
+  </section>
+
+  <section id="application" class="section dark-section application open">
+    <div class="contact-panel" style="max-width:800px">
+      <div class="contact-type" id="role-label">INDUSTRIEELEKTRIKER / MONTEUR</div>
+      <h3 data-i18n="appCheck">Bewerbung & Praxis-Check</h3>
+
+      <form name="bewerbung-karriere" method="POST" action="/api/apply" enctype="multipart/form-data">
+        <input type="hidden" name="position" id="position" value="monteur">
+        <p class="hidden-field"><input name="bot-field" tabindex="-1" autocomplete="off"></p>
+
+        <div class="form-row">
+          <input name="name" required maxlength="120" autocomplete="name" data-i18n-placeholder="name" placeholder="Vor- und Nachname">
+          <input type="email" name="email" required maxlength="254" autocomplete="email" placeholder="E-Mail">
+        </div>
+
+        <div class="phone-local">
+          <select name="phone_country" required aria-label="Ländervorwahl">
+            <option value="">Ländervorwahl</option>
+            <option value="+49">🇩🇪 +49 Deutschland</option>
+            <option value="+385">🇭🇷 +385 Hrvatska</option>
+            <option value="+387">🇧🇦 +387 BiH</option>
+            <option value="+381">🇷🇸 +381 Srbija</option>
+            <option value="+386">🇸🇮 +386 Slovenija</option>
+            <option value="+43">🇦🇹 +43 Österreich</option>
+            <option value="+41">🇨🇭 +41 Schweiz</option>
+            <option value="+382">🇲🇪 +382 Crna Gora</option>
+            <option value="+389">🇲🇰 +389 S. Makedonija</option>
+          </select>
+          <input type="tel" name="phone_display" required maxlength="32" autocomplete="tel-national" inputmode="tel" placeholder="Telefon">
+        </div>
+
+        <input name="experience" required maxlength="80" data-i18n-placeholder="experience" placeholder="Berufserfahrung (Jahre)">
+
+        <div class="task-box" id="praxis-check">
+          <b data-i18n="checkTitle">Kurzer Praxis-Check · 5 Fragen</b>
+          <div class="question"><strong data-i18n="q1">1. Du möchtest ein M8-Gewinde schneiden. Welchen Bohrer verwendest du?</strong><label class="option"><input type="radio" name="q1_m8" value="5,0 mm" required>5,0 mm</label><label class="option"><input type="radio" name="q1_m8" value="6,8 mm">6,8 mm</label><label class="option"><input type="radio" name="q1_m8" value="8,0 mm">8,0 mm</label><label class="option"><input type="radio" name="q1_m8" value="10,0 mm">10,0 mm</label></div>
+          <div class="question"><strong data-i18n="q2">2. Du sollst einen Drehstrommotor anschließen. Was prüfst du zuerst?</strong><label class="option"><input type="radio" name="q2_motor" value="cable" required><span data-i18n="q2a">Die Kabelfarbe</span></label><label class="option"><input type="radio" name="q2_motor" value="nameplate"><span data-i18n="q2b">Typenschild, Spannung und Schaltplan</span></label><label class="option"><input type="radio" name="q2_motor" value="weight"><span data-i18n="q2c">Das Motorgewicht</span></label><label class="option"><input type="radio" name="q2_motor" value="rotation"><span data-i18n="q2d">Nur die Drehrichtung</span></label></div>
+          <div class="question"><strong data-i18n="q3">3. Welche Potentiale erwartest du normalerweise bei 24 V DC?</strong><label class="option"><input type="radio" name="q3_24v" value="L1/N" required>L1 / N</label><label class="option"><input type="radio" name="q3_24v" value="L1/L2">L1 / L2</label><label class="option"><input type="radio" name="q3_24v" value="24V/0V">+24 V / 0 V (M)</label><label class="option"><input type="radio" name="q3_24v" value="PE/N">PE / N</label></div>
+          <div class="question"><strong data-i18n="q4">4. Ein Sensor funktioniert nicht. Was machst du zuerst?</strong><label class="option"><input type="radio" name="q4_sensor" value="replace" required><span data-i18n="q4a">Sensor sofort austauschen</span></label><label class="option"><input type="radio" name="q4_sensor" value="plc"><span data-i18n="q4b">SPS neu starten</span></label><label class="option"><input type="radio" name="q4_sensor" value="check"><span data-i18n="q4c">Versorgung, Anschluss und Signal/LED prüfen</span></label><label class="option"><input type="radio" name="q4_sensor" value="cut"><span data-i18n="q4d">Kabel abschneiden und neu anschließen</span></label></div>
+          <div class="question"><strong data-i18n="q5">5. Ein Kabel ist nicht eindeutig gekennzeichnet. Was machst du?</strong><label class="option"><input type="radio" name="q5_cable" value="colour" required><span data-i18n="q5a">Nach Kabelfarbe anschließen</span></label><label class="option"><input type="radio" name="q5_cable" value="guess"><span data-i18n="q5b">Vermuten, wo es hingehört</span></label><label class="option"><input type="radio" name="q5_cable" value="identify"><span data-i18n="q5c">Plan/Kabelliste prüfen und Kabel eindeutig identifizieren</span></label><label class="option"><input type="radio" name="q5_cable" value="later"><span data-i18n="q5d">Anschließen und später testen</span></label></div>
+        </div>
+
+        <textarea name="message" maxlength="3000" data-i18n-placeholder="workerMsg" placeholder="Kurz zu Erfahrung, Verfügbarkeit und Einsatzgebiet..."></textarea>
+
+        <label class="upload-label" data-i18n="cv">Lebenslauf hochladen (PDF oder DOCX, max. 3,5 MB)</label>
+        <input type="file" name="cv" data-max-size="3500000" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+        <span class="data-minimization-note" data-cv-privacy-note>Bitte nur bewerbungsrelevante Unterlagen hochladen. Keine Ausweiskopien, Bankdaten, Gesundheitsunterlagen oder sonstigen sensiblen Dokumente mitsenden.</span>
+
+        <div class="privacy-confirmation" data-privacy-context="candidate">
+          <p class="form-privacy-notice"><span data-privacy-notice>Wir verwenden deine Angaben ausschließlich zur Bearbeitung deiner Bewerbung.</span> <a data-privacy-link href="datenschutz.html">Datenschutz</a>.</p>
+          <label><input type="checkbox" name="privacy_notice_read" value="yes" required> <span data-privacy-read>Ich bestätige, dass ich die Datenschutzerklärung gelesen habe.</span></label>
+        </div>
+
+        <button class="btn primary" type="submit" data-i18n="sendApp">Bewerbung senden</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a>
+  <p>Industrial Electrical Solutions</p>
+  <p><a class="back" href="index.html" data-i18n="back">← Startseite</a></p>
+</footer>
+
+<script src="subpages.js"></script>
+<script src="form-privacy.js"></script>
+<script src="legal-links.js"></script>
+<script>
+const params=new URLSearchParams(location.search);const role=params.get('role')||'monteur';
+const roles={monteur:{de:'INDUSTRIEELEKTRIKER / MONTEUR',en:'INDUSTRIAL ELECTRICIAN / INSTALLER',hr:'INDUSTRIJSKI ELEKTRIČAR / MONTER'},team:{de:'GRUPPENFÜHRER / TEAMLEITER',en:'GROUP LEADER / TEAM LEADER',hr:'VOĐA GRUPE / TEAMLEITER'},lead:{de:'BAULEITER / PROJEKTLEITER',en:'SITE MANAGER / PROJECT MANAGER',hr:'BAULEITER / PROJEKTLEITER'}};
+const safeRole=Object.prototype.hasOwnProperty.call(roles,role)?role:'monteur';
+document.getElementById('position').value=safeRole;
+function setRole(){document.getElementById('role-label').textContent=roles[safeRole][stromindLang()]||roles[safeRole].de}
+setRole();document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',setRole));
+if(safeRole!=='monteur'){const praxisBox=document.getElementById('praxis-check');praxisBox.hidden=true;praxisBox.querySelectorAll('input[type=radio]').forEach(r=>r.required=false)}
+</script>
+</body>
+</html>
