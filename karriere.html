@@ -44,11 +44,8 @@
       <div class="contact-type" id="role-label">INDUSTRIEELEKTRIKER / MONTEUR</div>
       <h3 data-i18n="appCheck">Bewerbung & Praxis-Check</h3>
 
-      <form name="bewerbung-karriere" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
-        <input type="hidden" name="form-name" value="bewerbung-karriere">
+      <form name="bewerbung-karriere" method="POST" action="/api/apply" enctype="multipart/form-data">
         <input type="hidden" name="position" id="position" value="monteur">
-        <input type="hidden" name="praxis_score" class="praxis-score">
-        <input type="hidden" name="falsche_antworten" class="wrong-answers">
         <p class="hidden-field"><input name="bot-field" tabindex="-1" autocomplete="off"></p>
 
         <div class="form-row">
@@ -71,7 +68,6 @@
           </select>
           <input type="tel" name="phone_display" required maxlength="32" autocomplete="tel-national" inputmode="tel" placeholder="Telefon">
         </div>
-        <input type="hidden" name="phone" class="phone-full">
 
         <input name="experience" required maxlength="80" data-i18n-placeholder="experience" placeholder="Berufserfahrung (Jahre)">
 
@@ -86,8 +82,8 @@
 
         <textarea name="message" maxlength="3000" data-i18n-placeholder="workerMsg" placeholder="Kurz zu Erfahrung, Verfügbarkeit und Einsatzgebiet..."></textarea>
 
-        <label class="upload-label" data-i18n="cv">Lebenslauf hochladen (PDF oder Word, max. 5 MB)</label>
-        <input type="file" name="cv" data-max-size="5242880" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+        <label class="upload-label" data-i18n="cv">Lebenslauf hochladen (PDF oder DOCX, max. 3,5 MB)</label>
+        <input type="file" name="cv" data-max-size="3500000" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
         <span class="data-minimization-note" data-cv-privacy-note>Bitte nur bewerbungsrelevante Unterlagen hochladen. Keine Ausweiskopien, Bankdaten, Gesundheitsunterlagen oder sonstigen sensiblen Dokumente mitsenden.</span>
 
         <div class="privacy-confirmation" data-privacy-context="candidate">
@@ -111,33 +107,13 @@
 <script src="form-privacy.js"></script>
 <script src="legal-links.js"></script>
 <script>
-const form=document.querySelector('form[name="bewerbung-karriere"]');
-const correct={q1_m8:'6,8 mm',q2_motor:'nameplate',q3_24v:'24V/0V',q4_sensor:'check',q5_cable:'identify'};
-const praxisBox=document.getElementById('praxis-check');
-function calculateTest(){
-  if(praxisBox.hidden){form.querySelector('.praxis-score').value='Nicht durchgeführt';form.querySelector('.wrong-answers').value='Nicht durchgeführt';return null}
-  let score=0;const wrong=[];
-  Object.entries(correct).forEach(([name,answer],i)=>{const chosen=form.querySelector(`input[name="${name}"]:checked`);if(!chosen)return;if(chosen.value===answer)score++;else{const label=chosen.closest('label');wrong.push(`Frage ${i+1}: ${(label?label.textContent:chosen.value).trim().replace(/\s+/g,' ')}`)}});
-  form.querySelector('.praxis-score').value=`${score}/5 richtig`;
-  form.querySelector('.wrong-answers').value=wrong.length?wrong.join(' | '):'Keine';
-  return score;
-}
-form.querySelectorAll('.task-box input[type=radio]').forEach(r=>r.addEventListener('change',calculateTest));
-
 const params=new URLSearchParams(location.search);const role=params.get('role')||'monteur';
 const roles={monteur:{de:'INDUSTRIEELEKTRIKER / MONTEUR',en:'INDUSTRIAL ELECTRICIAN / INSTALLER',hr:'INDUSTRIJSKI ELEKTRIČAR / MONTER'},team:{de:'GRUPPENFÜHRER / TEAMLEITER',en:'GROUP LEADER / TEAM LEADER',hr:'VOĐA GRUPE / TEAMLEITER'},lead:{de:'BAULEITER / PROJEKTLEITER',en:'SITE MANAGER / PROJECT MANAGER',hr:'BAULEITER / PROJEKTLEITER'}};
-document.getElementById('position').value=role;
-function setRole(){document.getElementById('role-label').textContent=(roles[role]||roles.monteur)[stromindLang()]||roles.monteur.de}
+const safeRole=Object.prototype.hasOwnProperty.call(roles,role)?role:'monteur';
+document.getElementById('position').value=safeRole;
+function setRole(){document.getElementById('role-label').textContent=roles[safeRole][stromindLang()]||roles[safeRole].de}
 setRole();document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',setRole));
-if(role!=='monteur'){praxisBox.hidden=true;praxisBox.querySelectorAll('input[type=radio]').forEach(r=>r.required=false);calculateTest()}
-
-form.addEventListener('submit',e=>{
-  if(!form.checkValidity()){e.preventDefault();form.reportValidity();return}
-  const code=form.querySelector('[name="phone_country"]').value;
-  const local=form.querySelector('[name="phone_display"]').value.trim().replace(/^0+/,'');
-  form.querySelector('.phone-full').value=`${code}${local}`;
-  calculateTest();
-},true);
+if(safeRole!=='monteur'){const praxisBox=document.getElementById('praxis-check');praxisBox.hidden=true;praxisBox.querySelectorAll('input[type=radio]').forEach(r=>r.required=false)}
 </script>
 </body>
 </html>
