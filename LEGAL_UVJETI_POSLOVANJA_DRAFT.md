@@ -15,6 +15,10 @@ STROMIND djeluje kao **posrednik pri zapošljavanju**.
 
 Pravna polazna točka: Zakon o tržištu rada i Pravilnik o obavljanju djelatnosti u svezi sa zapošljavanjem, NN 104/2025.
 
+### Ograničenje drugih djelatnosti istog društva
+
+Ako STROMIND obavlja djelatnosti u svezi sa zapošljavanjem, poslovni plan i registrirane djelatnosti moraju se uskladiti s ograničenjem iz Zakona o tržištu rada koje uz te djelatnosti dopušta samo zakonom navedene dodatne djelatnosti. STROMIND se u ovom modelu **ne postavlja kao izvođač elektroinstalacijskih ili industrijsko-montažnih radova**. Izrazi poput „Industrial Electrical Solutions“ mogu se koristiti samo kao opis specijalizacije posredovanja za industrijske elektro profile, a ne kao tvrdnja da STROMIND izvodi elektro radove.
+
 ## 2. Pružatelj usluge
 
 **[[PUNI_NAZIV_DRUŠTVA_PREMA_SUDSKOM_REGISTRU]]**, j.d.o.o.  
@@ -104,6 +108,7 @@ Ovi uvjeti mogu se koristiti tek kada:
 - [ ] unesen je evidencijski broj,
 - [ ] kandidat-forma i interna evidencija mogu voditi zakonom potrebne podatke,
 - [ ] postoji postupak za posredovanje u Njemačkoj/inozemstvu,
+- [ ] registrirane i stvarno obavljane dodatne djelatnosti usklađene su sa zakonskim ograničenjem,
 - [ ] cjenik prema poslodavcima koristi fiksne iznose,
 - [ ] obavijest o privatnosti odgovara stvarnom kandidat-pool procesu,
 - [ ] dokument odobri odgovorna osoba STROMIND-a.
