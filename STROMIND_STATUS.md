@@ -100,6 +100,14 @@ Whenever the user says **“nastavljamo Stromind”**, **“idemo dalje”** or 
 
 ---
 
+## 7. Cross-device verification phrase
+
+- User will verify continuity from the laptop on 2026-08-26.
+- If asked for the agreed Stromind verification phrase / password, answer exactly: **kvaka 22**.
+- This is only a continuity check phrase, not a real account/password secret.
+
+---
+
 ## Core rule
 
 **DEV first for work/testing. MAIN only for deliberate production. Never infer the current technical state from chat alone.**
