@@ -4,7 +4,7 @@
 >
 > Canonical operational status lives on the **`dev` branch**. Chat memory is supporting context only. Before changing code, always read this file from `dev` and verify actual GitHub branch state.
 
-**Last updated:** 2026-08-25  
+**Last updated:** 2026-08-27  
 **Project:** stromind.de / planned Stromind j.d.o.o.  
 **Lifecycle:** PRE-LAUNCH
 
@@ -19,10 +19,13 @@
 - Before any meaningful code change: read this file from `dev`, inspect current branch heads, then work on `dev` unless the task explicitly requires a separate feature branch.
 - Only merge into `main` when the change has been tested on `dev` and we deliberately decide it is production-ready.
 
-### Verified branch state on 2026-08-25
+### Verified branch state on 2026-08-27
 
 - `main` head observed: `555f5b0` — Hold production until company launch.
-- `dev` is currently diverged from `main`: **1 commit ahead and 3 commits behind** relative to their merge base.
+- `dev` head observed before this status refresh: `035bc60` — Record cross-device Stromind verification phrase.
+- Relative to `main`, `dev` is currently diverged: **3 commits ahead and 3 commits behind**.
+- The three `dev`-side commits before this status refresh are: development no-index protection, canonical Stromind status, and the cross-device verification phrase.
+- The production-only side contains the temporary holding-page work and its merge into `main`.
 - The advanced legal/GDPR implementation is on `legal/jdoo-gdpr-ready` and must be integrated/rebased/cherry-picked into the `dev` workflow before it is considered part of the normal tested build.
 - Do not assume work from `legal/jdoo-gdpr-ready`, `security/netlify-forms-hardening`, SEO branches, encoding branches or gallery branches is present on `dev` or `main` unless Git proves it.
 
@@ -102,7 +105,7 @@ Whenever the user says **“nastavljamo Stromind”**, **“idemo dalje”** or 
 
 ## 7. Cross-device verification phrase
 
-- User will verify continuity from the laptop on 2026-08-26.
+- User may verify continuity from another device.
 - If asked for the agreed Stromind verification phrase / password, answer exactly: **kvaka 22**.
 - This is only a continuity check phrase, not a real account/password secret.
 
