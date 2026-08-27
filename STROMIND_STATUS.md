@@ -2,146 +2,141 @@
 
 > **READ THIS FIRST IN EVERY NEW STROMIND CHAT / DEVICE SESSION.**
 >
-> Canonical operational status lives on the **`dev` branch**. Chat memory is supporting context only. Before changing code, always read this file from `dev` and verify actual GitHub branch state.
+> Canonical operational status now lives on the **`main` branch**. Chat memory is supporting context only. Before changing code, always read this file from `main` and verify actual GitHub state.
 
 **Last updated:** 2026-08-27  
-**Project:** stromind.de / planned Stromind j.d.o.o.  
-**Lifecycle:** PRE-LAUNCH
+**Project:** stromind.de / Stromind j.d.o.o.  
+**Lifecycle:** PRE-LAUNCH / PRIVATE ACCESS
 
 ---
 
 ## 1. Branch workflow — IMPORTANT
 
-- **`dev` = active working/test branch.**
-- Netlify is used to preview/test work from `dev` without publishing the production site from `main`.
-- **`main` = production branch.** Do not use `main` for everyday testing and do not merge/push work to `main` merely to preview it.
-- Public production remains intentionally held until Stromind j.d.o.o. exists and legal/GDPR/form launch blockers are green.
-- Before any meaningful code change: read this file from `dev`, inspect current branch heads, then work on `dev` unless the task explicitly requires a separate feature branch.
-- Only merge into `main` when the change has been tested on `dev` and we deliberately decide it is production-ready.
+- **`main` = active working branch and current source of truth.**
+- The site remains non-public because Netlify access control is enabled for the project.
+- `dev` remains as historical/test branch only; do not assume it is newer than `main`.
+- Before any meaningful change: read this file from `main`, inspect current GitHub state, then work from `main` via a short feature branch/PR when appropriate.
+- Public launch is a separate decision from merging code to `main`.
+- Keep the global `X-Robots-Tag: noindex, nofollow, noarchive` header until we deliberately go public.
 
-### Verified branch state on 2026-08-27
+### Verified transition on 2026-08-27
 
-- `main` head observed: `555f5b0` — Hold production until company launch.
-- `dev` head observed before this status update: `03a28bf` — Improve company form worker count and date inputs.
-- Relative to `main`, `dev` was **7 commits ahead and 3 commits behind** immediately before this status update.
-- The production-only side contains the temporary holding-page work and its merge into `main`.
-- The advanced legal/GDPR implementation is on `legal/jdoo-gdpr-ready` and must be integrated/rebased/cherry-picked into the `dev` workflow before it is considered part of the normal tested build.
-- Do not assume work from `legal/jdoo-gdpr-ready`, `security/netlify-forms-hardening`, SEO branches, encoding branches or gallery branches is present on `dev` or `main` unless Git proves it.
+- Previous `main` head: `555f5b0` — production holding page.
+- Latest `dev` head before promotion: `766f85d`.
+- PR #8 merged the current `dev` work into `main`.
+- Merge commit: `e92a7a0` — Move current Stromind work to main.
+- The old `_redirects` rule that forced all traffic to `wartung.html` is being removed because Netlify access control now provides the private pre-launch gate.
 
 ---
 
-## 2. Current product state
+## 2. Company data
 
-- Stromind.de is intentionally **not public/live** yet.
-- Production is held until company formation and go-live requirements are complete.
-- Existing site work includes candidate/company flows, multilingual content, SEO work and a production holding setup.
-- Candidate flow goal remains: receive candidate contact data, CV (optional) and Praxis-Check result safely and with minimal unnecessary personal-data storage.
+- Company name to use for preparation: **Stromind j.d.o.o.**
+- The company is not yet treated as publicly launched.
+- **OIB:** add when issued/confirmed.
+- **VAT / PDV ID:** add later if/when applicable and confirmed.
+- Final registered address, director/register/court details, share capital and other legally required Impressum data still need to be filled from the official registration documents before public launch.
 
-### Company B2B form prototype now on `dev`
+---
 
-Commit `9fd47d2` expands `unternehmen.html` so a company first chooses why it is contacting Stromind:
+## 3. Current product state
 
-- **Project / workers needed**
-- **Own workers available for projects**
+The current B2B company form is now part of the `main` codebase.
+
+A company first chooses:
+
+- **We have a project / need skilled workers**
+- **We have skilled workers available for projects**
 - **Both / partnership**
 
-For a project request the company then chooses between:
+For project requests:
 
-- temporary / Zeit-style project staffing, where the relevant commercial value is the **B2B budget / Verrechnungssatz in net EUR per hour**;
-- direct hiring from the candidate pool, where the relevant value is the **candidate gross salary** in EUR gross per hour or month.
+- temporary / Zeit-style staffing → **B2B budget / Verrechnungssatz in net EUR/hour**;
+- direct hiring from the candidate pool → **candidate gross salary**, hourly or monthly.
 
-The project path also captures location, worker count, start, duration, roles, experience/qualifications, language level, work/shift model, accommodation, transport/vehicle and tools.
+The project path captures location, worker count, start date, duration, roles, experience/qualifications, German level, work/shift model, accommodation, transport/vehicle, tools and project description.
 
-The partner-worker path captures worker count, profiles, availability, nationalities, possible work regions, employment status with the offering company, A1 status, experience, languages, accommodation, transport/vehicle, tools and the offered **B2B net hourly rate**.
+The partner-worker path captures worker count, profiles, availability, nationalities, possible work regions, employment status, A1 status, experience, languages, accommodation, transport/vehicle, tools and offered **B2B net hourly rate**.
 
-No generic "work permit" field is requested in this form. Any actual right-to-work/permit check must be done later for the concrete worker and deployment situation.
+No generic work-permit field is requested; concrete right-to-work/permit checks are handled later for the actual worker and deployment.
 
-Commit `03a28bf` refines the B2B form UX on `dev`:
+Latest B2B UX refinements include:
 
-- project worker count is now a **− / number / + stepper**, defaults to **4**, remains manually editable and is limited to **1–500**;
-- project start uses a calendar-enabled masked date field with **DD/MM/YYYY** guidance;
-- manual date typing automatically inserts `/` separators and keeps the unentered part of the format visible in grey;
-- the same date interaction is used for partner-worker **Verfügbar ab** so the two B2B paths stay consistent;
-- paired labels were added so project location/count and date/duration rows remain aligned on desktop and mobile.
+- worker count stepper **− / 4 / +**, manually editable, range **1–500**;
+- calendar-enabled **DD/MM/YYYY** fields;
+- automatic `/` insertion on manual date entry;
+- matching date control for partner-worker availability.
 
-This is currently a **dev prototype for visual/logic review**. Before production, review wording, complete DE/EN/HR translation for the new B2B fields, test mobile/desktop behavior and test actual form delivery.
+Before public use: complete DE/EN/HR wording, test mobile/desktop behavior and verify actual form delivery end-to-end.
 
 ---
 
-## 3. Legal / GDPR work already prepared on `legal/jdoo-gdpr-ready`
+## 4. Legal / GDPR work
 
-The following exists on that branch and is not automatically considered present on `dev` until integrated and tested:
+Advanced legal/GDPR preparation still exists on `legal/jdoo-gdpr-ready` and is **not automatically considered integrated into `main`** until Git proves it.
 
-- `LEGAL_GO_LIVE_CHECKLIST.md`
-- `LEGAL_UVJETI_POSLOVANJA_DRAFT.md`
-- `impressum.html`
-- German / English / Croatian privacy pages
-- persistent legal/footer links
-- candidate endpoint `/api/apply`
+Prepared items there include:
+
+- Impressum draft
+- DE/EN/HR privacy pages
+- legal/footer links
+- candidate `/api/apply`
 - server-side Praxis score recalculation
-- optional PDF/DOCX CV upload, max 3.5 MB
-- basic file signature checks
-- honeypot and request validation
+- CV validation/signature checks
+- honeypot/request validation
 - rate limiting
-- authenticated SMTP delivery design via Netlify Function
-- STRATO SMTP defaults via environment variables
-- no real SMTP secret committed to GitHub
-- removal of unnecessary external phone/CAPTCHA dependencies from sensitive forms
+- SMTP/Netlify Function delivery design
+- legal go-live checklist and draft terms
+
+Next legal integration target is now **`main`**, not `dev`.
 
 ---
 
-## 4. Main launch blockers still open
+## 5. Main launch blockers
 
 ### Company / Impressum
-Final registered j.d.o.o. data is still required before public launch, including exact company name, registered address, director, court/register data, OIB, share capital information and other applicable company details.
+Fill the final official company registration details when available: registered address, director, register/court data, OIB, share capital and any other required company identifiers.
 
 ### Recruitment business model
-Before real recruiting/placement begins, confirm the exact operating model and any required Croatian registrations/evidence/licences. Website wording, contracts and GDPR legal basis must match the real model.
+Confirm the exact operating model and any Croatian/EU registrations, evidence or licences required for the real recruiting / staffing model. Public wording and contracts must match that model.
 
 ### Candidate data operations
-Still define/verify mailbox access, retention/deletion, data-subject requests, breach/incident procedure and the lawful/transparently communicated process for forwarding a candidate to a concrete employer/client.
+Define and verify mailbox access, retention/deletion, data-subject requests, incident procedure and the process/legal basis for forwarding candidate data to a concrete employer/client.
 
 ### STRATO / Netlify
-Still verify/configure the dedicated candidate mailbox, SMTP environment variables, mailbox security, Netlify Functions region, DPA/transfer safeguards and end-to-end test submissions.
+Verify candidate mailbox, SMTP environment variables, mailbox security, Netlify Functions region, DPA/transfer safeguards and end-to-end submissions.
 
 ---
 
-## 5. Immediate technical workflow
+## 6. Immediate workflow
 
-1. Work from **`dev`**.
-2. Before touching code, compare `dev` with `main` and any feature/legal branch relevant to the task.
-3. Bring required work into `dev` first — **not directly into `main`**.
-4. Use the Netlify `dev` preview/test deployment to verify as a normal user on mobile/desktop.
-5. **Current immediate next action:** visually test the B2B form on `https://dev--stromind.netlify.app`, especially the worker stepper and both date fields. Verify `4` default, −/+, manual larger worker counts, calendar selection, and manual date entry such as `27082026 → 27/08/2026` with the remaining `DD/MM/YYYY` mask staying grey.
-6. Continue collecting wording/layout feedback for both project models and the partner-worker flow.
-7. After the B2B prototype is approved, add/verify complete DE/EN/HR translations and end-to-end form delivery.
-8. Keep production/`main` untouched while testing.
-9. After the change is verified and intentionally approved for production, merge the tested state into `main` at the appropriate launch/release point.
-10. Update this file after meaningful work so the exact stopping point survives Android/Windows/new-chat changes.
+1. Work from **`main`** as the canonical branch.
+2. Keep Netlify access control enabled while Stromind is pre-launch.
+3. Keep `noindex` active until deliberate public launch.
+4. Continue visually testing the B2B form, especially worker stepper, dates and both financial branches.
+5. Integrate the required legal/GDPR work into `main` only after reviewing it against the current code.
+6. Update this file after meaningful work.
 
 ---
 
-## 6. Session protocol
+## 7. Session protocol
 
-Whenever the user says **“nastavljamo Stromind”**, **“idemo dalje”** or resumes Stromind work:
+Whenever the user resumes Stromind work:
 
-1. Read **`STROMIND_STATUS.md` from `dev`**.
-2. Check actual GitHub branch heads and divergence.
-3. Treat `dev` as the active work/test branch and `main` as production unless the user explicitly changes this workflow.
-4. If this file and Git disagree, Git wins for code state and this file must be corrected.
-5. Do not ask the user to repeat project history if GitHub can answer it.
-6. Before ending a meaningful session, record what was completed and the exact next action here.
+1. Read **`STROMIND_STATUS.md` from `main`**.
+2. Check actual GitHub `main` head and relevant branches.
+3. Git wins over chat memory for technical state.
+4. Do not ask the user to repeat project history if GitHub can answer it.
+5. Before ending meaningful work, record the exact stopping point here.
 
 ---
 
-## 7. Cross-device verification phrase
+## 8. Cross-device verification phrase
 
-- User may verify continuity from another device.
-- If asked for the agreed Stromind verification phrase / password, answer exactly: **kvaka 22**.
-- This is only a continuity check phrase, not a real account/password secret.
+If asked for the agreed Stromind continuity phrase, answer exactly: **kvaka 22**.
 
 ---
 
 ## Core rule
 
-**DEV first for work/testing. MAIN only for deliberate production. Never infer the current technical state from chat alone.**
+**MAIN is now the canonical working branch. PRIVATE ACCESS is controlled by Netlify. PUBLIC LAUNCH remains a separate deliberate step.**
