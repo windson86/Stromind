@@ -22,8 +22,8 @@
 ### Verified branch state on 2026-08-27
 
 - `main` head observed: `555f5b0` — Hold production until company launch.
-- `dev` head observed before this status update: `9fd47d2` — Expand company B2B inquiry flow.
-- Relative to `main`, `dev` was **5 commits ahead and 3 commits behind** immediately before this status update.
+- `dev` head observed before this status update: `03a28bf` — Improve company form worker count and date inputs.
+- Relative to `main`, `dev` was **7 commits ahead and 3 commits behind** immediately before this status update.
 - The production-only side contains the temporary holding-page work and its merge into `main`.
 - The advanced legal/GDPR implementation is on `legal/jdoo-gdpr-ready` and must be integrated/rebased/cherry-picked into the `dev` workflow before it is considered part of the normal tested build.
 - Do not assume work from `legal/jdoo-gdpr-ready`, `security/netlify-forms-hardening`, SEO branches, encoding branches or gallery branches is present on `dev` or `main` unless Git proves it.
@@ -55,6 +55,14 @@ The project path also captures location, worker count, start, duration, roles, e
 The partner-worker path captures worker count, profiles, availability, nationalities, possible work regions, employment status with the offering company, A1 status, experience, languages, accommodation, transport/vehicle, tools and the offered **B2B net hourly rate**.
 
 No generic "work permit" field is requested in this form. Any actual right-to-work/permit check must be done later for the concrete worker and deployment situation.
+
+Commit `03a28bf` refines the B2B form UX on `dev`:
+
+- project worker count is now a **− / number / + stepper**, defaults to **4**, remains manually editable and is limited to **1–500**;
+- project start uses a calendar-enabled masked date field with **DD/MM/YYYY** guidance;
+- manual date typing automatically inserts `/` separators and keeps the unentered part of the format visible in grey;
+- the same date interaction is used for partner-worker **Verfügbar ab** so the two B2B paths stay consistent;
+- paired labels were added so project location/count and date/duration rows remain aligned on desktop and mobile.
 
 This is currently a **dev prototype for visual/logic review**. Before production, review wording, complete DE/EN/HR translation for the new B2B fields, test mobile/desktop behavior and test actual form delivery.
 
@@ -104,11 +112,12 @@ Still verify/configure the dedicated candidate mailbox, SMTP environment variabl
 2. Before touching code, compare `dev` with `main` and any feature/legal branch relevant to the task.
 3. Bring required work into `dev` first — **not directly into `main`**.
 4. Use the Netlify `dev` preview/test deployment to verify as a normal user on mobile/desktop.
-5. **Current immediate next action:** visually test the new company B2B flow on `dev`, especially mobile conditional sections and both financial branches; collect wording/layout feedback before further changes.
-6. After the B2B prototype is approved, add/verify complete DE/EN/HR translations and end-to-end form delivery.
-7. Keep production/`main` untouched while testing.
-8. After the change is verified and intentionally approved for production, merge the tested state into `main` at the appropriate launch/release point.
-9. Update this file after meaningful work so the exact stopping point survives Android/Windows/new-chat changes.
+5. **Current immediate next action:** visually test the B2B form on `https://dev--stromind.netlify.app`, especially the worker stepper and both date fields. Verify `4` default, −/+, manual larger worker counts, calendar selection, and manual date entry such as `27082026 → 27/08/2026` with the remaining `DD/MM/YYYY` mask staying grey.
+6. Continue collecting wording/layout feedback for both project models and the partner-worker flow.
+7. After the B2B prototype is approved, add/verify complete DE/EN/HR translations and end-to-end form delivery.
+8. Keep production/`main` untouched while testing.
+9. After the change is verified and intentionally approved for production, merge the tested state into `main` at the appropriate launch/release point.
+10. Update this file after meaningful work so the exact stopping point survives Android/Windows/new-chat changes.
 
 ---
 
