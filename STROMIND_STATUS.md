@@ -80,10 +80,12 @@ The following are disabled and must not collect submissions:
 
 ## 4. Netlify Forms / anti-spam
 
-- Netlify Forms is intended to be enabled site-wide only after candidate forms are removed/disabled from the deployed HTML.
-- The only active Netlify form in this beta mode should be the B2B project form **`unternehmen-projekt`**.
+- Netlify Forms detection is enabled for the site as of 2026-08-27.
+- The current redeploy is intended to register the new B2B form definition after form detection was enabled.
+- The only form that should remain in the deployed HTML is **`unternehmen-projekt`**.
 - Keep honeypot protection.
 - Keep Netlify CAPTCHA on the company project form.
+- Historical Netlify form definitions from older candidate/company forms must be treated as legacy backend objects until explicitly deleted in Netlify.
 - Do not add candidate/CV forms back until the candidate legal/GDPR and data-handling flow is deliberately re-enabled.
 
 ---
@@ -116,9 +118,10 @@ Candidate/CV processing stays off until the legal/controller identity and operat
 3. Keep **noindex** active.
 4. Allow only the B2B project inquiry form to submit.
 5. Keep candidates/CV/Praxis-Check/direct-hire/partner-worker flows disabled.
-6. Use external feedback (including Reddit/croIT) to find UX, wording and technical bugs.
-7. Add legal/GDPR pages and final company identity once registration data is available/appropriate.
-8. Update this file after meaningful work.
+6. Delete the historical candidate form definitions from Netlify before treating the backend as fully B2B-only.
+7. Use external feedback (including Reddit/croIT) to find UX, wording and technical bugs.
+8. Add legal/GDPR pages and final company identity once registration data is available/appropriate.
+9. Update this file after meaningful work.
 
 ---
 
@@ -142,4 +145,4 @@ If asked for the agreed Stromind continuity phrase, answer exactly: **kvaka 22**
 
 ## Core rule
 
-**MAIN is canonical. PUBLIC BETA is open. ONLY B2B PROJECT INQUIRIES are active; candidate/CV/partner flows remain disabled.**
+**MAIN is canonical. PUBLIC BETA is open. ONLY B2B PROJECT INQUIRIES are active in deployed HTML; legacy Netlify form objects must be cleaned separately.**
