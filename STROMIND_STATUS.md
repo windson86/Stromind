@@ -81,11 +81,10 @@ The following are disabled and must not collect submissions:
 ## 4. Netlify Forms / anti-spam
 
 - Netlify Forms detection is enabled for the site as of 2026-08-27.
-- The current redeploy is intended to register the new B2B form definition after form detection was enabled.
+- The new B2B form **`unternehmen-projekt`** is registered and active.
+- `unternehmen-projekt` has honeypot protection and Netlify CAPTCHA enabled.
 - The only form that should remain in the deployed HTML is **`unternehmen-projekt`**.
-- Keep honeypot protection.
-- Keep Netlify CAPTCHA on the company project form.
-- Historical Netlify form definitions from older candidate/company forms must be treated as legacy backend objects until explicitly deleted in Netlify.
+- Historical Netlify form definitions from older candidate/company forms still exist as legacy backend objects and should be explicitly deleted in Netlify.
 - Do not add candidate/CV forms back until the candidate legal/GDPR and data-handling flow is deliberately re-enabled.
 
 ---
@@ -111,21 +110,35 @@ Candidate/CV processing stays off until the legal/controller identity and operat
 
 ---
 
-## 6. Immediate workflow
+## 6. FIRST TASK FOR 2026-08-28
+
+**Before any other Stromind work:** open Netlify → Forms and delete the four historical form definitions:
+
+1. `bewerbung-karriere`
+2. `bewerbung-leitung`
+3. `bewerbung-monteur`
+4. `unternehmen-detail`
+
+**Do not delete:** `unternehmen-projekt`.
+
+After deletion, verify in Netlify that only `unternehmen-projekt` remains active.
+
+---
+
+## 7. Immediate workflow after that cleanup
 
 1. Work from **`main`** as canonical state.
 2. Public beta remains externally reachable.
 3. Keep **noindex** active.
 4. Allow only the B2B project inquiry form to submit.
 5. Keep candidates/CV/Praxis-Check/direct-hire/partner-worker flows disabled.
-6. Delete the historical candidate form definitions from Netlify before treating the backend as fully B2B-only.
-7. Use external feedback (including Reddit/croIT) to find UX, wording and technical bugs.
-8. Add legal/GDPR pages and final company identity once registration data is available/appropriate.
-9. Update this file after meaningful work.
+6. Use external feedback (including Reddit/croIT) to find UX, wording and technical bugs.
+7. Add legal/GDPR pages and final company identity once registration data is available/appropriate.
+8. Update this file after meaningful work.
 
 ---
 
-## 7. Session protocol
+## 8. Session protocol
 
 Whenever the user resumes Stromind work:
 
@@ -137,7 +150,7 @@ Whenever the user resumes Stromind work:
 
 ---
 
-## 8. Cross-device verification phrase
+## 9. Cross-device verification phrase
 
 If asked for the agreed Stromind continuity phrase, answer exactly: **kvaka 22**.
 
