@@ -2,46 +2,46 @@
 
 > **READ THIS FIRST IN EVERY NEW STROMIND CHAT / DEVICE SESSION.**
 >
-> Canonical operational status now lives on the **`main` branch**. Chat memory is supporting context only. Before changing code, always read this file from `main` and verify actual GitHub state.
+> Canonical operational status lives on the **`main` branch**. Chat memory is supporting context only. Before changing code, always read this file from `main` and verify actual GitHub state.
 
 **Last updated:** 2026-08-27  
-**Project:** stromind.de / Stromind j.d.o.o.  
-**Lifecycle:** PRE-LAUNCH / PRIVATE ACCESS
+**Project:** stromind.de / planned Stromind j.d.o.o.  
+**Lifecycle:** PRE-LAUNCH / PUBLIC BETA
 
 ---
 
 ## 1. Branch workflow — IMPORTANT
 
 - **`main` = active working branch and current source of truth.**
-- The site remains non-public because Netlify access control is enabled for the project.
+- Netlify visitor SSO/password protection was removed on 2026-08-27 so the site can be reviewed publicly as a beta.
 - `dev` remains as historical/test branch only; do not assume it is newer than `main`.
 - Before any meaningful change: read this file from `main`, inspect current GitHub state, then work from `main` via a short feature branch/PR when appropriate.
-- Public launch is a separate decision from merging code to `main`.
-- Keep the global `X-Robots-Tag: noindex, nofollow, noarchive` header until we deliberately go public.
+- Public beta access does **not** mean the legal/commercial launch is complete.
+- Keep the global `X-Robots-Tag: noindex, nofollow, noarchive` header until we deliberately decide to allow indexing.
 
 ### Verified transition on 2026-08-27
 
-- Previous `main` head: `555f5b0` — production holding page.
-- Latest `dev` head before promotion: `766f85d`.
 - PR #8 merged the current `dev` work into `main`.
-- Merge commit: `e92a7a0` — Move current Stromind work to main.
-- The old `_redirects` rule that forced all traffic to `wartung.html` is being removed because Netlify access control now provides the private pre-launch gate.
+- PR #9 switched the canonical workflow to `main` and removed the obsolete catch-all redirect to `wartung.html`.
+- Current `main` after that transition: `594aeb3` — Switch Stromind workflow to main.
+- Netlify public visitor access is now open; no team SSO or site password is required.
 
 ---
 
 ## 2. Company data
 
-- Company name to use for preparation: **Stromind j.d.o.o.**
-- The company is not yet treated as publicly launched.
+- Working/preparation name: **Stromind j.d.o.o.**
+- The company is **not yet treated as a registered/publicly operating j.d.o.o.** until official registration is complete.
+- Do not publish wording that represents Stromind j.d.o.o. as already registered before the court-register entry exists.
 - **OIB:** add when issued/confirmed.
 - **VAT / PDV ID:** add later if/when applicable and confirmed.
-- Final registered address, director/register/court details, share capital and other legally required Impressum data still need to be filled from the official registration documents before public launch.
+- Final registered address, director/register/court details, share capital and other legally required Impressum data still need to be filled from the official registration documents.
 
 ---
 
 ## 3. Current product state
 
-The current B2B company form is now part of the `main` codebase.
+The current B2B company form is part of the `main` codebase.
 
 A company first chooses:
 
@@ -67,11 +67,16 @@ Latest B2B UX refinements include:
 - automatic `/` insertion on manual date entry;
 - matching date control for partner-worker availability.
 
-Before public use: complete DE/EN/HR wording, test mobile/desktop behavior and verify actual form delivery end-to-end.
+Public beta goal: let external reviewers test layout, mobile behavior, wording, conditional logic and technical bugs before full legal/commercial launch.
 
 ---
 
-## 4. Legal / GDPR work
+## 4. Forms / GDPR state
+
+- Netlify Forms remain **disabled** for now.
+- Reason: the legal/GDPR pages are not yet integrated into `main`, and the final controller/provider identity cannot be published as a registered j.d.o.o. before registration.
+- Do not accept real CVs, candidate applications or company-contact submissions from the public beta until the controller identity/contact information and legal notices are valid and visible at the point of collection.
+- The form UI can still be reviewed visually and functionally during the public beta.
 
 Advanced legal/GDPR preparation still exists on `legal/jdoo-gdpr-ready` and is **not automatically considered integrated into `main`** until Git proves it.
 
@@ -88,7 +93,7 @@ Prepared items there include:
 - SMTP/Netlify Function delivery design
 - legal go-live checklist and draft terms
 
-Next legal integration target is now **`main`**, not `dev`.
+Next legal integration target is **`main`**.
 
 ---
 
@@ -111,11 +116,13 @@ Verify candidate mailbox, SMTP environment variables, mailbox security, Netlify 
 ## 6. Immediate workflow
 
 1. Work from **`main`** as the canonical branch.
-2. Keep Netlify access control enabled while Stromind is pre-launch.
-3. Keep `noindex` active until deliberate public launch.
-4. Continue visually testing the B2B form, especially worker stepper, dates and both financial branches.
-5. Integrate the required legal/GDPR work into `main` only after reviewing it against the current code.
-6. Update this file after meaningful work.
+2. Public beta access is open on Netlify.
+3. Keep **noindex** active during beta unless deliberately changed.
+4. Keep **Forms disabled** until valid controller/provider identity and legal notices are integrated.
+5. Use public beta feedback (including Reddit/croIT) to find UX, wording and technical problems.
+6. Integrate the required legal/GDPR work into `main` after reviewing it against the current code.
+7. Enable real form submissions only after the legal notice/privacy/controller identity gate is satisfied.
+8. Update this file after meaningful work.
 
 ---
 
@@ -139,4 +146,4 @@ If asked for the agreed Stromind continuity phrase, answer exactly: **kvaka 22**
 
 ## Core rule
 
-**MAIN is now the canonical working branch. PRIVATE ACCESS is controlled by Netlify. PUBLIC LAUNCH remains a separate deliberate step.**
+**MAIN is the canonical working branch. PUBLIC BETA may be visible, but real data collection stays off until legal/controller identity is ready.**
