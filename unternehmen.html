@@ -3,61 +3,225 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Für Unternehmen | STROMIND</title>
+  <title>Projektanfrage | STROMIND</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="responsive.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/css/intlTelInput.css">
   <style>
     .subhero{padding:160px max(24px,calc((100vw - var(--max))/2)) 90px;background:#101412;color:#fff}
     .subhero h1{font-size:clamp(52px,7vw,92px);letter-spacing:-4px;line-height:.95;margin:0;max-width:1000px}
-    .subhero p{max-width:760px;color:#aab1ac;font-size:19px;line-height:1.7}
-    .back{color:var(--acid);font-weight:700}.field-note{display:block;color:#8f9992;font-size:12px;margin:-5px 0 12px}
-    .email-wrap{margin:0}.email-wrap input{width:100%;margin-bottom:0}.email-note{display:none;color:#ff8f8f;font-size:12px;margin:6px 0 2px}.email-note.show{display:block}.email-wrap.invalid input{border-color:#c96b6b}
-    .phone-wrap{margin-top:0}.phone-wrap .iti{width:100%}.phone-wrap input{width:100%}
-    .city-wrap{position:relative}.city-results{display:none;position:absolute;left:0;right:0;top:100%;z-index:120;background:#151a17;border:1px solid #343c37;box-shadow:0 18px 50px rgba(0,0,0,.45);max-height:260px;overflow:auto}.city-results.open{display:block}.city-option{display:block;width:100%;border:0;border-bottom:1px solid #2b332e;background:#151a17;color:#d7ddd9;text-align:left;padding:12px 14px;font:inherit;cursor:pointer}.city-option:hover,.city-option:focus{background:#222a25;outline:0}.city-option small{display:block;color:#8f9992;margin-top:3px}
-    .b2b-step{margin:28px 0 14px;padding-top:22px;border-top:1px solid #303832}.b2b-step:first-of-type{border-top:0;padding-top:0}.b2b-step h4{margin:0 0 8px;font-size:20px}.b2b-step>p{margin:0 0 16px;color:#9aa39d;font-size:14px;line-height:1.5}
-    .choice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 22px}.choice-grid.two{grid-template-columns:repeat(2,1fr)}.choice-card{position:relative;display:block;cursor:pointer}.choice-card input{position:absolute;opacity:0;pointer-events:none}.choice-card span{display:flex;min-height:74px;align-items:center;justify-content:center;text-align:center;padding:14px;border:1px solid #3b453f;background:#151a17;color:#d9dfdb;font-weight:700;line-height:1.35;transition:.18s ease}.choice-card:hover span{border-color:#647168}.choice-card input:checked+span{border-color:var(--acid);box-shadow:0 0 0 1px var(--acid);color:#fff;background:#1d251f}
-    .conditional[hidden]{display:none!important}.subsection{margin:18px 0;padding:18px;border:1px solid #303832;background:#121714}.subsection h4{margin:0 0 6px}.subsection .section-note{color:#909a93;font-size:13px;margin:0 0 16px}
-    .select-field{width:100%;min-height:50px;margin-bottom:14px;padding:0 14px;border:1px solid #39423d;background:#111613;color:#e5e9e6;font:inherit}.small-label{display:block;margin:2px 0 7px;color:#aeb6b0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}.perks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.money-row{display:grid;grid-template-columns:1fr 180px;gap:10px}.money-box{margin:14px 0;padding:16px;border-left:3px solid var(--acid);background:#171d19}.money-box strong{display:block;margin-bottom:4px}.money-box small{color:#97a199}[data-netlify-recaptcha="true"]{margin:18px 0 20px}
-    .worker-count-field,.date-entry{min-width:0}.worker-count-field .small-label,.date-entry .small-label{margin-top:0}
-    .number-stepper{display:grid;grid-template-columns:50px minmax(70px,1fr) 50px;min-height:50px;margin-bottom:14px;border:1px solid #39423d;background:#111613;overflow:hidden}.number-stepper button{min-width:50px;min-height:50px;border:0;background:#1a211d;color:#e5e9e6;font:700 24px/1 inherit;cursor:pointer}.number-stepper button:hover{background:#242d27}.number-stepper button:focus-visible{outline:2px solid var(--acid);outline-offset:-2px}.number-stepper input{width:100%;min-width:0;margin:0!important;border:0!important;border-left:1px solid #39423d!important;border-right:1px solid #39423d!important;background:#111613!important;color:#fff!important;text-align:center;font-weight:800;font-size:18px;appearance:textfield;-moz-appearance:textfield}.number-stepper input::-webkit-outer-spin-button,.number-stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-    .date-control{display:grid;grid-template-columns:minmax(0,1fr) 50px;gap:8px;margin-bottom:14px}.date-text-wrap{position:relative;min-width:0;height:50px}.date-mask{position:absolute;inset:0;width:100%;height:50px;margin:0!important;padding:0 14px!important;border:1px solid #39423d!important;background:transparent!important;color:transparent!important;-webkit-text-fill-color:transparent!important;caret-color:#fff;font:inherit;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.03em;z-index:2}.date-overlay{position:absolute;inset:0;display:flex;align-items:center;padding:0 14px;pointer-events:none;white-space:pre;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.03em;z-index:1}.date-entered{color:#e5e9e6}.date-remaining{color:#657069}.date-entry.invalid .date-mask{border-color:#c96b6b!important}.calendar-picker{position:relative;display:flex;align-items:center;justify-content:center;min-width:50px;height:50px;border:1px solid #39423d;background:#171d19;color:#e5e9e6;font-size:21px;cursor:pointer;overflow:hidden}.calendar-picker:hover{border-color:#647168}.calendar-native{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
-    @media(max-width:720px){.choice-grid,.choice-grid.two,.perks-grid,.money-row{grid-template-columns:1fr}.choice-card span{min-height:58px}.subsection{padding:14px}.number-stepper{grid-template-columns:48px minmax(72px,1fr) 48px}.number-stepper button{min-width:48px}}
+    .subhero p{max-width:780px;color:#aab1ac;font-size:19px;line-height:1.7}
+    .back{color:var(--acid);font-weight:700}
+    .beta-note{margin:0 0 24px;padding:16px 18px;border-left:3px solid var(--acid);background:#171d19;color:#b8c0ba;font-size:14px;line-height:1.55}
+    .beta-note strong{display:block;color:#fff;margin-bottom:4px}
+    .form-section{margin:26px 0 14px;padding-top:22px;border-top:1px solid #303832}
+    .form-section:first-of-type{border-top:0;padding-top:0}
+    .form-section h4{margin:0 0 6px;font-size:20px}
+    .form-section>p{margin:0 0 16px;color:#9aa39d;font-size:14px;line-height:1.5}
+    .small-label{display:block;margin:2px 0 7px;color:#aeb6b0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+    .field-note{display:block;color:#8f9992;font-size:12px;margin:-5px 0 12px}
+    .select-field{width:100%;min-height:50px;margin-bottom:14px;padding:0 14px;border:1px solid #39423d;background:#111613;color:#e5e9e6;font:inherit}
+    .city-wrap{position:relative;min-width:0}
+    .city-results{display:none;position:absolute;left:0;right:0;top:100%;z-index:120;background:#151a17;border:1px solid #343c37;box-shadow:0 18px 50px rgba(0,0,0,.45);max-height:260px;overflow:auto}
+    .city-results.open{display:block}
+    .city-option{display:block;width:100%;border:0;border-bottom:1px solid #2b332e;background:#151a17;color:#d7ddd9;text-align:left;padding:12px 14px;font:inherit;cursor:pointer}
+    .city-option:hover,.city-option:focus{background:#222a25;outline:0}
+    .city-option small{display:block;color:#8f9992;margin-top:3px}
+    .worker-count-field,.date-entry{min-width:0}
+    .number-stepper{display:grid;grid-template-columns:50px minmax(70px,1fr) 50px;min-height:50px;margin-bottom:14px;border:1px solid #39423d;background:#111613;overflow:hidden}
+    .number-stepper button{min-width:50px;min-height:50px;border:0;background:#1a211d;color:#e5e9e6;font:700 24px/1 inherit;cursor:pointer}
+    .number-stepper button:hover{background:#242d27}
+    .number-stepper input{width:100%;min-width:0;margin:0!important;border:0!important;border-left:1px solid #39423d!important;border-right:1px solid #39423d!important;background:#111613!important;color:#fff!important;text-align:center;font-weight:800;font-size:18px;appearance:textfield;-moz-appearance:textfield}
+    .number-stepper input::-webkit-outer-spin-button,.number-stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    .date-control{display:grid;grid-template-columns:minmax(0,1fr) 50px;gap:8px;margin-bottom:14px}
+    .date-text-wrap{position:relative;min-width:0;height:50px}
+    .date-mask{position:absolute;inset:0;width:100%;height:50px;margin:0!important;padding:0 14px!important;border:1px solid #39423d!important;background:transparent!important;color:transparent!important;-webkit-text-fill-color:transparent!important;caret-color:#fff;font:inherit;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.03em;z-index:2}
+    .date-overlay{position:absolute;inset:0;display:flex;align-items:center;padding:0 14px;pointer-events:none;white-space:pre;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.03em;z-index:1}
+    .date-entered{color:#e5e9e6}.date-remaining{color:#657069}
+    .calendar-picker{position:relative;display:flex;align-items:center;justify-content:center;min-width:50px;height:50px;border:1px solid #39423d;background:#171d19;color:#e5e9e6;font-size:21px;cursor:pointer;overflow:hidden}
+    .calendar-native{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+    .perks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .money-box{margin:14px 0;padding:16px;border-left:3px solid var(--acid);background:#171d19}
+    .money-box strong{display:block;margin-bottom:4px}.money-box small{display:block;color:#97a199;margin-bottom:12px;line-height:1.45}
+    .money-row{display:grid;grid-template-columns:1fr 180px;gap:10px}
+    .privacy-note{margin:14px 0 18px;color:#aeb6b0;font-size:13px;line-height:1.55}
+    [data-netlify-recaptcha="true"]{margin:18px 0 20px}
+    @media(max-width:720px){.perks-grid,.money-row{grid-template-columns:1fr}.number-stepper{grid-template-columns:48px minmax(72px,1fr) 48px}.number-stepper button{min-width:48px}}
   </style>
 </head>
 <body>
-<header class="nav"><a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a><nav class="links"><a href="leistungen.html" data-i18n="navServices">Leistungen</a><a href="projekterfahrung.html" data-i18n="navExperience">Projekterfahrung</a><a href="index.html#people" data-i18n="navPeople">Fachkräfte</a><a href="karriere.html" data-i18n="navCareer">Karriere</a></nav><div class="lang"><button data-lang="de">DE</button><button data-lang="en">EN</button><button data-lang="hr">HR</button></div></header>
+<header class="nav">
+  <a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a>
+  <nav class="links">
+    <a href="leistungen.html" data-i18n="navServices">Leistungen</a>
+    <a href="projekterfahrung.html" data-i18n="navExperience">Projekterfahrung</a>
+    <a href="karriere.html" data-i18n="navCareer">Karriere</a>
+  </nav>
+  <div class="lang"><button data-lang="de">DE</button><button data-lang="en">EN</button><button data-lang="hr">HR</button></div>
+</header>
 <main>
-<section class="subhero"><div class="eyebrow" data-i18n="companyEyebrow">FÜR UNTERNEHMEN</div><h1>Projekte, Fachkräfte und Partnerschaften.</h1><p>Teilen Sie uns mit, ob Sie Fachkräfte für ein Projekt suchen, Kandidaten direkt einstellen möchten oder eigene verfügbare Fachkräfte anbieten.</p></section>
-<section id="request" class="section dark-section"><div class="contact-panel" style="max-width:820px"><div class="contact-type">B2B ANFRAGE</div><h3>Wie können wir zusammenarbeiten?</h3>
-<form name="unternehmen-detail" method="POST" action="/danke.html" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
-<input type="hidden" name="form-name" value="unternehmen-detail"><p class="hidden-field"><input name="bot-field" tabindex="-1" autocomplete="off"></p>
-<div class="b2b-step"><h4>1. Ihr Unternehmen</h4><p>Grunddaten für eine schnelle Rückmeldung.</p><div class="form-row"><input name="company" required maxlength="120" autocomplete="organization" placeholder="Firma"><input name="contact" required maxlength="120" autocomplete="name" placeholder="Ansprechpartner"></div><div class="email-wrap"><input type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="E-Mail" aria-describedby="email-note"><span id="email-note" class="email-note" aria-live="polite"></span></div><div class="phone-wrap"><input type="tel" class="phone-input" name="phone_display" required maxlength="40" autocomplete="tel" placeholder="Telefon"><input type="hidden" class="phone-full" name="phone"></div><div class="form-row"><input name="company_country" required maxlength="80" autocomplete="country-name" placeholder="Land des Unternehmens"><input type="url" name="website" maxlength="240" autocomplete="url" placeholder="Website (optional)"></div></div>
-<div class="b2b-step"><h4>2. Was möchten Sie?</h4><p>Danach zeigen wir nur die Fragen, die zu Ihrer Anfrage passen.</p><div class="choice-grid"><label class="choice-card"><input type="radio" name="request_type" value="project" required><span>Wir haben ein Projekt / suchen Fachkräfte</span></label><label class="choice-card"><input type="radio" name="request_type" value="workers"><span>Wir haben Fachkräfte für Projekte verfügbar</span></label><label class="choice-card"><input type="radio" name="request_type" value="both"><span>Beides / Partnerschaft</span></label></div></div>
-<section id="project-section" class="conditional subsection" hidden><h4>Projekt / Personalbedarf</h4><p class="section-note">Bitte beschreiben Sie den Bedarf so konkret wie möglich.</p><span class="small-label">Gewünschtes Modell</span><div class="choice-grid two"><label class="choice-card"><input type="radio" name="project_model" value="temporary" required><span>Temporärer Einsatz / Zeit-Modell</span></label><label class="choice-card"><input type="radio" name="project_model" value="direct"><span>Direkteinstellung aus dem Kandidatenpool</span></label></div>
-<div class="form-row"><div class="city-wrap"><span class="small-label">Projektort</span><input name="project_location" class="city-input" required maxlength="120" autocomplete="off" spellcheck="false" placeholder="Nächste Stadt zum Projekt"><div class="city-results" role="listbox"></div></div><div class="worker-count-field"><span class="small-label">Anzahl Fachkräfte</span><div class="number-stepper"><button type="button" class="worker-step" data-step="-1" aria-label="Eine Fachkraft weniger">−</button><input name="project_workers" required type="number" min="1" max="500" inputmode="numeric" value="4" aria-label="Anzahl Fachkräfte"><button type="button" class="worker-step" data-step="1" aria-label="Eine Fachkraft mehr">+</button></div></div></div><span class="field-note">Beim Projektort reicht die nächstgelegene Stadt.</span>
-<div class="form-row"><div class="date-entry"><span class="small-label">Start / gewünschter Beginn</span><div class="date-control"><div class="date-text-wrap"><div class="date-overlay" aria-hidden="true"><span class="date-entered"></span><span class="date-remaining">DD/MM/YYYY</span></div><input class="date-mask" name="project_start" required maxlength="10" autocomplete="off" inputmode="numeric" aria-label="Startdatum im Format DD/MM/YYYY"></div><label class="calendar-picker" aria-label="Startdatum im Kalender auswählen">📅<input class="calendar-native" type="date" tabindex="-1" aria-label="Startdatum im Kalender auswählen"></label></div></div><div><span class="small-label">Geplante Dauer</span><input name="project_duration" maxlength="120" autocomplete="off" placeholder="z. B. 3 Monate"></div></div><div class="form-row"><input name="project_roles" required maxlength="240" autocomplete="off" placeholder="Gesuchte Berufe / Positionen"><input name="project_experience" maxlength="240" autocomplete="off" placeholder="Erfahrung / Qualifikationen"></div>
-<div class="form-row"><select class="select-field" name="project_language"><option value="">Deutschkenntnisse</option><option value="none">Nicht erforderlich</option><option value="basic">Grundkenntnisse</option><option value="good">Gute Kenntnisse</option><option value="very_good">Sehr gute Kenntnisse</option></select><input name="project_hours" maxlength="120" autocomplete="off" placeholder="Arbeitszeit / Schichtmodell (optional)"></div>
-<div class="perks-grid"><div><span class="small-label">Unterkunft</span><select class="select-field" name="project_accommodation"><option value="">Bitte wählen</option><option value="yes">Wird gestellt</option><option value="no">Wird nicht gestellt</option><option value="discuss">Nach Absprache</option></select></div><div><span class="small-label">Transport / Fahrzeug</span><select class="select-field" name="project_transport"><option value="">Bitte wählen</option><option value="yes">Wird gestellt</option><option value="no">Wird nicht gestellt</option><option value="discuss">Nach Absprache</option></select></div><div><span class="small-label">Werkzeug</span><select class="select-field" name="project_tools"><option value="">Bitte wählen</option><option value="yes">Wird gestellt</option><option value="no">Wird nicht gestellt</option><option value="discuss">Nach Absprache</option></select></div></div>
-<div id="temporary-money" class="conditional money-box" hidden><strong>Budget / Verrechnungssatz</strong><small>Bei einem temporären Einsatz interessiert uns der B2B-Budgetrahmen, nicht der Bruttolohn des Arbeiters.</small><div class="money-row"><input type="number" name="project_b2b_rate" min="0" step="0.01" inputmode="decimal" placeholder="Budget / Verrechnungssatz"><select class="select-field" name="project_b2b_rate_unit"><option value="net_hour">€ netto / Stunde</option></select></div></div>
-<div id="direct-money" class="conditional money-box" hidden><strong>Angebotener Bruttolohn</strong><small>Bei einer Direkteinstellung interessiert uns die tatsächliche Bruttovergütung des Kandidaten.</small><div class="money-row"><input type="number" name="direct_gross_salary" min="0" step="0.01" inputmode="decimal" placeholder="Bruttolohn"><select class="select-field" name="direct_salary_unit"><option value="gross_hour">€ brutto / Stunde</option><option value="gross_month">€ brutto / Monat</option></select></div></div>
-<textarea name="project_message" required maxlength="3000" placeholder="Projekt, Tätigkeiten und besondere Anforderungen kurz beschreiben..."></textarea></section>
-<section id="workers-section" class="conditional subsection" hidden><h4>Eigene Fachkräfte anbieten</h4><p class="section-note">Für Partnerfirmen, die aktuell verfügbare Mitarbeiter oder Teams für Projekte anbieten.</p><div class="form-row"><input name="offered_workers" required type="number" min="1" max="500" inputmode="numeric" placeholder="Anzahl verfügbarer Fachkräfte"><input name="offered_roles" required maxlength="240" autocomplete="off" placeholder="Berufe / Profile"></div><div class="form-row"><div class="date-entry"><span class="small-label">Verfügbar ab</span><div class="date-control"><div class="date-text-wrap"><div class="date-overlay" aria-hidden="true"><span class="date-entered"></span><span class="date-remaining">DD/MM/YYYY</span></div><input class="date-mask" name="available_from" required maxlength="10" autocomplete="off" inputmode="numeric" aria-label="Verfügbar ab im Format DD/MM/YYYY"></div><label class="calendar-picker" aria-label="Datum im Kalender auswählen">📅<input class="calendar-native" type="date" tabindex="-1" aria-label="Datum im Kalender auswählen"></label></div></div><div><span class="small-label">Verfügbar für / Dauer</span><input name="available_duration" maxlength="120" autocomplete="off" placeholder="z. B. 3 Monate"></div></div><div class="form-row"><input name="worker_nationalities" required maxlength="240" autocomplete="off" placeholder="Staatsangehörigkeit(en) der Fachkräfte"><input name="work_regions" maxlength="240" autocomplete="off" placeholder="Mögliche Einsatzländer / Regionen"></div>
-<div class="form-row"><select class="select-field" name="employment_status" required><option value="">Status bei Ihrer Firma</option><option value="employed">Bei uns angestellt</option><option value="external">Externe Mitarbeiter / Partner</option><option value="other">Andere Konstellation</option></select><select class="select-field" name="a1_status" required><option value="">A1 vorhanden?</option><option value="yes">Ja</option><option value="no">Nein</option><option value="in_progress">In Bearbeitung</option></select></div><div class="form-row"><input name="offered_experience" maxlength="240" autocomplete="off" placeholder="Erfahrung / Qualifikationen"><input name="offered_language" maxlength="240" autocomplete="off" placeholder="Deutsch / weitere Sprachen"></div>
-<div class="perks-grid"><div><span class="small-label">Unterkunft enthalten</span><select class="select-field" name="offer_accommodation"><option value="">Bitte wählen</option><option value="yes">Ja</option><option value="no">Nein</option><option value="discuss">Nach Absprache</option></select></div><div><span class="small-label">Transport / Fahrzeug</span><select class="select-field" name="offer_transport"><option value="">Bitte wählen</option><option value="yes">Ja</option><option value="no">Nein</option><option value="discuss">Nach Absprache</option></select></div><div><span class="small-label">Werkzeug enthalten</span><select class="select-field" name="offer_tools"><option value="">Bitte wählen</option><option value="yes">Ja</option><option value="no">Nein</option><option value="discuss">Nach Absprache</option></select></div></div>
-<div class="money-box"><strong>B2B-Angebotspreis</strong><small>Zu welchem Netto-Stundensatz bieten Sie die Fachkräfte bzw. das Team an?</small><div class="money-row"><input type="number" name="offer_b2b_rate" required min="0" step="0.01" inputmode="decimal" placeholder="Angebotspreis"><select class="select-field" name="offer_b2b_rate_unit"><option value="net_hour">€ netto / Stunde</option></select></div></div><textarea name="offer_message" maxlength="3000" placeholder="Weitere Angaben zu Team, Erfahrung, Verfügbarkeit oder Ausstattung..."></textarea></section>
-<div data-netlify-recaptcha="true"></div><button class="btn primary" type="submit">B2B-Anfrage senden</button></form></div></section></main>
-<footer><a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a><p>Industrial Electrical Solutions</p><p><a class="back" href="index.html" data-i18n="back">← Startseite</a></p></footer>
-<script src="subpages.js"></script><script src="https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/js/intlTelInput.min.js"></script>
+  <section class="subhero">
+    <div class="eyebrow">FÜR UNTERNEHMEN</div>
+    <h1>Projektbedarf senden.</h1>
+    <p>Sie haben ein Industrieprojekt und benötigen Fachkräfte? Senden Sie uns die wichtigsten Projektdaten und Ihren Bedarf.</p>
+  </section>
+  <section id="request" class="section dark-section">
+    <div class="contact-panel" style="max-width:820px">
+      <div class="contact-type">B2B PROJEKTANFRAGE</div>
+      <h3>Projekt und Personalbedarf</h3>
+      <div class="beta-note"><strong>Öffentliche Beta</strong>Aktuell nehmen wir ausschließlich Projektanfragen von Unternehmen entgegen. Bewerbungen, Lebensläufe und Angebote von Partnerfirmen sind vorübergehend deaktiviert.</div>
+      <form name="unternehmen-projekt" method="POST" action="/danke.html" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="unternehmen-projekt">
+        <input type="hidden" name="request_type" value="project_need_workers">
+        <p class="hidden-field"><input name="bot-field" tabindex="-1" autocomplete="off"></p>
+
+        <div class="form-section">
+          <h4>1. Ihr Unternehmen</h4>
+          <p>Nur die Kontaktdaten, die wir für eine Rückmeldung zum Projekt benötigen.</p>
+          <div class="form-row">
+            <input name="company" required maxlength="120" autocomplete="organization" placeholder="Firma">
+            <input name="contact" maxlength="120" autocomplete="name" placeholder="Ansprechpartner (optional)">
+          </div>
+          <div class="form-row">
+            <input type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="Geschäftliche E-Mail">
+            <input type="tel" name="phone" maxlength="40" autocomplete="tel" placeholder="Telefon (optional)">
+          </div>
+          <div class="form-row">
+            <input name="company_country" required maxlength="80" autocomplete="country-name" placeholder="Land des Unternehmens">
+            <input type="url" name="website" maxlength="240" autocomplete="url" placeholder="Website (optional)">
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>2. Projektbedarf</h4>
+          <p>Je konkreter der Bedarf, desto schneller können wir einschätzen, ob wir passende Kapazitäten finden.</p>
+          <div class="form-row">
+            <div class="city-wrap">
+              <span class="small-label">Projektort</span>
+              <input name="project_location" class="city-input" required maxlength="120" autocomplete="off" spellcheck="false" placeholder="Nächste Stadt zum Projekt">
+              <div class="city-results" role="listbox"></div>
+            </div>
+            <div class="worker-count-field">
+              <span class="small-label">Anzahl Fachkräfte</span>
+              <div class="number-stepper">
+                <button type="button" class="worker-step" data-step="-1" aria-label="Eine Fachkraft weniger">−</button>
+                <input name="project_workers" required type="number" min="1" max="500" inputmode="numeric" value="4" aria-label="Anzahl Fachkräfte">
+                <button type="button" class="worker-step" data-step="1" aria-label="Eine Fachkraft mehr">+</button>
+              </div>
+            </div>
+          </div>
+          <span class="field-note">Beim Projektort reicht die nächstgelegene Stadt.</span>
+
+          <div class="form-row">
+            <div class="date-entry">
+              <span class="small-label">Start / gewünschter Beginn</span>
+              <div class="date-control">
+                <div class="date-text-wrap">
+                  <div class="date-overlay" aria-hidden="true"><span class="date-entered"></span><span class="date-remaining">DD/MM/YYYY</span></div>
+                  <input class="date-mask" name="project_start" required maxlength="10" autocomplete="off" inputmode="numeric" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" aria-label="Startdatum im Format DD/MM/YYYY">
+                </div>
+                <label class="calendar-picker" aria-label="Startdatum im Kalender auswählen">📅<input class="calendar-native" type="date" tabindex="-1" aria-label="Startdatum im Kalender auswählen"></label>
+              </div>
+            </div>
+            <div>
+              <span class="small-label">Geplante Dauer</span>
+              <input name="project_duration" required maxlength="120" autocomplete="off" placeholder="z. B. 3 Monate">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <input name="project_roles" required maxlength="240" autocomplete="off" placeholder="Gesuchte Berufe / Positionen">
+            <input name="project_experience" required maxlength="240" autocomplete="off" placeholder="Erfahrung / Qualifikationen">
+          </div>
+          <div class="form-row">
+            <select class="select-field" name="project_language" required>
+              <option value="">Deutschkenntnisse</option>
+              <option value="none">Nicht erforderlich</option>
+              <option value="basic">Grundkenntnisse</option>
+              <option value="good">Gute Kenntnisse</option>
+              <option value="very_good">Sehr gute Kenntnisse</option>
+            </select>
+            <input name="project_hours" maxlength="120" autocomplete="off" placeholder="Arbeitszeit / Schichtmodell (optional)">
+          </div>
+          <div class="perks-grid">
+            <div><span class="small-label">Unterkunft</span><select class="select-field" name="project_accommodation" required><option value="">Bitte wählen</option><option value="yes">Wird gestellt</option><option value="no">Wird nicht gestellt</option><option value="discuss">Nach Absprache</option></select></div>
+            <div><span class="small-label">Transport / Fahrzeug</span><select class="select-field" name="project_transport" required><option value="">Bitte wählen</option><option value="yes">Wird gestellt</option><option value="no">Wird nicht gestellt</option><option value="discuss">Nach Absprache</option></select></div>
+            <div><span class="small-label">Werkzeug</span><select class="select-field" name="project_tools" required><option value="">Bitte wählen</option><option value="yes">Wird gestellt</option><option value="no">Wird nicht gestellt</option><option value="discuss">Nach Absprache</option></select></div>
+          </div>
+
+          <div class="money-box">
+            <strong>Budget / Verrechnungssatz</strong>
+            <small>Bitte nennen Sie den vorgesehenen B2B-Budgetrahmen für den Projekteinsatz.</small>
+            <div class="money-row">
+              <input type="number" name="project_b2b_rate" min="1" step="0.01" inputmode="decimal" required placeholder="Budget / Verrechnungssatz">
+              <select class="select-field" name="project_b2b_rate_unit" required><option value="net_hour">€ netto / Stunde</option></select>
+            </div>
+          </div>
+          <textarea name="project_message" required maxlength="3000" placeholder="Projekt, Tätigkeiten und besondere Anforderungen kurz beschreiben..."></textarea>
+        </div>
+
+        <p class="privacy-note"><strong>Bitte keine Daten von einzelnen Arbeitnehmern oder Bewerbern eintragen.</strong> Diese Beta-Form ist ausschließlich für Projekt- und Personalbedarfsanfragen von Unternehmen vorgesehen.</p>
+        <div data-netlify-recaptcha="true"></div>
+        <button class="btn primary" type="submit">Projektanfrage senden</button>
+      </form>
+    </div>
+  </section>
+</main>
+<footer>
+  <a class="brand" href="index.html"><span class="bolt">ϟ</span>STROM<span>IND</span></a>
+  <p>Industrial Electrical Solutions</p>
+  <p><a class="back" href="index.html">← Startseite</a></p>
+</footer>
+<script src="subpages.js"></script>
 <script>
-const form=document.querySelector('form[name="unternehmen-detail"]');const phoneInput=form.querySelector('.phone-input');const iti=window.intlTelInput(phoneInput,{initialCountry:"",separateDialCode:true,nationalMode:true,loadUtils:()=>import("https://cdn.jsdelivr.net/npm/intl-tel-input@25.10.6/build/js/utils.js")});const emailInput=form.querySelector('input[name="email"]');const emailWrap=form.querySelector('.email-wrap');const emailNote=form.querySelector('.email-note');const emailMessages={de:'Bitte geben Sie eine gültige E-Mail-Adresse ein.',en:'Please enter a valid email address.',hr:'Molimo unesite ispravnu E-Mail adresu.'};function currentLang(){return localStorage.getItem('stromindLang')||document.documentElement.lang||'de'}function validateEmail(showEmpty=false){const value=emailInput.value.trim();const valid=value!==''&&emailInput.validity.valid;if(valid||(!value&&!showEmpty)){emailWrap.classList.remove('invalid');emailNote.classList.remove('show');emailNote.textContent='';return valid}emailWrap.classList.add('invalid');emailNote.textContent=emailMessages[currentLang()]||emailMessages.de;emailNote.classList.add('show');return false}emailInput.addEventListener('blur',()=>validateEmail(true));emailInput.addEventListener('input',()=>{if(emailNote.classList.contains('show'))validateEmail(false)});
-function toggleSection(section,active){section.hidden=!active;section.querySelectorAll('input,select,textarea').forEach(el=>{el.disabled=!active})}function toggleBlock(block,active){block.hidden=!active;block.querySelectorAll('input,select,textarea').forEach(el=>{el.disabled=!active})}
-const projectSection=document.getElementById('project-section'),workersSection=document.getElementById('workers-section'),temporaryMoney=document.getElementById('temporary-money'),directMoney=document.getElementById('direct-money');toggleSection(projectSection,false);toggleSection(workersSection,false);toggleBlock(temporaryMoney,false);toggleBlock(directMoney,false);
-form.querySelectorAll('input[name="request_type"]').forEach(r=>r.addEventListener('change',()=>{const value=form.querySelector('input[name="request_type"]:checked')?.value;const project=value==='project'||value==='both';const workers=value==='workers'||value==='both';toggleSection(projectSection,project);toggleSection(workersSection,workers);if(!project){toggleBlock(temporaryMoney,false);toggleBlock(directMoney,false)}else{const model=form.querySelector('input[name="project_model"]:checked')?.value;toggleBlock(temporaryMoney,model==='temporary');toggleBlock(directMoney,model==='direct')}}));form.querySelectorAll('input[name="project_model"]').forEach(r=>r.addEventListener('change',()=>{toggleBlock(temporaryMoney,r.value==='temporary'&&r.checked);toggleBlock(directMoney,r.value==='direct'&&r.checked)}));
-const workerCount=form.querySelector('input[name="project_workers"]');function clampWorkerCount(){let value=parseInt(workerCount.value,10);if(!Number.isFinite(value))value=4;workerCount.value=Math.min(500,Math.max(1,value))}form.querySelectorAll('.worker-step').forEach(button=>button.addEventListener('click',()=>{clampWorkerCount();workerCount.value=Math.min(500,Math.max(1,parseInt(workerCount.value,10)+parseInt(button.dataset.step,10)));workerCount.dispatchEvent(new Event('change',{bubbles:true}))}));workerCount.addEventListener('blur',clampWorkerCount);
-function formatDateDigits(value){const digits=value.replace(/\D/g,'').slice(0,8);if(digits.length<=2)return digits;if(digits.length<=4)return digits.slice(0,2)+'/'+digits.slice(2);return digits.slice(0,2)+'/'+digits.slice(2,4)+'/'+digits.slice(4)}
-function validDisplayDate(value){if(!/^\d{2}\/\d{2}\/\d{4}$/.test(value))return false;const [d,m,y]=value.split('/').map(Number);const date=new Date(y,m-1,d);return date.getFullYear()===y&&date.getMonth()===m-1&&date.getDate()===d}
-function isoToDisplay(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return'';const [y,m,d]=value.split('-');return d+'/'+m+'/'+y}
-function setupDateEntry(entry){const input=entry.querySelector('.date-mask'),native=entry.querySelector('.calendar-native'),entered=entry.querySelector('.date-entered'),remaining=entry.querySelector('.date-remaining'),template='DD/MM/YYYY';function render(){const formatted=formatDateDigits(input.value);if(input.value!==formatted)input.value=formatted;entered.textContent=formatted;remaining.textContent=template.slice(formatted.length);const invalid=formatted!==''&&(!validDisplayDate(formatted));entry.classList.toggle('invalid',invalid&&formatted.length===10);input.setCustomValidity(formatted===''?'':(validDisplayDate(formatted)?'':'Bitte Datum als DD/MM/YYYY eingeben.'))}input.addEventListener('input',()=>{render();requestAnimationFrame(()=>input.setSelectionRange(input.value.length,input.value.length))});input.addEventListener('blur',render);native.addEventListener('change',()=>{if(native.value){input.value=isoToDisplay(native.value);render();input.dispatchEvent(new Event('change',{bubbles:true}))}});render()}form.querySelectorAll('.date-entry').forEach(setupDateEntry);
-const cityInput=form.querySelector('.city-input'),cityResults=form.querySelector('.city-results'),ascii=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').toLowerCase(),germanCities=['Berlin','Hamburg','München','Köln','Frankfurt am Main','Stuttgart','Düsseldorf','Leipzig','Dortmund','Essen','Bremen','Dresden','Hannover','Nürnberg','Duisburg','Bochum','Wuppertal','Bielefeld','Bonn','Münster'];function closeCities(){cityResults.classList.remove('open');cityResults.innerHTML=''}cityInput.addEventListener('input',()=>{const q=ascii(cityInput.value.trim());if(q.length<2){closeCities();return}const matches=germanCities.filter(city=>ascii(city).startsWith(q)).slice(0,6);cityResults.innerHTML='';if(!matches.length){closeCities();return}matches.forEach(city=>{const b=document.createElement('button');b.type='button';b.className='city-option';b.innerHTML='<span></span><small>Deutschland</small>';b.querySelector('span').textContent=city;b.addEventListener('click',()=>{cityInput.value=city;closeCities()});cityResults.appendChild(b)});cityResults.classList.add('open')});cityInput.addEventListener('blur',()=>setTimeout(closeCities,180));form.addEventListener('submit',e=>{if(!validateEmail(true)){e.preventDefault();emailInput.focus();return}form.querySelectorAll('.date-mask:not(:disabled)').forEach(input=>input.dispatchEvent(new Event('blur')));if(!form.checkValidity()){e.preventDefault();const invalid=form.querySelector(':invalid:not([disabled])');invalid?.focus();return}form.querySelector('.phone-full').value=iti.getNumber()});
-</script></body></html>
+const form=document.querySelector('form[name="unternehmen-projekt"]');
+const cityInput=form.querySelector('.city-input');
+const cityResults=form.querySelector('.city-results');
+const ascii=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss').toLowerCase();
+const germanCities=['Berlin','Hamburg','München','Köln','Frankfurt am Main','Stuttgart','Düsseldorf','Leipzig','Dortmund','Essen','Bremen','Dresden','Hannover','Nürnberg','Duisburg','Bochum','Wuppertal','Bielefeld','Bonn','Münster','Augsburg','Mannheim','Karlsruhe','Freiburg im Breisgau','Ulm','Heilbronn','Ingolstadt','Regensburg','Würzburg','Ansbach'];
+function closeCities(){cityResults.classList.remove('open');cityResults.innerHTML=''}
+cityInput.addEventListener('input',()=>{
+  const q=ascii(cityInput.value.trim());
+  if(q.length<2){closeCities();return}
+  const matches=germanCities.filter(city=>ascii(city).startsWith(q)).slice(0,6);
+  cityResults.innerHTML='';
+  if(!matches.length){closeCities();return}
+  matches.forEach(city=>{
+    const b=document.createElement('button');b.type='button';b.className='city-option';
+    b.innerHTML='<span></span><small>Deutschland</small>';b.querySelector('span').textContent=city;
+    b.addEventListener('click',()=>{cityInput.value=city;closeCities()});cityResults.appendChild(b);
+  });
+  cityResults.classList.add('open');
+});
+cityInput.addEventListener('blur',()=>setTimeout(closeCities,180));
+
+const workerInput=form.querySelector('input[name="project_workers"]');
+form.querySelectorAll('.worker-step').forEach(btn=>btn.addEventListener('click',()=>{
+  const step=Number(btn.dataset.step);const current=Math.max(1,Math.min(500,Number(workerInput.value)||4));
+  workerInput.value=Math.max(1,Math.min(500,current+step));
+}));
+workerInput.addEventListener('change',()=>{workerInput.value=Math.max(1,Math.min(500,Number(workerInput.value)||4))});
+
+const dateEntry=form.querySelector('.date-entry');
+const dateInput=dateEntry.querySelector('.date-mask');
+const entered=dateEntry.querySelector('.date-entered');
+const remaining=dateEntry.querySelector('.date-remaining');
+const nativeDate=dateEntry.querySelector('.calendar-native');
+const template='DD/MM/YYYY';
+function formatTypedDate(raw){
+  const d=raw.replace(/\D/g,'').slice(0,8);let out=d.slice(0,2);
+  if(d.length>2)out+='/'+d.slice(2,4);if(d.length>4)out+='/'+d.slice(4,8);return out;
+}
+function renderDate(){entered.textContent=dateInput.value;remaining.textContent=template.slice(dateInput.value.length)}
+dateInput.addEventListener('input',()=>{dateInput.value=formatTypedDate(dateInput.value);renderDate()});
+nativeDate.addEventListener('change',()=>{
+  if(!nativeDate.value)return;const [y,m,d]=nativeDate.value.split('-');dateInput.value=`${d}/${m}/${y}`;renderDate();
+});
+renderDate();
+
+form.addEventListener('submit',e=>{
+  workerInput.value=Math.max(1,Math.min(500,Number(workerInput.value)||4));
+  if(!form.checkValidity()){e.preventDefault();form.reportValidity();}
+});
+</script>
+</body>
+</html>
