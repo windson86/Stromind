@@ -6,122 +6,118 @@
 
 **Last updated:** 2026-08-27  
 **Project:** stromind.de / planned Stromind j.d.o.o.  
-**Lifecycle:** PRE-LAUNCH / PUBLIC BETA
+**Lifecycle:** PUBLIC BETA / PRE-REGISTRATION
 
 ---
 
-## 1. Branch workflow — IMPORTANT
+## 1. Branch workflow
 
-- **`main` = active working branch and current source of truth.**
-- Netlify visitor SSO/password protection was removed on 2026-08-27 so the site can be reviewed publicly as a beta.
-- `dev` remains as historical/test branch only; do not assume it is newer than `main`.
-- Before any meaningful change: read this file from `main`, inspect current GitHub state, then work from `main` via a short feature branch/PR when appropriate.
-- Public beta access does **not** mean the legal/commercial launch is complete.
-- Keep the global `X-Robots-Tag: noindex, nofollow, noarchive` header until we deliberately decide to allow indexing.
-
-### Verified transition on 2026-08-27
-
-- PR #8 merged the current `dev` work into `main`.
-- PR #9 switched the canonical workflow to `main` and removed the obsolete catch-all redirect to `wartung.html`.
-- Current `main` after that transition: `594aeb3` — Switch Stromind workflow to main.
-- Netlify public visitor access is now open; no team SSO or site password is required.
+- **`main` = active working branch and source of truth.**
+- Netlify visitor access is public; no team SSO/site password is required.
+- `dev` is historical/test only and must not be assumed newer than `main`.
+- Use short feature branches/PRs for meaningful changes, then merge into `main`.
+- Keep the global `X-Robots-Tag: noindex, nofollow, noarchive` during public beta until indexing is deliberately enabled.
+- Git state wins over chat memory.
 
 ---
 
 ## 2. Company data
 
 - Working/preparation name: **Stromind j.d.o.o.**
-- The company is **not yet treated as a registered/publicly operating j.d.o.o.** until official registration is complete.
-- Do not publish wording that represents Stromind j.d.o.o. as already registered before the court-register entry exists.
+- The company must **not** be represented publicly as already registered until the Croatian court-register entry exists.
 - **OIB:** add when issued/confirmed.
 - **VAT / PDV ID:** add later if/when applicable and confirmed.
-- Final registered address, director/register/court details, share capital and other legally required Impressum data still need to be filled from the official registration documents.
+- Final registered address, director/register/court details, share capital and other legally required company/legal-notice details remain pending.
 
 ---
 
-## 3. Current product state
+## 3. Current public-beta form mode
 
-The current B2B company form is part of the `main` codebase.
+### ACTIVE: company project inquiries only
 
-A company first chooses:
+The public `unternehmen.html` flow is intentionally limited to companies that:
 
-- **We have a project / need skilled workers**
-- **We have skilled workers available for projects**
-- **Both / partnership**
+- have a project; and
+- need skilled workers / project capacity.
 
-For project requests:
+The active B2B project form captures:
 
-- temporary / Zeit-style staffing → **B2B budget / Verrechnungssatz in net EUR/hour**;
-- direct hiring from the candidate pool → **candidate gross salary**, hourly or monthly.
+- company name;
+- optional contact person;
+- business email;
+- optional phone;
+- company country and optional website;
+- project location;
+- worker count with **− / 4 / +** stepper, editable **1–500**;
+- desired start date with **DD/MM/YYYY** typing + calendar;
+- project duration;
+- required roles / professions;
+- experience / qualification requirements;
+- German-language requirement;
+- work / shift model;
+- accommodation;
+- transport / vehicle;
+- tools;
+- **B2B budget / Verrechnungssatz in net EUR/hour**;
+- project description.
 
-The project path captures location, worker count, start date, duration, roles, experience/qualifications, German level, work/shift model, accommodation, transport/vehicle, tools and project description.
+The form explicitly tells companies **not to enter personal data of individual workers or candidates**.
 
-The partner-worker path captures worker count, profiles, availability, nationalities, possible work regions, employment status, A1 status, experience, languages, accommodation, transport/vehicle, tools and offered **B2B net hourly rate**.
+### DISABLED during beta
 
-No generic work-permit field is requested; concrete right-to-work/permit checks are handled later for the actual worker and deployment.
+The following are disabled and must not collect submissions:
 
-Latest B2B UX refinements include:
+- candidate applications;
+- CV upload;
+- Praxis-Check submissions;
+- direct-hire candidate flow;
+- partner-agency / own-workers-for-projects flow;
+- worker/CV submissions from third parties.
 
-- worker count stepper **− / 4 / +**, manually editable, range **1–500**;
-- calendar-enabled **DD/MM/YYYY** fields;
-- automatic `/` insertion on manual date entry;
-- matching date control for partner-worker availability.
-
-Public beta goal: let external reviewers test layout, mobile behavior, wording, conditional logic and technical bugs before full legal/commercial launch.
-
----
-
-## 4. Forms / GDPR state
-
-- Netlify Forms remain **disabled** for now.
-- Reason: the legal/GDPR pages are not yet integrated into `main`, and the final controller/provider identity cannot be published as a registered j.d.o.o. before registration.
-- Do not accept real CVs, candidate applications or company-contact submissions from the public beta until the controller identity/contact information and legal notices are valid and visible at the point of collection.
-- The form UI can still be reviewed visually and functionally during the public beta.
-
-Advanced legal/GDPR preparation still exists on `legal/jdoo-gdpr-ready` and is **not automatically considered integrated into `main`** until Git proves it.
-
-Prepared items there include:
-
-- Impressum draft
-- DE/EN/HR privacy pages
-- legal/footer links
-- candidate `/api/apply`
-- server-side Praxis score recalculation
-- CV validation/signature checks
-- honeypot/request validation
-- rate limiting
-- SMTP/Netlify Function delivery design
-- legal go-live checklist and draft terms
-
-Next legal integration target is **`main`**.
+`karriere.html` currently contains no active application form and shows a public-beta disabled notice instead.
 
 ---
 
-## 5. Main launch blockers
+## 4. Netlify Forms / anti-spam
 
-### Company / Impressum
-Fill the final official company registration details when available: registered address, director, register/court data, OIB, share capital and any other required company identifiers.
+- Netlify Forms is intended to be enabled site-wide only after candidate forms are removed/disabled from the deployed HTML.
+- The only active Netlify form in this beta mode should be the B2B project form **`unternehmen-projekt`**.
+- Keep honeypot protection.
+- Keep Netlify CAPTCHA on the company project form.
+- Do not add candidate/CV forms back until the candidate legal/GDPR and data-handling flow is deliberately re-enabled.
 
-### Recruitment business model
-Confirm the exact operating model and any Croatian/EU registrations, evidence or licences required for the real recruiting / staffing model. Public wording and contracts must match that model.
+---
 
-### Candidate data operations
-Define and verify mailbox access, retention/deletion, data-subject requests, incident procedure and the process/legal basis for forwarding candidate data to a concrete employer/client.
+## 5. Legal / GDPR preparation
 
-### STRATO / Netlify
-Verify candidate mailbox, SMTP environment variables, mailbox security, Netlify Functions region, DPA/transfer safeguards and end-to-end submissions.
+Advanced legal/GDPR preparation remains on `legal/jdoo-gdpr-ready` and is not automatically part of `main` until explicitly integrated.
+
+Prepared there include:
+
+- Impressum draft;
+- DE/EN/HR privacy pages;
+- legal/footer links;
+- candidate `/api/apply` design;
+- server-side Praxis score recalculation;
+- CV validation/signature checks;
+- honeypot/request validation;
+- rate limiting;
+- SMTP/Netlify Function delivery design;
+- legal go-live checklist and draft terms.
+
+Candidate/CV processing stays off until the legal/controller identity and operational data-handling requirements are satisfied.
 
 ---
 
 ## 6. Immediate workflow
 
-1. Work from **`main`** as the canonical branch.
-2. Public beta access is open on Netlify.
-3. Keep **noindex** active during beta unless deliberately changed.
-4. Keep **Forms disabled** until valid controller/provider identity and legal notices are integrated.
-5. Use public beta feedback (including Reddit/croIT) to find UX, wording and technical problems.
-6. Integrate the required legal/GDPR work into `main` after reviewing it against the current code.
-7. Enable real form submissions only after the legal notice/privacy/controller identity gate is satisfied.
+1. Work from **`main`** as canonical state.
+2. Public beta remains externally reachable.
+3. Keep **noindex** active.
+4. Allow only the B2B project inquiry form to submit.
+5. Keep candidates/CV/Praxis-Check/direct-hire/partner-worker flows disabled.
+6. Use external feedback (including Reddit/croIT) to find UX, wording and technical bugs.
+7. Add legal/GDPR pages and final company identity once registration data is available/appropriate.
 8. Update this file after meaningful work.
 
 ---
@@ -132,9 +128,9 @@ Whenever the user resumes Stromind work:
 
 1. Read **`STROMIND_STATUS.md` from `main`**.
 2. Check actual GitHub `main` head and relevant branches.
-3. Git wins over chat memory for technical state.
+3. Git wins over chat memory.
 4. Do not ask the user to repeat project history if GitHub can answer it.
-5. Before ending meaningful work, record the exact stopping point here.
+5. Record the exact stopping point after meaningful work.
 
 ---
 
@@ -146,4 +142,4 @@ If asked for the agreed Stromind continuity phrase, answer exactly: **kvaka 22**
 
 ## Core rule
 
-**MAIN is the canonical working branch. PUBLIC BETA may be visible, but real data collection stays off until legal/controller identity is ready.**
+**MAIN is canonical. PUBLIC BETA is open. ONLY B2B PROJECT INQUIRIES are active; candidate/CV/partner flows remain disabled.**
