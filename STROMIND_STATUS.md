@@ -97,6 +97,12 @@ Commits `ba748b2`, `6f40457` and `97b7168` improve the candidate form without to
 - the Netlify `dev` preview was browser-tested in all three languages with no console errors.
 - obsolete public `role=monteur|team|lead` URL handling was removed in commit `7fe379a`; the candidate form now uses clean URLs such as `karriere.html?lang=hr`, while retaining a fixed internal `position=monteur` form value for submission identification.
 
+### Candidate preferred work locations on `dev`
+
+Commits `6421abb` and `83b415d` add the translated candidate question “Where would you like to work?” / “Gdje želiš raditi?” / “Wo möchtest du arbeiten?” to the career application. Candidates can select Germany, Croatia and/or other EU countries. Selecting Germany reveals translated multi-select regions for München, Stuttgart, Regensburg, Berlin, Nürnberg, Frankfurt, all Germany or another region, plus an optional willingness to work outside the selected regions. At least one country is required; when Germany is selected, at least one German region is required. The values are submitted as Netlify form fields `work_country`, `germany_region` and `work_flexible`. JavaScript syntax and form-field presence were verified; browser/preview behavior remains to be visually checked.
+
+---
+
 ## 3. Legal / GDPR work already prepared on `legal/jdoo-gdpr-ready`
 
 The following exists on that branch and is not automatically considered present on `dev` until integrated and tested:
