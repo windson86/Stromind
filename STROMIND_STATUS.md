@@ -83,6 +83,7 @@ Commits `ba748b2`, `6f40457` and `97b7168` improve the candidate form without to
 - candidate-form headings, questions, contact placeholders, CV label/button and empty-file text switch across DE/EN/HR;
 - PDF/Word acceptance and the 5 MB limit remain unchanged;
 - the Netlify `dev` preview was browser-tested in all three languages with no console errors.
+- obsolete public `role=monteur|team|lead` URL handling was removed in commit `7fe379a`; the candidate form now uses clean URLs such as `karriere.html?lang=hr`, while retaining a fixed internal `position=monteur` form value for submission identification.
 
 ## 3. Legal / GDPR work already prepared on `legal/jdoo-gdpr-ready`
 
