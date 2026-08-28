@@ -73,6 +73,10 @@ This remains a **dev prototype for visual/logic review**. The expanded B2B form 
 
 ---
 
+### B2B persistent floating labels on `dev`
+
+Commits `26fc96d` and `933bf7b` add real floating labels to B2B text, URL, numeric-money and textarea fields. Empty fields retain the clean placeholder presentation; on focus or after entry, the translated field name remains visible above the value. HR → EN → DE switching preserves entered values and updates labels. Number steppers, date controls and the phone widget remain excluded. The corrected initialization order was verified on the live `dev` preview with no new console errors.
+
 ### B2B form visual consistency on `dev`
 
 Commit `060fc7f` aligns the partner-worker top row with the project-request layout: the available-worker count now uses the same independent − / number / + stepper with default `4` and limits `1–500`, and both worker count and trades/profiles have aligned labels above their controls. HR/EN labels and independent stepper behavior were browser-tested with no console errors.
