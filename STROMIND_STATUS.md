@@ -4,7 +4,7 @@
 >
 > Canonical operational status lives on the **`main` branch**. Chat memory is supporting context only. Before changing code, always read this file from `main` and verify actual GitHub state.
 
-**Last updated:** 2026-08-27  
+**Last updated:** 2026-08-28  
 **Project:** stromind.de / planned Stromind j.d.o.o.  
 **Lifecycle:** PUBLIC BETA / PRE-REGISTRATION
 
@@ -63,6 +63,16 @@ The active B2B project form captures:
 
 The form explicitly tells companies **not to enter personal data of individual workers or candidates**.
 
+### Form UX refinement — floating labels
+
+PR #13 adds reusable persistent/floating labels for ordinary form fields on pages using `subpages.js`:
+
+- an empty field still reads like the previous placeholder;
+- on focus or after text is entered, the field description moves to the upper-left and remains visible in small grey text;
+- ordinary inputs, textareas and placeholder-style selects are supported;
+- specialized controls that already have explicit labels are excluded, including the project-city field, worker stepper, date mask/calendar fields and explicitly labelled accommodation/transport/tools controls;
+- submitted field names and Netlify form structure are unchanged.
+
 ### DISABLED during beta
 
 The following are disabled and must not collect submissions:
@@ -85,6 +95,7 @@ The following are disabled and must not collect submissions:
 - `unternehmen-projekt` has honeypot protection and Netlify CAPTCHA enabled.
 - The only form that should remain in the deployed HTML is **`unternehmen-projekt`**.
 - Historical Netlify form definitions from older candidate/company forms still exist as legacy backend objects and should be explicitly deleted in Netlify.
+- Verified again on 2026-08-28: the four legacy objects are still present. The connected Netlify tooling can read forms and manage submissions but currently exposes no safe action for deleting a form definition itself, so this cleanup remains a manual Netlify UI task.
 - Do not add candidate/CV forms back until the candidate legal/GDPR and data-handling flow is deliberately re-enabled.
 
 ---
@@ -110,9 +121,9 @@ Candidate/CV processing stays off until the legal/controller identity and operat
 
 ---
 
-## 6. FIRST TASK FOR 2026-08-28
+## 6. Pending Netlify cleanup
 
-**Before any other Stromind work:** open Netlify → Forms and delete the four historical form definitions:
+Open Netlify → Forms and delete the four historical form definitions:
 
 1. `bewerbung-karriere`
 2. `bewerbung-leitung`
@@ -125,16 +136,18 @@ After deletion, verify in Netlify that only `unternehmen-projekt` remains active
 
 ---
 
-## 7. Immediate workflow after that cleanup
+## 7. Immediate workflow
 
-1. Work from **`main`** as canonical state.
+1. Work from **`main`** as canonical state, using short feature branches/PRs for meaningful changes.
 2. Public beta remains externally reachable.
 3. Keep **noindex** active.
 4. Allow only the B2B project inquiry form to submit.
 5. Keep candidates/CV/Praxis-Check/direct-hire/partner-worker flows disabled.
-6. Use external feedback (including Reddit/croIT) to find UX, wording and technical bugs.
-7. Add legal/GDPR pages and final company identity once registration data is available/appropriate.
-8. Update this file after meaningful work.
+6. Visually test the floating-label UX on desktop and mobile, especially company/contact/email/phone/country/website, roles/experience, language requirement, shift model, budget and project description.
+7. Manually delete the four legacy Netlify form definitions listed above when convenient.
+8. Use external feedback (including Reddit/croIT) to find UX, wording and technical bugs.
+9. Add legal/GDPR pages and final company identity once registration data is available/appropriate.
+10. Update this file after meaningful work.
 
 ---
 
