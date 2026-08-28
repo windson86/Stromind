@@ -69,9 +69,13 @@ Commit `03a28bf` refines the B2B form UX on `dev`:
 - the same date interaction is used for partner-worker **Verfügbar ab** so the two B2B paths stay consistent;
 - paired labels were added so project location/count and date/duration rows remain aligned on desktop and mobile.
 
-This is currently a **dev prototype for visual/logic review**. Before production, review wording, complete DE/EN/HR translation for the new B2B fields, test mobile/desktop behavior and test actual form delivery.
+This remains a **dev prototype for visual/logic review**. The expanded B2B form now has complete user-facing DE/EN/HR switching with `?lang=de|en|hr`, including both conditional flows, rates/salary blocks, placeholders, date messages and phone-search labels. Before production, review wording, test mobile/desktop behavior and test actual form delivery.
 
 ---
+
+### Expanded B2B form translations on `dev`
+
+Commits `093d761`, `e23488f` and `c3bb7f` translate all user-facing content in `unternehmen.html` across DE/EN/HR while preserving Netlify field names and stored option values. The `dev` preview was tested for repeated HR → EN → DE switching, both conditional request paths, temporary B2B rate and direct-hire salary blocks, phone placeholders/search labels and clean `?lang=` URLs with no console errors.
 
 ### Candidate-form language and CV control update on `dev`
 
@@ -131,7 +135,7 @@ Still verify/configure the dedicated candidate mailbox, SMTP environment variabl
 4. Use the Netlify `dev` preview/test deployment to verify as a normal user on mobile/desktop.
 5. **Current immediate next action:** visually test the B2B form on `https://dev--stromind.netlify.app`, especially the worker stepper and both date fields. Verify `4` default, −/+, manual larger worker counts, calendar selection, and manual date entry such as `27082026 → 27/08/2026` with the remaining `DD/MM/YYYY` mask staying grey.
 6. Continue collecting wording/layout feedback for both project models and the partner-worker flow.
-7. After the B2B prototype is approved, add/verify complete DE/EN/HR translations and end-to-end form delivery.
+7. DE/EN/HR B2B translations were browser-tested on `dev` in commits `093d761`, `e23488f` and `c3bb7f`; the remaining pre-production step is end-to-end form delivery and final wording/layout review.
 8. Keep production/`main` untouched while testing.
 9. After the change is verified and intentionally approved for production, merge the tested state into `main` at the appropriate launch/release point.
 10. Update this file after meaningful work so the exact stopping point survives Android/Windows/new-chat changes.
