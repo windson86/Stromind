@@ -4,7 +4,7 @@
 >
 > Canonical operational status lives on the **`dev` branch**. Chat memory is supporting context only. Before changing code, always read this file from `dev` and verify actual GitHub branch state.
 
-**Last updated:** 2026-08-27  
+**Last updated:** 2026-08-28  
 **Project:** stromind.de / planned Stromind j.d.o.o.  
 **Lifecycle:** PRE-LAUNCH
 
@@ -27,6 +27,11 @@
 - The production-only side contains the temporary holding-page work and its merge into `main`.
 - The advanced legal/GDPR implementation is on `legal/jdoo-gdpr-ready` and must be integrated/rebased/cherry-picked into the `dev` workflow before it is considered part of the normal tested build.
 - Do not assume work from `legal/jdoo-gdpr-ready`, `security/netlify-forms-hardening`, SEO branches, encoding branches or gallery branches is present on `dev` or `main` unless Git proves it.
+
+
+### Live branch comparison recorded 2026-08-28
+
+After the candidate-language commits, GitHub reported `dev` relative to `main` as **3 commits ahead and 19 commits behind** (status: `diverged`). This live comparison supersedes older counts above; do not merge or rewrite branches without inspecting the commit history first.
 
 ---
 
@@ -67,6 +72,17 @@ Commit `03a28bf` refines the B2B form UX on `dev`:
 This is currently a **dev prototype for visual/logic review**. Before production, review wording, complete DE/EN/HR translation for the new B2B fields, test mobile/desktop behavior and test actual form delivery.
 
 ---
+
+### Candidate-form language and CV control update on `dev`
+
+Commits `ba748b2`, `6f40457` and `97b7168` improve the candidate form without touching `main`:
+
+- CV upload now uses a compact STROMIND-styled control instead of the browser's unstyled file field;
+- DE/EN/HR buttons write the selected language to the URL as `?lang=de|en|hr` while preserving parameters such as `role=monteur`;
+- direct language links and page refreshes keep the requested language;
+- candidate-form headings, questions, contact placeholders, CV label/button and empty-file text switch across DE/EN/HR;
+- PDF/Word acceptance and the 5 MB limit remain unchanged;
+- the Netlify `dev` preview was browser-tested in all three languages with no console errors.
 
 ## 3. Legal / GDPR work already prepared on `legal/jdoo-gdpr-ready`
 
