@@ -10,3 +10,58 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',(
 document.addEventListener('invalid',e=>{const el=e.target;if(!el.matches('input,textarea,select'))return;const t=UI[stromindLang()];el.setCustomValidity(el.validity.typeMismatch?t.email:t.required)},true);document.addEventListener('input',e=>{if(e.target.matches('input,textarea,select'))e.target.setCustomValidity('')});
 const CV_MAX_BYTES=5*1024*1024;const CV_SIZE_MESSAGES={de:'Der Lebenslauf darf maximal 5 MB groß sein.',en:'The CV must not exceed 5 MB.',hr:'Životopis ne smije biti veći od 5 MB.'};document.querySelectorAll('input[type=file]').forEach(f=>f.addEventListener('change',()=>{f.setCustomValidity('');const file=f.files[0];if(!file)return;if(!/\.(pdf|doc|docx)$/i.test(file.name)){f.setCustomValidity(UI[stromindLang()].file)}else if(file.size>CV_MAX_BYTES){f.setCustomValidity(CV_SIZE_MESSAGES[stromindLang()]||CV_SIZE_MESSAGES.de)}if(!f.checkValidity())f.reportValidity()}));
 document.querySelectorAll('form').forEach(f=>f.addEventListener('submit',()=>{const b=f.querySelector('button[type=submit]');if(b){b.dataset.original=b.textContent;b.textContent=UI[stromindLang()].submit;b.disabled=true}}));
+
+(function enhanceFloatingFormLabels(){
+ const style=document.createElement('style');
+ style.textContent=`
+ .floating-field{position:relative;min-width:0}
+ .contact-panel .floating-field>input,.contact-panel .floating-field>select{min-height:54px;padding:22px 16px 9px}
+ .contact-panel .floating-field>textarea{padding:26px 16px 12px}
+ .contact-panel .floating-field>.select-field{margin-bottom:0}
+ .floating-label{position:absolute;left:16px;top:50%;z-index:3;max-width:calc(100% - 32px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transform:translateY(-50%);color:#818b84;font-size:14px;line-height:1;pointer-events:none;transition:top .16s ease,transform .16s ease,font-size .16s ease,color .16s ease;}
+ .floating-textarea .floating-label{top:18px;transform:none}
+ .floating-field.filled .floating-label,.floating-field:focus-within .floating-label,.floating-select .floating-label,.floating-field>input:-webkit-autofill+.floating-label{top:7px;transform:none;color:#8f9992;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+ .floating-field:focus-within .floating-label{color:#aab4ad}
+ .floating-field>input,.floating-field>textarea,.floating-field>select{margin-bottom:0}
+ @media(max-width:560px){.floating-label{font-size:13px}.floating-field.filled .floating-label,.floating-field:focus-within .floating-label,.floating-select .floating-label{font-size:10px}}
+ `;
+ document.head.appendChild(style);
+ const prompts={de:'Bitte wählen',en:'Please select',hr:'Odaberite'};
+ let generatedId=0;
+ function hasOwnSmallLabel(el){return !!el.parentElement?.querySelector(':scope > .small-label')}
+ function eligible(el){
+  if(el.closest('.hidden-field,.number-stepper,.date-entry'))return false;
+  if(hasOwnSmallLabel(el))return false;
+  if(el.matches('input[type="hidden"],input[type="radio"],input[type="checkbox"],input[type="file"],input[type="date"],input[type="submit"],input[type="button"],.date-mask,.calendar-native'))return false;
+  if(el.tagName==='SELECT')return el.options.length>1&&el.options[0]?.value==='';
+  return !!(el.getAttribute('placeholder')||'').trim();
+ }
+ function updateFilled(el){const wrap=el.closest('.floating-field');if(!wrap)return;const hasValue=el.tagName==='SELECT'?el.value!=='':el.value.trim()!=='';wrap.classList.toggle('filled',hasValue)}
+ function createFor(el){
+  if(el.closest('.floating-field')){updateFilled(el);return}
+  if(!eligible(el))return;
+  const isSelect=el.tagName==='SELECT';
+  const labelText=isSelect?el.options[0].textContent.trim():(el.getAttribute('placeholder')||'').trim();
+  if(!labelText)return;
+  const wrap=document.createElement('div');
+  wrap.className='floating-field'+(el.tagName==='TEXTAREA'?' floating-textarea':'')+(isSelect?' floating-select':'');
+  el.parentNode.insertBefore(wrap,el);wrap.appendChild(el);
+  if(!el.id)el.id='stromind-field-'+(++generatedId);
+  const label=document.createElement('label');label.className='floating-label';label.htmlFor=el.id;label.textContent=labelText;wrap.appendChild(label);
+  if(isSelect){el.dataset.floatingLabel=labelText;el.options[0].textContent=prompts[stromindLang()]||prompts.de}
+  else{el.dataset.floatingLabel=labelText;el.setAttribute('placeholder',' ')}
+  ['input','change','blur'].forEach(evt=>el.addEventListener(evt,()=>updateFilled(el)));
+  updateFilled(el);
+ }
+ function refresh(){
+  document.querySelectorAll('form input,form textarea,form select').forEach(createFor);
+  document.querySelectorAll('.floating-field').forEach(wrap=>{
+   const el=wrap.querySelector('input,textarea,select');const label=wrap.querySelector('.floating-label');if(!el||!label)return;
+   if(el.tagName==='SELECT'){el.options[0].textContent=prompts[stromindLang()]||prompts.de}
+   else if(el.dataset.i18nPlaceholder&&el.getAttribute('placeholder')&&el.getAttribute('placeholder')!==' '){label.textContent=el.getAttribute('placeholder');el.dataset.floatingLabel=label.textContent;el.setAttribute('placeholder',' ')}
+   updateFilled(el);
+  });
+ }
+ refresh();
+ document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>requestAnimationFrame(refresh)));
+})();
