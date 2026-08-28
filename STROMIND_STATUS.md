@@ -73,6 +73,10 @@ This remains a **dev prototype for visual/logic review**. The expanded B2B form 
 
 ---
 
+### B2B form visual consistency on `dev`
+
+Commit `060fc7f` aligns the partner-worker top row with the project-request layout: the available-worker count now uses the same independent − / number / + stepper with default `4` and limits `1–500`, and both worker count and trades/profiles have aligned labels above their controls. HR/EN labels and independent stepper behavior were browser-tested with no console errors.
+
 ### Expanded B2B form translations on `dev`
 
 Commits `093d761`, `e23488f` and `c3bb7f` translate all user-facing content in `unternehmen.html` across DE/EN/HR while preserving Netlify field names and stored option values. The `dev` preview was tested for repeated HR → EN → DE switching, both conditional request paths, temporary B2B rate and direct-hire salary blocks, phone placeholders/search labels and clean `?lang=` URLs with no console errors.
