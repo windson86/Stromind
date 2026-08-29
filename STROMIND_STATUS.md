@@ -126,6 +126,14 @@ Root cause found in code:
 
 Retest specifically on Samsung + Chrome after the dev deploy: one intentionally invalid submission should remain retryable, and one fully valid submission should proceed to the Netlify confirmation flow.
 
+### German homepage wording — 2026-08-29
+
+External German-language feedback was incorporated on `dev` without changing EN/HR:
+
+- `b53e80a` — **Polish German homepage messaging**
+- German hero headline is now: **„Wir verbinden Fachkräfte mit Ihrem Projekt.“**
+- German company-card copy is now: **„Senden Sie uns Ihre Projektanfrage. Wir prüfen Ihren Bedarf und melden Ihnen verfügbare Kapazitäten zurück.“**
+
 ### Browser-translation protection — 2026-08-29
 
 Chrome/Google browser translation was observed translating the brand and language codes incorrectly (for example `STROMIND` and `DE / EN / HR`).
@@ -170,16 +178,17 @@ Before real recruiting/CV processing becomes public production, final company id
 
 ## 7. Immediate next actions
 
-1. Verify the latest `dev` branch deploy contains `dd54edf` plus the Firefox radio fix and browser-translation protection.
-2. On **Samsung + Chrome Android**, deliberately trigger one invalid candidate submission and confirm the button does **not** get stuck on “Slanje…” and remains usable after the validation message appears.
-3. On Samsung + Chrome Android, submit one fully valid synthetic application and confirm it reaches the confirmation page/Netlify.
-4. Retest Firefox Android with a deliberately wrong Praxis answer; it must not show “required” after an answer is selected.
-5. Retest Brave/Chrome Android generally to ensure no regression.
-6. Turn on Chrome/Google browser translation and confirm **STROMIND** and **DE / EN / HR** remain unchanged while ordinary content is translated.
-7. Submit only synthetic PDF/test data during this round and delete no-longer-needed test submissions afterwards.
-8. Separately continue B2B/company-form visual and end-to-end tests.
-9. Reconcile `main` into `dev` deliberately later; preserve all wanted B2B changes and candidate/CV work while retaining production legal/safety intent.
-10. Promote to `main` only after explicit approval.
+1. Verify the latest `dev` branch deploy contains `b53e80a`, `dd54edf`, the Firefox radio fix and browser-translation protection.
+2. Visually review the new German hero headline and company-card text on mobile.
+3. On **Samsung + Chrome Android**, deliberately trigger one invalid candidate submission and confirm the button does **not** get stuck on “Slanje…” and remains usable after the validation message appears.
+4. On Samsung + Chrome Android, submit one fully valid synthetic application and confirm it reaches the confirmation page/Netlify.
+5. Retest Firefox Android with a deliberately wrong Praxis answer; it must not show “required” after an answer is selected.
+6. Retest Brave/Chrome Android generally to ensure no regression.
+7. Turn on Chrome/Google browser translation and confirm **STROMIND** and **DE / EN / HR** remain unchanged while ordinary content is translated.
+8. Submit only synthetic PDF/test data during this round and delete no-longer-needed test submissions afterwards.
+9. Separately continue B2B/company-form visual and end-to-end tests.
+10. Reconcile `main` into `dev` deliberately later; preserve all wanted B2B changes and candidate/CV work while retaining production legal/safety intent.
+11. Promote to `main` only after explicit approval.
 
 ---
 
