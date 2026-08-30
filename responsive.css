@@ -17,9 +17,16 @@ footer,
   min-width: 0;
 }
 
+/* Headings should wrap only between words; never add automatic hyphens on mobile. */
 h1,
 h2,
-h3,
+h3 {
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
 .btn,
 .home-path b,
 .links a,
