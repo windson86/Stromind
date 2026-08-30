@@ -37,6 +37,22 @@ h3,
   hyphens: none;
 }
 
+/* Progressive enhancement: content stays visible if JavaScript fails to load. */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+html.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+html.reveal-ready .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
 img,
 svg,
 video {
