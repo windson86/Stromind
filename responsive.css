@@ -107,6 +107,12 @@ video {
   background: transparent;
 }
 
+/* Fail open: content must remain readable even if homepage JavaScript is blocked or crashes. */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 @media (max-width: 560px) {
   .home-hero h1,
   .subhero h1 {
