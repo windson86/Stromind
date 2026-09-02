@@ -7,18 +7,36 @@ document.querySelectorAll('.brand,.lang').forEach(el=>{el.setAttribute('translat
 function storageGet(key){try{return window.localStorage.getItem(key)}catch(_){return null}}
 function storageSet(key,value){try{window.localStorage.setItem(key,value)}catch(_){}}
 
+const TRACKING_KEYS=['utm_source','utm_medium','utm_campaign','utm_id','utm_term','utm_content','gclid','gbraid','wbraid','msclkid'];
+function syncInternalLinks(lang){
+  let current;
+  try{current=new URLSearchParams(window.location.search)}catch(_){current=new URLSearchParams()}
+  document.querySelectorAll('a[href]').forEach(a=>{
+    const raw=a.getAttribute('href');
+    if(!raw||raw.startsWith('#')||raw.startsWith('mailto:')||raw.startsWith('tel:')||raw.startsWith('javascript:'))return;
+    try{
+      const u=new URL(raw,window.location.href);
+      if(u.origin!==window.location.origin||!u.pathname.endsWith('.html'))return;
+      u.searchParams.set('lang',lang);
+      TRACKING_KEYS.forEach(key=>{u.searchParams.delete(key);const value=current.get(key);if(value)u.searchParams.set(key,value)});
+      a.setAttribute('href',`${u.pathname}${u.search}${u.hash}`);
+    }catch(_){}
+  });
+}
+
 function setLang(l){
-  if(!T[l])l='de';
+  if(!T[l])l='hr';
   document.documentElement.lang=l;
   storageSet('stromindLang',l);
   document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   document.querySelectorAll('[data-i18n]').forEach(e=>{const v=T[l][e.dataset.i18n];if(v!==undefined)e.innerHTML=v});
   document.querySelectorAll('[data-i18n-placeholder]').forEach(e=>{const v=T[l][e.dataset.i18nPlaceholder];if(v)e.placeholder=v});
+  syncInternalLinks(l);
 }
 
 document.querySelectorAll('[data-lang]').forEach(b=>{b.onclick=()=>setLang(b.dataset.lang)});
-let initialLang='de';
-try{const q=new URLSearchParams(window.location.search).get('lang');initialLang=T[q]?q:(storageGet('stromindLang')||'de')}catch(_){initialLang=storageGet('stromindLang')||'de'}
+let initialLang='hr';
+try{const q=new URLSearchParams(window.location.search).get('lang');initialLang=T[q]?q:(storageGet('stromindLang')||'hr')}catch(_){initialLang=storageGet('stromindLang')||'hr'}
 setLang(initialLang);
 
 const year=document.getElementById('year');
