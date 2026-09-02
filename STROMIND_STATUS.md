@@ -4,7 +4,7 @@
 >
 > Canonical operational status lives on the **`dev` branch**. Chat memory is supporting context only. Before changing code, always read this file from `dev` and verify actual GitHub/Netlify state.
 
-**Last updated:** 2026-08-29  
+**Last updated:** 2026-09-02  
 **Project:** stromind.de / Stromind j.d.o.o. in formation  
 **Lifecycle:** PUBLIC TEST / PRE-LAUNCH
 
@@ -14,40 +14,102 @@
 
 - **`dev` = active working/test branch.** All normal changes and browser testing happen here first.
 - **`main` = production branch** currently served to users at `https://stromind.de`.
-- Production is publicly reachable, but indexing remains intentionally disabled (`noindex`) while launch/legal work is incomplete.
+- Production is publicly reachable, but launch/legal work is still incomplete.
 - Do not use `main` for everyday development.
 - Only promote tested/approved `dev` work to `main` deliberately.
-- If branch history diverges, do not blindly merge `dev` into `main`; reconcile intentionally and preserve production safety decisions.
-
-### Verified branch state — 2026-08-28
-
-Before this status commit, GitHub reported:
-
-- `main`: `97aa4f7` — **Add persistent floating labels to form fields**
-- `dev`: `82b7337` — **Style localized floating validation errors**
-- comparison `main...dev`: **diverged**
-- `dev` ahead by **23** commits and behind by **19** commits
-- aggregate changed files: `STROMIND_STATUS.md`, `karriere.html`, `responsive.css`, `subpages.js`, `unternehmen.html`
-
-The divergence sounds large in commit count but the live surface is concentrated in those files. Do not reset `dev`; it contains the current company-form and candidate-form work we want to keep.
+- `main` and `dev` have diverged historically; do not blindly merge or reset `dev`.
+- Preserve the current company-form and candidate/CV work on `dev` during any reconciliation.
 
 ---
 
-## 2. Current public / production state (`main`)
+## 2. Company formation / launch timing
 
-- `https://stromind.de` is publicly reachable.
-- No Netlify password or team-login requirement is enabled.
-- Search-engine indexing is intentionally blocked for now.
-- Current production is the safer B2B-oriented public beta.
-- Candidate/CV functionality is not the production baseline yet; candidate work is being tested on `dev`.
+- Stromind j.d.o.o. is still in formation.
+- Planned primary activity: **78.10.0 — employment/recruitment agency activity**.
+- Planned additional activities discussed for registration before launch:
+  - **43.60.0** — project/business intermediation for specialized construction services;
+  - **82.40.0** — broader business-support intermediation for future non-construction cases.
+- Exact legal/NKD fit and contract wording must be professionally verified before first real invoicing.
+- User intends to finish formation/financial activation around **15.09.2026**, rather than forcing commercial activity before then.
+- Initial private risk budget discussed: **800 EUR**, intended to be introduced as a documented owner/member loan to Stromind rather than locking the whole amount as share capital.
 
-Company formation is now in progress. User reports that the remaining company identity items are the final **OIB** and **court/register entry number**. Do not invent or publish those values before they exist.
+Do not invent OIB, court/register number, VAT ID or other company identifiers before they exist.
 
 ---
 
-## 3. Company/B2B form on `dev`
+## 3. Business model clarified — 2026-09-02
 
-Keep the current `dev` B2B work. It includes the expanded company flow and today's UX work:
+Stromind is intended to be an **intermediary**, not an employer/leasing company and not the contractor performing the electrical works.
+
+### Project intermediation
+
+- A DE company tells Stromind it has a project and needs a certain number of electricians.
+- Stromind finds a suitable Croatian company that can take the project.
+- After introduction, the **DE company and HR company communicate directly and conclude their own contract**.
+- Stromind does not invoice the DE project's hourly rate and does not participate in payroll, A1, accommodation, work instructions or execution of the works.
+- Current commercial concept: **180 EUR per active project place / worker / month** for a project introduced by Stromind.
+- The 180 EUR project fee follows the **active project place**, not the identity of a specific worker. If the HR company replaces workers but continues to use the project capacity introduced by Stromind, the project fee continues for the occupied places during the agreed protection/fee period.
+
+### Candidate / employment intermediation
+
+- If the HR company does not have enough of its own workers, Stromind can offer vetted candidates from its candidate base.
+- Current commercial concept: **+250 EUR per Stromind-introduced candidate / month** during an agreed fixed period.
+- The 250 EUR candidate fee follows the **candidate/employment relationship with that HR company**, independently of which project the HR company later assigns the candidate to.
+- Moving a Stromind candidate from a Stromind-introduced project to another project must not remove the candidate fee.
+- Candidate and project fees are therefore independent.
+
+Example: 7 active places on a Stromind project = 7 × 180 EUR/month. If 2 employed people were also introduced by Stromind, add 2 × 250 EUR/month for the agreed candidate-fee period.
+
+### Quality / relationship principle
+
+- Stromind does not need workers' salary/hourly-rate data for its own pricing model.
+- Stromind should keep direct periodic contact with candidates it introduced to verify that they are still with the employer and to understand how they are being treated on the project.
+- This contact is also a quality-control mechanism for the internal database of trusted workers and trusted partner companies.
+- Contracts need anti-bypass/protection-period language so that direct HR ↔ DE communication, which is desired, does not eliminate Stromind's agreed intermediation fee.
+
+### Legal boundary
+
+- Stromind must be described and operated as **intermediation**, not as worker leasing/Arbeitnehmerüberlassung.
+- Do not use language such as “Stromind ustupa radnika” in final contracts/marketing when the worker is actually employed by the HR company; use wording equivalent to “Stromind introduced/mediated the candidate”.
+- The HR ↔ DE contractual and operational relationship must separately comply with German law (including AÜG/Werkvertrag distinctions where relevant). Actual execution matters more than labels.
+- Before first real contract/invoice, have Croatian/German legal/accounting professionals verify the final model and invoicing language.
+
+---
+
+## 4. Homepage language + ad-readiness — 2026-09-02
+
+Changes now committed on **`dev`**:
+
+- `1892346` — **Set Croatian as default homepage language**
+  - homepage static/fallback HTML is Croatian;
+  - `<html lang="hr">`;
+  - HR is the initially active language;
+  - Croatian meta description / Open Graph description;
+  - DE and EN remain available.
+
+- `6a6267e` — **Default homepage to Croatian and preserve ad attribution**
+  - homepage JavaScript default/fallback language changed from DE to HR;
+  - `?lang=de|en|hr` still overrides the default;
+  - selected language still persists through `localStorage`;
+  - internal HTML links now carry the active `lang` parameter;
+  - common ad-attribution parameters are preserved when visitors continue from the landing page to internal forms/pages:
+    - `utm_source`, `utm_medium`, `utm_campaign`, `utm_id`, `utm_term`, `utm_content`;
+    - `gclid`, `gbraid`, `wbraid`, `msclkid`.
+
+Advertising implication:
+
+- general/direct visitors can land on Croatian by default;
+- future DE ads can point directly to `/?lang=de` (plus campaign parameters);
+- EN campaigns can use `/?lang=en`;
+- attribution parameters should survive the first internal click to the form, ready for later analytics/form capture work.
+
+Do not add Google/Meta tracking IDs or connect personal accounts until the dedicated Stromind business account/configuration is ready.
+
+---
+
+## 5. Company/B2B form on `dev`
+
+Keep the current `dev` B2B work. It includes:
 
 - project / workers needed;
 - own workers / partnership prototype;
@@ -61,13 +123,13 @@ Keep the current `dev` B2B work. It includes the expanded company flow and today
 - persistent floating labels;
 - reversible language switching through `?lang=de|en|hr`.
 
-These company-form changes are intentionally retained on `dev` and must not be lost during branch reconciliation.
+Important: the business model was clarified after the current form was designed. Before launch, review the B2B form wording/fields so it reflects the new **project intermediation + candidate intermediation** model and does not unnecessarily ask for data Stromind does not need.
 
 ---
 
-## 4. Candidate/CV form on `dev`
+## 6. Candidate/CV form on `dev`
 
-The candidate form currently contains:
+Current candidate form includes:
 
 - name, email and phone;
 - years of experience;
@@ -75,88 +137,45 @@ The candidate form currently contains:
 - 5-question Praxis-Check;
 - optional message;
 - optional PDF/Word CV upload (current Netlify form limit 5 MB);
-- DE/EN/HR user-facing language support;
+- DE/EN/HR support;
 - centered application panel.
 
-### Mobile/Firefox validation fix — 2026-08-28
+Relevant fixes already on `dev`:
 
-A real Firefox Android test exposed that an omitted required field could make the submit button look non-functional even though Chrome/Brave normally jump back to the missing field.
+- `a1c3d55` — harden candidate form validation on mobile;
+- `ef80dbc` — localized required-field validation messages;
+- `82b7337` — floating validation messages / invalid-state styling;
+- `2acb1e0` — Firefox radio-group validation fix;
+- `dd54edf` — prevent submit button locking when validation already blocked submission.
 
-Changes now on `dev`:
-
-- `a1c3d55` — **Harden candidate form validation on mobile**
-  - `experience` is now a true numeric field;
-  - default value is `0`;
-  - minimum value is `0`;
-  - mobile receives numeric input behavior;
-  - browser-independent invalid-field highlighting/focus behavior was added;
-  - Praxis-Check score no longer determines whether the form may be submitted; even `0/5` remains a valid application result and is recorded rather than blocking the application.
-
-- `ef80dbc` — **Add localized candidate validation messages**
-  - required-field messages are now explicit and language-aware:
-    - HR: **Ovo polje je obavezno.**
-    - DE: **Dieses Feld ist erforderlich.**
-    - EN: **This field is required.**
-  - candidate validation errors are rendered independently of browser-native Firefox/Chrome behavior.
-
-- `82b7337` — **Style localized floating validation errors**
-  - ordinary candidate inputs show the message as a small red floating label across the input border;
-  - invalid fields receive a red border;
-  - grouped controls such as Praxis questions/work-location blocks show the validation message within the block instead of relying only on the browser popup.
-
-- `2acb1e0` — **Fix Firefox radio-group validation**
-  - choosing any radio answer now clears a stale required/custom-validity error from the entire question group;
-  - wrong Praxis answers remain valid answers and never block application submission.
-
-A Firefox Android submission using the synthetic `STROMIND_TEST_UPLOAD.pdf` successfully reached Netlify during testing. Earlier attempts that did not reach Netlify are the reason for the explicit validation UX above.
-
-### Samsung Chrome submit-button fix — 2026-08-29
-
-Samsung users reported that candidate submission could appear broken in Chrome while Samsung Internet worked. The failure pattern matched an earlier screenshot where the button remained on **“Slanje…”**.
-
-Root cause found in code:
-
-- candidate-specific validation can intentionally call `preventDefault()` when a required/custom field (for example work location) is invalid;
-- the shared `subpages.js` submit handler still immediately changed the submit button to the localized “Sending…” state and disabled it even when submission had already been blocked.
-
-- `dd54edf` — **Avoid locking submit button on blocked forms**
-  - the shared submit-button handler now checks `event.defaultPrevented` first;
-  - if validation has blocked the form, the button stays enabled and keeps its normal label;
-  - only a genuinely allowed submit is switched to the disabled “Sending…” state.
-
-Retest specifically on Samsung + Chrome after the dev deploy: one intentionally invalid submission should remain retryable, and one fully valid submission should proceed to the Netlify confirmation flow.
-
-### German homepage wording — 2026-08-29
-
-External German-language feedback was incorporated on `dev` without changing EN/HR:
-
-- `b53e80a` — **Polish German homepage messaging**
-- German hero headline is now: **„Wir verbinden Fachkräfte mit Ihrem Projekt.“**
-- German company-card copy is now: **„Senden Sie uns Ihre Projektanfrage. Wir prüfen Ihren Bedarf und melden Ihnen verfügbare Kapazitäten zurück.“**
-
-### Browser-translation protection — 2026-08-29
-
-Chrome/Google browser translation was observed translating the brand and language codes incorrectly (for example `STROMIND` and `DE / EN / HR`).
-
-- `37a790c` — subpages now mark `.brand` and `.lang` as `translate="no"` plus `notranslate`.
-- `a49e3a3` — the same protection is applied on the homepage script.
-- Browser translation remains available for normal page content; only the STROMIND brand and language selector are protected.
+A synthetic PDF application successfully reached Netlify in Firefox Android testing. Samsung Chrome still needs deliberate valid/invalid retesting after current deploys.
 
 ---
 
-## 5. Netlify forms / test-data note
+## 7. Existing homepage/browser work to preserve
 
-Current form infrastructure recognizes `bewerbung-karriere` and the company forms. Candidate submissions on `dev` are test submissions while this flow is being validated.
+- `b53e80a` — German homepage copy polishing:
+  - hero: **„Wir verbinden Fachkräfte mit Ihrem Projekt.“**
+  - company copy: **„Senden Sie uns Ihre Projektanfrage. Wir prüfen Ihren Bedarf und melden Ihnen verfügbare Kapazitäten zurück.“**
+- `37a790c` and `a49e3a3` — protect STROMIND brand and DE / EN / HR selector from browser auto-translation (`translate="no"`, `notranslate`).
 
-For privacy hygiene:
+The new HR-default change must not remove the polished German copy when `?lang=de` is selected.
+
+---
+
+## 8. Netlify forms / test-data note
+
+Current form infrastructure recognizes `bewerbung-karriere` and the company forms. Candidate submissions on `dev` are test submissions while the flow is being validated.
+
+Privacy hygiene:
 
 - prefer synthetic PDFs and fake/test data during technical tests;
 - do not use real CVs unless necessary;
-- delete test submissions after the current validation round when they are no longer needed.
+- remove test submissions when they are no longer needed.
 
 ---
 
-## 6. Legal / GDPR prepared work
+## 9. Legal / GDPR prepared work
 
 Advanced legal/GDPR work exists on `legal/jdoo-gdpr-ready` and is **not automatically part of `dev`** until intentionally integrated and tested. It includes:
 
@@ -172,27 +191,25 @@ Advanced legal/GDPR work exists on `legal/jdoo-gdpr-ready` and is **not automati
 - authenticated SMTP delivery design;
 - Netlify/STRATO environment-variable design with no real secret committed.
 
-Before real recruiting/CV processing becomes public production, final company identity, controller wording, retention/deletion process, mailbox security, forwarding basis and end-to-end form delivery must be verified.
+Before real recruiting/CV processing becomes production, verify final company identity, controller wording, retention/deletion process, mailbox security, forwarding basis and end-to-end form delivery.
 
 ---
 
-## 7. Immediate next actions
+## 10. Immediate next actions
 
-1. Verify the latest `dev` branch deploy contains `b53e80a`, `dd54edf`, the Firefox radio fix and browser-translation protection.
-2. Visually review the new German hero headline and company-card text on mobile.
-3. On **Samsung + Chrome Android**, deliberately trigger one invalid candidate submission and confirm the button does **not** get stuck on “Slanje…” and remains usable after the validation message appears.
-4. On Samsung + Chrome Android, submit one fully valid synthetic application and confirm it reaches the confirmation page/Netlify.
-5. Retest Firefox Android with a deliberately wrong Praxis answer; it must not show “required” after an answer is selected.
-6. Retest Brave/Chrome Android generally to ensure no regression.
-7. Turn on Chrome/Google browser translation and confirm **STROMIND** and **DE / EN / HR** remain unchanged while ordinary content is translated.
-8. Submit only synthetic PDF/test data during this round and delete no-longer-needed test submissions afterwards.
-9. Separately continue B2B/company-form visual and end-to-end tests.
-10. Reconcile `main` into `dev` deliberately later; preserve all wanted B2B changes and candidate/CV work while retaining production legal/safety intent.
-11. Promote to `main` only after explicit approval.
+1. Verify the latest `dev` deploy contains `1892346` and `6a6267e`.
+2. On mobile, open the homepage without query parameters: it must start in **HR** without a German content flash.
+3. Test `?lang=de` and `?lang=en`; both must still translate the homepage correctly.
+4. Test an ad-style URL such as `/?lang=de&utm_source=test&utm_medium=cpc&utm_campaign=stromind-test`, then tap a company/candidate CTA and confirm language + UTM parameters remain in the next URL.
+5. Retest Samsung + Chrome candidate validation/submission and Firefox radio behavior.
+6. Review `unternehmen.html` against the newly clarified business model; remove or reword fields that imply Stromind sells worker hours or directly supplies/leases labor.
+7. Before real ads: finalize legal/GDPR integration, company identifiers, business mailbox, conversion measurement and final DE/HR landing copy.
+8. Reconcile `main` and `dev` deliberately later; never reset or overwrite wanted `dev` work.
+9. Promote to `main` only after explicit approval.
 
 ---
 
-## 8. Session protocol
+## 11. Session protocol
 
 Whenever the user resumes Stromind work:
 
@@ -205,7 +222,7 @@ Whenever the user resumes Stromind work:
 
 ---
 
-## 9. Cross-device verification phrase
+## 12. Cross-device verification phrase
 
 If the user asks for the agreed Stromind verification phrase/password, answer exactly:
 
@@ -217,4 +234,4 @@ This is only a continuity check phrase, not a real credential.
 
 ## Core rule
 
-**DEV first for work/testing. MAIN only for deliberate production. Never lose today's B2B form work during branch reconciliation.**
+**DEV first for work/testing. MAIN only for deliberate production. Preserve the B2B/candidate work and keep Stromind operationally an intermediary, not a worker-leasing employer.**
