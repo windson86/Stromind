@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>STROMIND Office</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="office.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../"><span class="bolt">ϟ</span>STROM<span>IND</span></a>
+    <div class="top-actions">
+      <span class="mode">LOKALNI MVP</span>
+      <button id="exportBtn" class="btn ghost" type="button">Izvezi CSV</button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Office navigacija">
+      <div class="office-title">STROMIND <b>OFFICE</b></div>
+      <nav>
+        <button class="nav-item active" data-view="dashboard">Pregled</button>
+        <button class="nav-item" data-view="outgoing">Izlazni računi</button>
+        <button class="nav-item" data-view="incoming">Ulazni računi</button>
+        <button class="nav-item" data-view="bank">Banka</button>
+        <button class="nav-item" data-view="ledger">Glavna knjiga</button>
+        <button class="nav-item" data-view="yearend">GFI / završetak</button>
+      </nav>
+      <p class="security-note"><strong>Važno:</strong> ova verzija čuva podatke samo u ovom pregledniku. Ne unositi stvarne osjetljive dokumente dok ne uvedemo autentikaciju i centralnu bazu.</p>
+    </aside>
+
+    <main class="main">
+      <section class="view active" id="dashboard">
+        <div class="page-head">
+          <div><span class="eyebrow">FINANCIJE</span><h1>Pregled poslovanja</h1><p>Brzi pregled računa i naplate. Iznosi su informativni, ne porezni obračun.</p></div>
+          <button class="btn primary" data-open-form="outgoing">+ Novi izlazni račun</button>
+        </div>
+        <div class="stats">
+          <article><small>Izlazni računi</small><strong id="statOutgoing">0,00 €</strong><span id="statOutgoingCount">0 računa</span></article>
+          <article><small>Naplaćeno</small><strong id="statPaid">0,00 €</strong><span id="statPaidCount">0 plaćeno</span></article>
+          <article><small>Ulazni troškovi</small><strong id="statIncoming">0,00 €</strong><span id="statIncomingCount">0 računa</span></article>
+          <article><small>Razlika</small><strong id="statBalance">0,00 €</strong><span>prihodi − troškovi</span></article>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Zadnji dokumenti</h2><button class="text-btn" data-view-link="outgoing">Prikaži sve →</button></div>
+          <div class="table-wrap"><table><thead><tr><th>Vrsta</th><th>Broj</th><th>Partner</th><th>Datum</th><th>Status</th><th class="num">Iznos</th></tr></thead><tbody id="recentRows"></tbody></table></div>
+          <div class="empty" id="recentEmpty">Još nema unesenih dokumenata.</div>
+        </div>
+      </section>
+
+      <section class="view" id="outgoing">
+        <div class="page-head compact"><div><span class="eyebrow">PRODAJA</span><h1>Izlazni računi</h1></div><button class="btn primary" data-open-form="outgoing">+ Novi račun</button></div>
+        <div class="panel"><div class="table-wrap"><table><thead><tr><th>Broj</th><th>Kupac</th><th>Datum</th><th>Dospijeće</th><th>Status</th><th class="num">Iznos</th><th></th></tr></thead><tbody id="outgoingRows"></tbody></table></div><div class="empty" id="outgoingEmpty">Nema izlaznih računa.</div></div>
+      </section>
+
+      <section class="view" id="incoming">
+        <div class="page-head compact"><div><span class="eyebrow">TROŠKOVI</span><h1>Ulazni računi</h1></div><button class="btn primary" data-open-form="incoming">+ Novi trošak</button></div>
+        <div class="panel"><div class="table-wrap"><table><thead><tr><th>Broj</th><th>Dobavljač</th><th>Datum</th><th>Kategorija</th><th class="num">Iznos</th><th></th></tr></thead><tbody id="incomingRows"></tbody></table></div><div class="empty" id="incomingEmpty">Nema ulaznih računa.</div></div>
+      </section>
+
+      <section class="view" id="bank">
+        <div class="page-head"><div><span class="eyebrow">BANKA</span><h1>Promet računa</h1><p>Sljedeća faza: uvoz bankovnog CSV-a i automatsko povezivanje uplata s računima.</p></div></div>
+        <div class="panel placeholder"><b>Planirano</b><p>Uvoz izvoda, označavanje uplata i povezivanje s izlaznim računima.</p></div>
+      </section>
+
+      <section class="view" id="ledger">
+        <div class="page-head"><div><span class="eyebrow">KNJIGOVODSTVO</span><h1>Glavna knjiga</h1><p>MVP trenutno vodi operativnu evidenciju. Dvojno knjiženje dodajemo tek nakon definiranja kontnog plana i pregleda s računovođom.</p></div></div>
+        <div class="panel placeholder"><b>Sljedeći korak</b><p>Kontni plan, temeljnice, duguje/potražuje, salda partnera i zaključavanje razdoblja.</p></div>
+      </section>
+
+      <section class="view" id="yearend">
+        <div class="page-head"><div><span class="eyebrow">GODIŠNJI ZAVRŠETAK</span><h1>GFI / završna kontrola</h1><p>Checklist za pripremu podataka prije službene predaje.</p></div></div>
+        <div class="checklist panel">
+          <label><input type="checkbox"> Svi izlazni računi evidentirani</label>
+          <label><input type="checkbox"> Svi ulazni računi evidentirani</label>
+          <label><input type="checkbox"> Bankovni promet usklađen</label>
+          <label><input type="checkbox"> Otvorene stavke provjerene</label>
+          <label><input type="checkbox"> Dokumentacija za računovođu / završnu kontrolu izvezena</label>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="entryDialog">
+    <form method="dialog" id="entryForm">
+      <div class="dialog-head"><div><span class="eyebrow" id="formEyebrow">RAČUN</span><h2 id="formTitle">Novi račun</h2></div><button class="close" value="cancel" aria-label="Zatvori">×</button></div>
+      <input type="hidden" id="entryType" value="outgoing">
+      <div class="form-grid">
+        <label>Broj dokumenta<input id="docNumber" required placeholder="npr. 2026-001"></label>
+        <label>Partner<input id="partner" required placeholder="Naziv tvrtke"></label>
+        <label>Datum<input id="docDate" type="date" required></label>
+        <label id="dueWrap">Dospijeće<input id="dueDate" type="date"></label>
+        <label id="categoryWrap" class="hidden">Kategorija<select id="category"><option>Usluge</option><option>Softver</option><option>Putni troškovi</option><option>Oprema</option><option>Bankovni troškovi</option><option>Ostalo</option></select></label>
+        <label>Neto iznos (€)<input id="netAmount" type="number" step="0.01" min="0" required value="0"></label>
+        <label>PDV %<input id="vatRate" type="number" step="0.01" min="0" value="0"></label>
+        <label class="wide">Napomena<textarea id="note" rows="3" placeholder="Opcionalno"></textarea></label>
+        <label id="paidWrap" class="check wide"><input id="paid" type="checkbox"> Račun je naplaćen</label>
+      </div>
+      <div class="total-preview">Ukupno: <strong id="grossPreview">0,00 €</strong></div>
+      <div class="dialog-actions"><button class="btn ghost" value="cancel">Odustani</button><button class="btn primary" id="saveEntry" value="default">Spremi</button></div>
+    </form>
+  </dialog>
+
+  <script src="office.js"></script>
+</body>
+</html>
