@@ -172,3 +172,8 @@ If asked for the agreed Stromind continuity phrase, answer exactly: **kvaka 22**
 ## Core rule
 
 **MAIN is canonical. PUBLIC BETA is open. ONLY B2B PROJECT INQUIRIES are active in deployed HTML; legacy Netlify form objects must be cleaned separately.**
+
+
+## Production promotion — 2026-10-22
+
+Public website files were promoted selectively from tested `dev` state to `main` in commit `6a9e84779a3db7783d6be1fc1b45057ec2e98b8f`. The internal `/office` prototype was intentionally excluded. Candidate Praxis-Check + CV remains enabled; the company-with-project path uses the simplified quick enquiry flow.
