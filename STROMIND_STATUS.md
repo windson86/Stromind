@@ -4,7 +4,7 @@
 >
 > Canonical operational status lives on the **`dev` branch**. Chat memory is supporting context only. Before changing code, always read this file from `dev` and verify actual GitHub/Netlify state.
 
-**Last updated:** 2026-09-02  
+**Last updated:** 2026-10-22  
 **Project:** stromind.de / Stromind j.d.o.o. in formation  
 **Lifecycle:** PUBLIC TEST / PRE-LAUNCH
 
@@ -25,7 +25,7 @@
 ## 2. Company formation / launch timing
 
 - Stromind j.d.o.o. is still in formation.
-- Planned primary activity: **78.10.0 — employment/recruitment agency activity**.
+- Current START selection for the intended B2B model: **82.40.0 — business-support intermediation services**. The model is B2B matching/verification, not worker leasing; final legal/NKD fit still needs professional verification before first invoicing.
 - Planned additional activities discussed for registration before launch:
   - **43.60.0** — project/business intermediation for specialized construction services;
   - **82.40.0** — broader business-support intermediation for future non-construction cases.
@@ -235,3 +235,33 @@ This is only a continuity check phrase, not a real credential.
 ## Core rule
 
 **DEV first for work/testing. MAIN only for deliberate production. Preserve the B2B/candidate work and keep Stromind operationally an intermediary, not a worker-leasing employer.**
+
+
+---
+
+## 2026-10-22 — simplified lead + CV flow on `dev`
+
+Current business direction:
+- STROMIND connects Croatian companies that employ their own workers with suitable German project/business partners.
+- STROMIND does not employ, dispatch, lease or direct those workers.
+- Current commercial concept discussed: a fixed monthly B2B intermediation/partner-service fee of about **150 EUR per active worker/place** connected through STROMIND; exact contract wording and tax/legal treatment remain to be verified before invoicing.
+- Candidate verification is intended as a quality layer: do not rely only on a CV/company statement; profiles may be professionally cross-checked through a vetted Croatian industry partner.
+
+Implemented on `dev`:
+- `3a8931c` — candidate application reduced to **mobile number + required CV upload**; old name/email/experience/location/Praxis-Check fields removed from the active form; privacy information is collapsed behind a user-opened details control.
+- `467f88e` — DE/EN/HR candidate copy aligned with the quick CV flow.
+- `7dd0675` — B2B project enquiry keeps the existing detailed form but reduces mandatory typing: company, mobile, request type, project city, worker count and requested role remain the essential required fields; contact name, email, company country, model, start date and project message are optional; collapsed privacy information added.
+- `main` was not modified.
+
+Anti-spam:
+- existing Netlify form/honeypot/reCAPTCHA behavior remains as currently configured;
+- **Cloudflare Turnstile is NOT yet implemented** because real protection requires a valid site key + secret and server-side verification. Do not use test keys as production protection.
+
+Privacy:
+- the visible form does not show the controller's personal name by default;
+- opening the privacy details shows the current controller as **Ivan Petrović, project STROMIND**, contact `info@stromind.de`;
+- after company registration, update controller/company identity everywhere before production launch.
+
+Company formation:
+- START application has reached the generated-document/signing step.
+- Current blocker: forgotten Certilia remote-signing PIN/password; existing remote certificate remains present in the Certilia app but cannot be used without the signing PIN. A new certificate is the fallback if the PIN cannot be recalled.
