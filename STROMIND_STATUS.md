@@ -248,9 +248,9 @@ Current business direction:
 - Candidate verification is intended as a quality layer: do not rely only on a CV/company statement; profiles may be professionally cross-checked through a vetted Croatian industry partner.
 
 Implemented on `dev`:
-- `3a8931c` — candidate application reduced to **mobile number + required CV upload**; old name/email/experience/location/Praxis-Check fields removed from the active form; privacy information is collapsed behind a user-opened details control.
-- `467f88e` — DE/EN/HR candidate copy aligned with the quick CV flow.
-- `7dd0675` — B2B project enquiry keeps the existing detailed form but reduces mandatory typing: company, mobile, request type, project city, worker count and requested role remain the essential required fields; contact name, email, company country, model, start date and project message are optional; collapsed privacy information added.
+- Candidate application was **restored to the full existing Praxis-Check + CV flow** (`89a0b26`, `99d7818`). Do not simplify the worker/candidate flow unless explicitly requested.
+- `7dd0675` — reduced mandatory typing in the B2B form and added collapsed privacy information.
+- `eb2f2a7` — clarified the intended UX: only the **company-with-project / needs-workers** path is ultra-fast. Project is selected by default; visible essentials are company, mobile, project location, worker count and required trade/profile. Contact extras and full project details remain available behind optional disclosure sections. The partner/company-with-workers path remains detailed.
 - `main` was not modified.
 
 Anti-spam:
