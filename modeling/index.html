@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light"><meta name="robots" content="noindex,nofollow,noarchive">
-<title>Stromind Modeling Agency — Design Preview</title>
+<title>Stromind Modeling Agency — Applications Opening Soon</title>
 <style>
 :root{--ink:#22202a;--muted:#696573;--line:#e7e2e8;--plum:#613a61;--plum-dark:#39243d;--rose:#c9909f;--paper:#f8f6f5;--white:#fff;--green:#28745b;--shadow:0 20px 60px rgba(48,30,48,.09)}
 *{box-sizing:border-box}
@@ -85,15 +85,15 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <main>
 <header class="brandbar">
   <div class="brand">STROMIND <span>MODELING AGENCY</span></div>
-  <div class="top-note">DESIGN PREVIEW · APPLICATIONS NOT OPEN</div>
+  <div class="top-note">APPLICATIONS OPENING SOON</div>
 </header>
 
-<div class="preview-banner" role="status"><strong>Design preview.</strong> You can inspect the form and choose a sample file locally. Nothing is uploaded, sent or stored.</div>
+<div class="preview-banner" role="status"><strong>Applications are opening soon.</strong> This page is not accepting applications yet. The fields and photo selectors are shown as a preview; they are disabled, and nothing is collected, uploaded, sent or stored.</div>
 <section class="hero" aria-label="Fashion modeling studio">
   <div class="hero-copy">
     <span class="eyebrow">New talent · Private application</span>
     <h1>Your next chapter<br>starts with a portfolio.</h1>
-    <p>Explore a lingerie modeling opportunity with a clear, consent-led process. Start with a private application; nothing is published unless you approve it separately.</p>
+    <p>Explore a lingerie modeling opportunity with a clear, consent-led process. Applications are not open yet. Nothing is published without separate approval.</p>
   </div>
   <span class="hero-caption">Illustrative studio image · not an agency roster</span>
 </section>
@@ -114,13 +114,13 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
   <form action="#" method="post" enctype="multipart/form-data" id="application" onsubmit="return false;">
     <div class="grid">
       <label class="field">Full name
-        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required>
+        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required disabled>
       </label>
       <label class="field">Email address
-        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
+        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required disabled>
       </label>
       <label class="field">Country of residence
-        <select name="country" autocomplete="country-name" required>
+        <select name="country" autocomplete="country-name" required disabled>
           <option value="" disabled>Select your country</option>
           <option value="Afghanistan">Afghanistan</option>
           <option value="Albania">Albania</option>
@@ -375,11 +375,11 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <span class="hint">Philippines is preselected. You can choose another country.</span>
       </label>
       <label class="field">Preferred profile name <span class="hint">(optional)</span>
-        <input name="public_name" type="text" maxlength="80" placeholder="Name you may use publicly">
+        <input name="public_name" type="text" maxlength="80" placeholder="Name you may use publicly" disabled>
       </label>
     </div>
 
-    <label class="check"><input name="adult_confirm" type="checkbox" value="yes" required>
+    <label class="check"><input name="adult_confirm" type="checkbox" value="yes" required disabled>
       <span>I confirm that I am at least 18 years old and that all submitted photos show me as an adult.</span>
     </label>
 
@@ -395,10 +395,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <div><span class="photo-number">Suggested portfolio photo</span><h3>Face visible · wearing a bra</h3><p>Use a recent, unfiltered photo with your face clearly visible.</p></div>
       </div>
       <label class="field">Choose photo 1
-        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_face" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 1"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_face" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 1" disabled></span><span class="file-name" aria-live="polite">No photo selected</span></span>
       </label>
       <img class="preview" alt="Preview of photo 1">
-      <label class="check"><input name="consent_face" type="checkbox" value="yes" required>
+      <label class="check"><input name="consent_face" type="checkbox" value="yes" required disabled>
         <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
       </label>
     </div>
@@ -409,10 +409,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <div><span class="photo-number">Suggested portfolio photo</span><h3>Wearing a bra and panties · legs visible</h3><p>You may keep your face out of this photo if you prefer.</p></div>
       </div>
       <label class="field">Choose photo 2
-        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 2"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 2" disabled></span><span class="file-name" aria-live="polite">No photo selected</span></span>
       </label>
       <img class="preview" alt="Preview of photo 2">
-      <label class="check"><input name="consent_body" type="checkbox" value="yes" required>
+      <label class="check"><input name="consent_body" type="checkbox" value="yes" required disabled>
         <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
       </label>
     </div>
@@ -423,37 +423,37 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
       <div><h2>Review and confirm</h2><p>Submitting an application does not commit you to future work.</p></div>
     </div>
 
-    <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required>
+    <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required disabled>
       <span>I am the adult person shown in both photos, and I took the photos or have the photographer’s permission to submit them for this pilot.</span>
     </label>
-    <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required>
+    <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required disabled>
       <span>I have read the privacy notice and agree that my application details and selected photos may be sent by email for private review.</span>
     </label>
 
     <div class="notice privacy">
-      <strong>Planned private review.</strong> If the pilot launches, the application details and selected photos are intended for private review by Stromind. They would not be published automatically or shared with clients. The final operator details, privacy information and retention period will be confirmed before applications open. <strong>This preview is disabled:</strong> no information or photos are sent or stored.
+      <strong>Applications are not open yet.</strong> When the application is ready, the final privacy information and submission process will be provided before any details or photos are collected. This preview does not accept or store applications.
     </div>
 
     <label class="field small" aria-hidden="true" style="position:absolute;left:-10000px">Leave this field empty
-      <input name="website" type="text" tabindex="-1" autocomplete="off">
+      <input name="website" type="text" tabindex="-1" autocomplete="off" disabled>
     </label>
 
     <p id="formError" class="error" role="status" aria-live="polite"></p>
     <button type="button" id="submitButton" disabled>Applications are not open yet</button>
-    <p class="hint small" style="text-align:center;margin-top:12px">Preview only — you cannot submit this form.</p>
+    <p class="hint small" style="text-align:center;margin-top:12px">Applications are not open yet.</p>
   </form>
 </section>
 
 <aside class="side-card">
   <span class="photo-number">HOW THE PILOT WORKS</span>
   <h2>A thoughtful start to your portfolio.</h2>
-  <p>We’re inviting adult applicants to explore whether this modeling opportunity is right for them.</p>
+  <p>We’re preparing a private application for adults interested in this modeling opportunity.</p>
   <ul class="side-list">
     <li>Send two sample photos for private review.</li>
     <li>Discuss the profile, boundaries and terms before deciding.</li>
     <li>Approve the final photos and profile before anything goes live.</li>
   </ul>
-  <p class="side-note">The studio image is illustrative and does not depict current agency models. Submitting this form is free and creates no obligation.</p>
+  <p class="side-note">The studio image is illustrative and does not depict current agency models. Applications are not open yet.</p>
 </aside>
 </div>
 
