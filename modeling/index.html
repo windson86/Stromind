@@ -86,15 +86,15 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <main>
 <header class="brandbar">
   <div class="brand">STROMIND <span>MODELING AGENCY</span></div>
-  <div class="top-note">UPLOAD TEST · PREVIEW ONLY</div>
+  <div class="top-note">New talent applications · Adults 18+</div>
 </header>
 
-<div class="preview-banner" role="status"><strong>Test upload only.</strong> Anyone with this preview link can open the form. Photos go to Netlify; they are not published. You do not need to enter a real name or email for this technical test.</div>
+
 <section class="hero" aria-label="Fashion modeling studio">
   <div class="hero-copy">
     <span class="eyebrow">New talent · Private application</span>
     <h1>Your next chapter<br>starts with a portfolio.</h1>
-    <p>Explore a lingerie modeling opportunity with a clear, consent-led process. Applications are not open yet. Nothing is published without separate approval.</p>
+    <p>Explore a lingerie modeling opportunity through a clear, consent-led process. Your photos are reviewed privately and are never published without your separate approval.</p>
   </div>
   <span class="hero-caption">Illustrative studio image · not an agency roster</span>
 </section>
@@ -109,21 +109,21 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <section class="card">
   <div class="section-heading">
     <span class="step">1</span>
-    <div><h2>Tell us about yourself</h2><p>Share a few details so we can contact you about this pilot.</p></div>
+    <div><h2>Tell us about yourself</h2><p>Share a few details so we can review your application and contact you.</p></div>
   </div>
 
-  <form name="modeling-application-test" method="POST" action="/" enctype="multipart/form-data" id="application" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="modeling-application-test">
+  <form name="modeling-application" method="POST" action="/" enctype="multipart/form-data" id="application" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="modeling-application">
     <div hidden><label>Leave this field empty: <input name="bot-field"></label></div>
     <div class="grid">
-      <label class="field">Test name <span class="hint">(optional)</span>
-        <input name="full_name" type="text" maxlength="120" autocomplete="off" placeholder="Upload test">
+      <label class="field">Full name
+        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your full name" required>
       </label>
-      <label class="field">Email address <span class="hint">(optional)</span>
-        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com">
+      <label class="field">Email address
+        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
       </label>
-      <label class="field">Country of residence <span class="hint">(optional)</span>
-        <select name="country" autocomplete="country-name">
+      <label class="field">Country of residence
+        <select name="country" autocomplete="country-name" required>
           <option value="">Select your country</option>
           <option value="Afghanistan">Afghanistan</option>
           <option value="Albania">Albania</option>
@@ -389,7 +389,7 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     <div class="divider"></div>
     <div class="section-heading">
       <span class="step">2</span>
-      <div><h2>Add portfolio photos</h2><p>Choose one or two JPG, PNG or WebP photos. Original files up to 20 MB each are reduced to 3 MB or less before upload.</p></div>
+      <div><h2>Add two portfolio photos</h2><p>Both photos are required. JPG, PNG or WebP; original files up to 20 MB each are reduced to 3 MB or less before upload.</p></div>
     </div>
 
     <div class="photo">
@@ -412,10 +412,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <div><span class="photo-number">Suggested portfolio photo</span><h3>Wearing a bra and panties · legs visible</h3><p>You may keep your face out of this photo if you prefer.</p></div>
       </div>
       <label class="field">Choose photo 2
-        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Choose photo 2"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 2"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
       </label>
       <img class="preview" alt="Preview of photo 2">
-      <label class="check"><input name="consent_body" type="checkbox" value="yes">
+      <label class="check"><input name="consent_body" type="checkbox" value="yes" required>
         <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
       </label>
     </div>
@@ -427,32 +427,32 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     </div>
 
     <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required>
-      <span>I am the adult person shown in the submitted photo(s), and I took them or have the photographer’s permission to submit them for this test.</span>
+      <span>I am the adult person shown in both submitted photos, and I took them or have the photographer’s permission to submit them for private review.</span>
     </label>
     <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required>
-      <span>I have read the test privacy notice and agree that my application details and selected photos will be uploaded to Netlify for private review.</span>
+      <span>I have read the privacy notice below and agree that my application details and selected photos may be processed by Stromind and Netlify for private review and follow-up.</span>
     </label>
 
     <div class="notice privacy">
-      <strong>Test privacy notice.</strong> This test uploads your form details and compressed photos to Netlify, where the project owner can view them. No email is sent, and nothing is published. Use only photos whose subject has agreed to this upload and temporary storage on Netlify. The owner will delete the test submission after checking it. Netlify says uploaded-file links may remain accessible for up to 24 hours after a submission is deleted. This is a technical test, not the final application privacy notice.
+      <strong>Privacy and use.</strong> Data controller: Stromind j.d.o.o. We use your name, email, country, optional profile name, confirmations and photos only to review this application and contact you about it. The form and compressed photos are processed and stored by Netlify. A notification email with links to the submitted photos is sent to <a href="mailto:info@stromind.de">info@stromind.de</a>; the photos are not attached to that email. Anyone who obtains a file link may be able to open that photo, so submit only images you are comfortable sharing for this private review. Photos are not posted on this website or sent to clients. If the application does not proceed, Stromind will delete the submission within 72 hours; Netlify notes that direct file links may remain accessible for up to 24 hours after deletion. If you proceed, a separate agreement and privacy notice will explain any later profile use. You may request access, correction or deletion at <a href="mailto:info@stromind.de">info@stromind.de</a>. Do not upload another person’s photos or identity documents. Age must be verified separately before any profile is published. Submitting is free and creates no obligation.
     </div>
 
     <p id="formError" class="error" role="status" aria-live="polite"></p>
-    <button type="submit" id="submitButton">Send test upload</button>
-    <p class="hint small" style="text-align:center;margin-top:12px">Test only. Do not use this preview for a real application.</p>
+    <button type="submit" id="submitButton">Send my private application</button>
+    <p class="hint small" style="text-align:center;margin-top:12px">Submitting is free and does not commit you to future work.</p>
   </form>
 </section>
 
 <aside class="side-card">
   <span class="photo-number">HOW THE PILOT WORKS</span>
   <h2>A thoughtful start to your portfolio.</h2>
-  <p>We’re preparing a private application for adults interested in this modeling opportunity.</p>
+  <p>We welcome adults interested in exploring this modeling opportunity.</p>
   <ul class="side-list">
     <li>Send two sample photos for private review.</li>
     <li>Discuss the profile, boundaries and terms before deciding.</li>
     <li>Approve the final photos and profile before anything goes live.</li>
   </ul>
-  <p class="side-note">The studio image is illustrative and does not depict current agency models. Applications are not open yet.</p>
+  <p class="side-note">The studio image is illustrative and does not depict current agency models. Final profile photos are used only after your separate approval.</p>
 </aside>
 </div>
 
@@ -554,7 +554,7 @@ document.getElementById("application").addEventListener("submit", async event =>
   try {
     const response = await fetch("/", { method: "POST", body: new FormData(form) });
     if (!response.ok) throw new Error("We could not send your application. Please try again in a moment.");
-    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Test upload received.</h2><p>Netlify received the submission and photos. No email was sent, and nothing is published.</p></div></div><div class="notice"><strong>Test complete.</strong><br>The project owner can inspect this submission in Netlify Forms and delete it after checking the upload.</div>';
+    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Thank you for applying.</h2><p>Your private application and photos were received for review.</p></div></div><div class="notice"><strong>What happens next?</strong><br>We will review your application privately and contact you at the email address you provided. Your photos are not published automatically; any future profile use requires your separate approval.</div>';
   } catch (e) {
     error.textContent = e.message || "We could not send your application. Please try again.";
     button.disabled = false;
