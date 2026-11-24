@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light"><meta name="robots" content="noindex,nofollow,noarchive">
-<title>Stromind Modeling Agency — Applications Opening Soon</title>
+<title>Stromind Modeling Agency — Private Application</title>
+<meta name="description" content="Apply privately to explore a lingerie modeling opportunity with Stromind. Adults 18+ only. Photos are reviewed privately.">
 <style>
 :root{--ink:#22202a;--muted:#696573;--line:#e7e2e8;--plum:#613a61;--plum-dark:#39243d;--rose:#c9909f;--paper:#f8f6f5;--white:#fff;--green:#28745b;--shadow:0 20px 60px rgba(48,30,48,.09)}
 *{box-sizing:border-box}
@@ -85,15 +86,15 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <main>
 <header class="brandbar">
   <div class="brand">STROMIND <span>MODELING AGENCY</span></div>
-  <div class="top-note">APPLICATIONS OPENING SOON</div>
+  <div class="top-note">New talent applications · Adults 18+</div>
 </header>
 
-<div class="preview-banner" role="status"><strong>Applications are opening soon.</strong> This page is not accepting applications yet. The fields and photo selectors are shown as a preview; they are disabled, and nothing is collected, uploaded, sent or stored.</div>
+
 <section class="hero" aria-label="Fashion modeling studio">
   <div class="hero-copy">
     <span class="eyebrow">New talent · Private application</span>
     <h1>Your next chapter<br>starts with a portfolio.</h1>
-    <p>Explore a lingerie modeling opportunity with a clear, consent-led process. Applications are not open yet. Nothing is published without separate approval.</p>
+    <p>Explore a lingerie modeling opportunity through a clear, consent-led process. Your photos are reviewed privately and are never published without your separate approval.</p>
   </div>
   <span class="hero-caption">Illustrative studio image · not an agency roster</span>
 </section>
@@ -108,20 +109,22 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <section class="card">
   <div class="section-heading">
     <span class="step">1</span>
-    <div><h2>Tell us about yourself</h2><p>Share a few details so we can contact you about this pilot.</p></div>
+    <div><h2>Tell us about yourself</h2><p>Share a few details so we can review your application and contact you.</p></div>
   </div>
 
-  <form action="#" method="post" enctype="multipart/form-data" id="application" onsubmit="return false;">
+  <form name="modeling-application" method="POST" action="/" enctype="multipart/form-data" id="application" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="modeling-application">
+    <div hidden><label>Leave this field empty: <input name="bot-field"></label></div>
     <div class="grid">
       <label class="field">Full name
-        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required disabled>
+        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your full name" required>
       </label>
       <label class="field">Email address
-        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required disabled>
+        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
       </label>
       <label class="field">Country of residence
-        <select name="country" autocomplete="country-name" required disabled>
-          <option value="" disabled>Select your country</option>
+        <select name="country" autocomplete="country-name" required>
+          <option value="">Select your country</option>
           <option value="Afghanistan">Afghanistan</option>
           <option value="Albania">Albania</option>
           <option value="Algeria">Algeria</option>
@@ -375,18 +378,18 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <span class="hint">Philippines is preselected. You can choose another country.</span>
       </label>
       <label class="field">Preferred profile name <span class="hint">(optional)</span>
-        <input name="public_name" type="text" maxlength="80" placeholder="Name you may use publicly" disabled>
+        <input name="public_name" type="text" maxlength="80" placeholder="Name you may use publicly">
       </label>
     </div>
 
-    <label class="check"><input name="adult_confirm" type="checkbox" value="yes" required disabled>
+    <label class="check"><input name="adult_confirm" type="checkbox" value="yes" required>
       <span>I confirm that I am at least 18 years old and that all submitted photos show me as an adult.</span>
     </label>
 
     <div class="divider"></div>
     <div class="section-heading">
       <span class="step">2</span>
-      <div><h2>Add two portfolio photos</h2><p>These are for private consideration only. JPG, PNG or WebP, up to 10 MB each.</p></div>
+      <div><h2>Add two portfolio photos</h2><p>Both photos are required. JPG, PNG or WebP; original files up to 20 MB each are reduced to 3 MB or less before upload.</p></div>
     </div>
 
     <div class="photo">
@@ -395,10 +398,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <div><span class="photo-number">Suggested portfolio photo</span><h3>Face visible · wearing a bra</h3><p>Use a recent, unfiltered photo with your face clearly visible.</p></div>
       </div>
       <label class="field">Choose photo 1
-        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_face" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 1" disabled></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_face" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 1"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
       </label>
       <img class="preview" alt="Preview of photo 1">
-      <label class="check"><input name="consent_face" type="checkbox" value="yes" required disabled>
+      <label class="check"><input name="consent_face" type="checkbox" value="yes" required>
         <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
       </label>
     </div>
@@ -409,10 +412,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <div><span class="photo-number">Suggested portfolio photo</span><h3>Wearing a bra and panties · legs visible</h3><p>You may keep your face out of this photo if you prefer.</p></div>
       </div>
       <label class="field">Choose photo 2
-        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 2" disabled></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 2"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
       </label>
       <img class="preview" alt="Preview of photo 2">
-      <label class="check"><input name="consent_body" type="checkbox" value="yes" required disabled>
+      <label class="check"><input name="consent_body" type="checkbox" value="yes" required>
         <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
       </label>
     </div>
@@ -423,58 +426,140 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
       <div><h2>Review and confirm</h2><p>Submitting an application does not commit you to future work.</p></div>
     </div>
 
-    <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required disabled>
-      <span>I am the adult person shown in both photos, and I took the photos or have the photographer’s permission to submit them for this pilot.</span>
+    <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required>
+      <span>I am the adult person shown in both submitted photos, and I took them or have the photographer’s permission to submit them for private review.</span>
     </label>
-    <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required disabled>
-      <span>I have read the privacy notice and agree that my application details and selected photos may be sent by email for private review.</span>
+    <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required>
+      <span>I have read the privacy notice below and agree that my application details and selected photos may be processed by Stromind and Netlify for private review and follow-up.</span>
     </label>
 
     <div class="notice privacy">
-      <strong>Applications are not open yet.</strong> When the application is ready, the final privacy information and submission process will be provided before any details or photos are collected. This preview does not accept or store applications.
+      <strong>Privacy and use.</strong> Data controller: Stromind j.d.o.o. We use your name, email, country, optional profile name, confirmations and photos only to review this application and contact you about it. The form and compressed photos are processed and stored by Netlify. A notification email with links to the submitted photos is sent to <a href="mailto:info@stromind.de">info@stromind.de</a>; the photos are not attached to that email. Anyone who obtains a file link may be able to open that photo, so submit only images you are comfortable sharing for this private review. Photos are not posted on this website or sent to clients. If the application does not proceed, Stromind will delete the submission within 72 hours; Netlify notes that direct file links may remain accessible for up to 24 hours after deletion. If you proceed, a separate agreement and privacy notice will explain any later profile use. You may request access, correction or deletion at <a href="mailto:info@stromind.de">info@stromind.de</a>. Do not upload another person’s photos or identity documents. Age must be verified separately before any profile is published. Submitting is free and creates no obligation.
     </div>
 
-    <label class="field small" aria-hidden="true" style="position:absolute;left:-10000px">Leave this field empty
-      <input name="website" type="text" tabindex="-1" autocomplete="off" disabled>
-    </label>
-
     <p id="formError" class="error" role="status" aria-live="polite"></p>
-    <button type="button" id="submitButton" disabled>Applications are not open yet</button>
-    <p class="hint small" style="text-align:center;margin-top:12px">Applications are not open yet.</p>
+    <button type="submit" id="submitButton">Send my private application</button>
+    <p class="hint small" style="text-align:center;margin-top:12px">Submitting is free and does not commit you to future work.</p>
   </form>
 </section>
 
 <aside class="side-card">
   <span class="photo-number">HOW THE PILOT WORKS</span>
   <h2>A thoughtful start to your portfolio.</h2>
-  <p>We’re preparing a private application for adults interested in this modeling opportunity.</p>
+  <p>We welcome adults interested in exploring this modeling opportunity.</p>
   <ul class="side-list">
     <li>Send two sample photos for private review.</li>
     <li>Discuss the profile, boundaries and terms before deciding.</li>
     <li>Approve the final photos and profile before anything goes live.</li>
   </ul>
-  <p class="side-note">The studio image is illustrative and does not depict current agency models. Applications are not open yet.</p>
+  <p class="side-note">The studio image is illustrative and does not depict current agency models. Final profile photos are used only after your separate approval.</p>
 </aside>
 </div>
 
 <footer>STROMIND · <a href="mailto:info@stromind.de">info@stromind.de</a></footer>
 </main>
 <script>
-document.querySelectorAll(".photo-input").forEach(function(input){
-  input.addEventListener("change",function(){
-    const file=input.files && input.files[0];
-    const preview=input.closest(".photo").querySelector(".preview");
-    if(!file){preview.removeAttribute("src");preview.style.display="none";return;}
-    const fileName=input.closest(".upload-control").querySelector(".file-name");
-    if(file.size>10*1024*1024){input.value="";preview.style.display="none";fileName.textContent="No photo selected";document.getElementById("formError").textContent="Each photo must be 10 MB or smaller.";return;}
-    if(!["image/jpeg","image/png","image/webp"].includes(file.type)){input.value="";preview.style.display="none";fileName.textContent="No photo selected";document.getElementById("formError").textContent="Please choose a JPG, PNG or WebP image.";return;}
-    document.getElementById("formError").textContent="";
-    fileName.textContent=file.name;
-    preview.src=URL.createObjectURL(file);preview.style.display="block";
+const MAX_SOURCE_BYTES = 20 * 1024 * 1024;
+const MAX_OUTPUT_BYTES = 3_000_000;
+const MAX_SIDE = 2400;
+
+function loadImage(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => resolve({ image, url, width: image.naturalWidth, height: image.naturalHeight });
+    image.onerror = () => { URL.revokeObjectURL(url); reject(new Error("This image could not be opened. Please choose a JPG, PNG or WebP photo.")); };
+    image.src = url;
+  });
+}
+
+function canvasBlob(canvas, quality) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("The photo could not be prepared. Please try another image.")), "image/jpeg", quality);
+  });
+}
+
+async function preparePhoto(file) {
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    throw new Error("Please choose a JPG, PNG or WebP photo.");
+  }
+  if (file.size > MAX_SOURCE_BYTES) {
+    throw new Error("Choose a photo smaller than 20 MB.");
+  }
+  const source = await loadImage(file);
+  try {
+    let scale = Math.min(1, MAX_SIDE / Math.max(source.width, source.height));
+    for (let pass = 0; pass < 5; pass++) {
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(source.width * scale));
+      canvas.height = Math.max(1, Math.round(source.height * scale));
+      const context = canvas.getContext("2d", { alpha: false });
+      if (!context) throw new Error("This browser could not prepare the photo. Please try another browser.");
+      context.drawImage(source.image, 0, 0, canvas.width, canvas.height);
+      for (const quality of [0.88, 0.80, 0.72, 0.64, 0.56]) {
+        const blob = await canvasBlob(canvas, quality);
+        if (blob.size <= MAX_OUTPUT_BYTES) {
+          const base = file.name.replace(/\.[^.]+$/, "").replace(/[^a-z0-9_-]/gi, "-").slice(0, 60) || "portfolio-photo";
+          return new File([blob], base + ".jpg", { type: "image/jpeg", lastModified: Date.now() });
+        }
+      }
+      scale *= 0.8;
+    }
+    throw new Error("This photo could not be reduced enough. Please choose a smaller image.");
+  } finally {
+    URL.revokeObjectURL(source.url);
+  }
+}
+
+document.querySelectorAll(".photo-input").forEach(input => {
+  input.addEventListener("change", async () => {
+    const file = input.files && input.files[0];
+    const card = input.closest(".photo");
+    const preview = card.querySelector(".preview");
+    const fileName = input.closest(".upload-control").querySelector(".file-name");
+    const error = document.getElementById("formError");
+    if (!file) { preview.removeAttribute("src"); preview.style.display = "none"; fileName.textContent = "No photo selected"; return; }
+    input.disabled = true;
+    fileName.textContent = "Preparing photo…";
+    error.textContent = "";
+    try {
+      const prepared = await preparePhoto(file);
+      const transfer = new DataTransfer();
+      transfer.items.add(prepared);
+      input.files = transfer.files;
+      fileName.textContent = prepared.name + " · " + (prepared.size / 1024 / 1024).toFixed(1) + " MB";
+      preview.src = URL.createObjectURL(prepared);
+      preview.style.display = "block";
+    } catch (e) {
+      input.value = "";
+      preview.removeAttribute("src");
+      preview.style.display = "none";
+      fileName.textContent = "No photo selected";
+      error.textContent = e.message || "The photo could not be prepared.";
+    } finally {
+      input.disabled = false;
+    }
   });
 });
-document.getElementById("application").addEventListener("submit",function(event){
+
+document.getElementById("application").addEventListener("submit", async event => {
   event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+  const button = document.getElementById("submitButton");
+  const error = document.getElementById("formError");
+  button.disabled = true;
+  button.textContent = "Sending your application…";
+  error.textContent = "";
+  try {
+    const response = await fetch("/", { method: "POST", body: new FormData(form) });
+    if (!response.ok) throw new Error("We could not send your application. Please try again in a moment.");
+    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Thank you for applying.</h2><p>Your private application and photos were received for review.</p></div></div><div class="notice"><strong>What happens next?</strong><br>We will review your application privately and contact you at the email address you provided. Your photos are not published automatically; any future profile use requires your separate approval.</div>';
+  } catch (e) {
+    error.textContent = e.message || "We could not send your application. Please try again.";
+    button.disabled = false;
+    button.textContent = "Send my private application";
+  }
 });
 </script>
 </body>
