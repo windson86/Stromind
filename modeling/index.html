@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light"><meta name="robots" content="noindex,nofollow,noarchive">
-<title>Stromind Modeling Agency — Applications Opening Soon</title>
+<title>Stromind Modeling Agency — Private Application</title>
+<meta name="description" content="Apply privately to explore a lingerie modeling opportunity with Stromind. Adults 18+ only. Photos are reviewed privately.">
 <style>
 :root{--ink:#22202a;--muted:#696573;--line:#e7e2e8;--plum:#613a61;--plum-dark:#39243d;--rose:#c9909f;--paper:#f8f6f5;--white:#fff;--green:#28745b;--shadow:0 20px 60px rgba(48,30,48,.09)}
 *{box-sizing:border-box}
@@ -85,10 +86,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <main>
 <header class="brandbar">
   <div class="brand">STROMIND <span>MODELING AGENCY</span></div>
-  <div class="top-note">APPLICATIONS OPENING SOON</div>
+  <div class="top-note">PRIVATE APPLICATION · ADULTS 18+</div>
 </header>
 
-<div class="preview-banner" role="status"><strong>Applications are opening soon.</strong> This page is not accepting applications yet. The fields and photo selectors are shown as a preview; they are disabled, and nothing is collected, uploaded, sent or stored.</div>
+<div class="preview-banner" role="status"><strong>Private application preview.</strong> The application flow is being prepared. The fields below are disabled and this preview does not collect, upload, send or store anything.</div>
 <section class="hero" aria-label="Fashion modeling studio">
   <div class="hero-copy">
     <span class="eyebrow">New talent · Private application</span>
@@ -111,7 +112,9 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     <div><h2>Tell us about yourself</h2><p>Share a few details so we can contact you about this pilot.</p></div>
   </div>
 
-  <form action="#" method="post" enctype="multipart/form-data" id="application" onsubmit="return false;">
+  <form name="modeling-application" method="POST" action="/" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" id="application">
+    <input type="hidden" name="form-name" value="modeling-application">
+    <div hidden><label>Leave this field empty: <input name="bot-field"></label></div>
     <div class="grid">
       <label class="field">Full name
         <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required disabled>
@@ -386,7 +389,7 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     <div class="divider"></div>
     <div class="section-heading">
       <span class="step">2</span>
-      <div><h2>Add two portfolio photos</h2><p>These are for private consideration only. JPG, PNG or WebP, up to 10 MB each.</p></div>
+      <div><h2>Add two portfolio photos</h2><p>These are for private consideration only. JPG, PNG or WebP. Original files up to 20 MB each are reduced to about 3 MB before upload.</p></div>
     </div>
 
     <div class="photo">
@@ -431,7 +434,7 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     </label>
 
     <div class="notice privacy">
-      <strong>Applications are not open yet.</strong> When the application is ready, the final privacy information and submission process will be provided before any details or photos are collected. This preview does not accept or store applications.
+      <strong>Privacy and use.</strong> Stromind j.d.o.o. will use your application details and two photos only for private review. If this form opens, Netlify will store the submission and photos; an email notification to <a href="mailto:info@stromind.de">info@stromind.de</a> will contain links to the photos, not photo attachments. The submission, photos and notification email will be deleted from the project systems within 72 hours. They will not be published automatically or sent to clients. Any profile use requires your separate approval. Do not upload another person’s photos or identity documents. Your age will be verified separately before any profile is published.
     </div>
 
     <label class="field small" aria-hidden="true" style="position:absolute;left:-10000px">Leave this field empty
@@ -439,8 +442,8 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     </label>
 
     <p id="formError" class="error" role="status" aria-live="polite"></p>
-    <button type="button" id="submitButton" disabled>Applications are not open yet</button>
-    <p class="hint small" style="text-align:center;margin-top:12px">Applications are not open yet.</p>
+    <button type="submit" id="submitButton" disabled>Applications are not open yet</button>
+    <p class="hint small" style="text-align:center;margin-top:12px">Private preview — you cannot submit this form yet.</p>
   </form>
 </section>
 
@@ -460,21 +463,107 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <footer>STROMIND · <a href="mailto:info@stromind.de">info@stromind.de</a></footer>
 </main>
 <script>
-document.querySelectorAll(".photo-input").forEach(function(input){
-  input.addEventListener("change",function(){
-    const file=input.files && input.files[0];
-    const preview=input.closest(".photo").querySelector(".preview");
-    if(!file){preview.removeAttribute("src");preview.style.display="none";return;}
-    const fileName=input.closest(".upload-control").querySelector(".file-name");
-    if(file.size>10*1024*1024){input.value="";preview.style.display="none";fileName.textContent="No photo selected";document.getElementById("formError").textContent="Each photo must be 10 MB or smaller.";return;}
-    if(!["image/jpeg","image/png","image/webp"].includes(file.type)){input.value="";preview.style.display="none";fileName.textContent="No photo selected";document.getElementById("formError").textContent="Please choose a JPG, PNG or WebP image.";return;}
-    document.getElementById("formError").textContent="";
-    fileName.textContent=file.name;
-    preview.src=URL.createObjectURL(file);preview.style.display="block";
+const MAX_SOURCE_BYTES = 20 * 1024 * 1024;
+const MAX_OUTPUT_BYTES = 3_000_000;
+const MAX_SIDE = 2400;
+
+function loadImage(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const image = new Image();
+    image.onload = () => resolve({ image, url, width: image.naturalWidth, height: image.naturalHeight });
+    image.onerror = () => { URL.revokeObjectURL(url); reject(new Error("This image could not be opened. Please choose a JPG, PNG or WebP photo.")); };
+    image.src = url;
+  });
+}
+
+function canvasBlob(canvas, quality) {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(blob => blob ? resolve(blob) : reject(new Error("The photo could not be prepared. Please try another image.")), "image/jpeg", quality);
+  });
+}
+
+async function preparePhoto(file) {
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    throw new Error("Please choose a JPG, PNG or WebP photo.");
+  }
+  if (file.size > MAX_SOURCE_BYTES) {
+    throw new Error("Choose a photo smaller than 20 MB.");
+  }
+  const source = await loadImage(file);
+  try {
+    let scale = Math.min(1, MAX_SIDE / Math.max(source.width, source.height));
+    for (let pass = 0; pass < 5; pass++) {
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(source.width * scale));
+      canvas.height = Math.max(1, Math.round(source.height * scale));
+      const context = canvas.getContext("2d", { alpha: false });
+      if (!context) throw new Error("This browser could not prepare the photo. Please try another browser.");
+      context.drawImage(source.image, 0, 0, canvas.width, canvas.height);
+      for (const quality of [0.88, 0.80, 0.72, 0.64, 0.56]) {
+        const blob = await canvasBlob(canvas, quality);
+        if (blob.size <= MAX_OUTPUT_BYTES) {
+          const base = file.name.replace(/\.[^.]+$/, "").replace(/[^a-z0-9_-]/gi, "-").slice(0, 60) || "portfolio-photo";
+          return new File([blob], base + ".jpg", { type: "image/jpeg", lastModified: Date.now() });
+        }
+      }
+      scale *= 0.8;
+    }
+    throw new Error("This photo could not be reduced enough. Please choose a smaller image.");
+  } finally {
+    URL.revokeObjectURL(source.url);
+  }
+}
+
+document.querySelectorAll(".photo-input").forEach(input => {
+  input.addEventListener("change", async () => {
+    const file = input.files && input.files[0];
+    const card = input.closest(".photo");
+    const preview = card.querySelector(".preview");
+    const fileName = input.closest(".upload-control").querySelector(".file-name");
+    const error = document.getElementById("formError");
+    if (!file) { preview.removeAttribute("src"); preview.style.display = "none"; fileName.textContent = "No photo selected"; return; }
+    input.disabled = true;
+    fileName.textContent = "Preparing photo…";
+    error.textContent = "";
+    try {
+      const prepared = await preparePhoto(file);
+      const transfer = new DataTransfer();
+      transfer.items.add(prepared);
+      input.files = transfer.files;
+      fileName.textContent = prepared.name + " · " + (prepared.size / 1024 / 1024).toFixed(1) + " MB";
+      preview.src = URL.createObjectURL(prepared);
+      preview.style.display = "block";
+    } catch (e) {
+      input.value = "";
+      preview.removeAttribute("src");
+      preview.style.display = "none";
+      fileName.textContent = "No photo selected";
+      error.textContent = e.message || "The photo could not be prepared.";
+    } finally {
+      input.disabled = false;
+    }
   });
 });
-document.getElementById("application").addEventListener("submit",function(event){
+
+document.getElementById("application").addEventListener("submit", async event => {
   event.preventDefault();
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+  const button = document.getElementById("submitButton");
+  const error = document.getElementById("formError");
+  button.disabled = true;
+  button.textContent = "Sending your application…";
+  error.textContent = "";
+  try {
+    const response = await fetch("/", { method: "POST", body: new FormData(form) });
+    if (!response.ok) throw new Error("We could not send your application. Please try again in a moment.");
+    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Thank you for applying.</h2><p>Your application and photo links were sent for private review. Nothing is published automatically.</p></div></div><div class="notice"><strong>What happens next?</strong><br>We will review your application and contact you by email. Your submission and photos are scheduled for deletion within 72 hours. Before any profile goes live, your age, final profile and photo use must be verified and approved separately by you.</div>';
+  } catch (e) {
+    error.textContent = e.message || "We could not send your application. Please try again.";
+    button.disabled = false;
+    button.textContent = "Send my private application";
+  }
 });
 </script>
 </body>
