@@ -60,6 +60,7 @@ input::placeholder{color:#99939e}
 .preview{display:none;width:120px;height:120px;object-fit:cover;border-radius:12px;margin-top:12px;border:1px solid var(--line)}
 .check{display:flex;gap:11px;align-items:flex-start;margin:14px 0;color:#46414d;font-size:.9rem}
 .check input{accent-color:var(--plum);margin:5px 0 0;flex:0 0 auto;width:16px;height:16px}
+.contact-choice{margin:0 0 14px;padding:12px 15px 4px;border:1px solid var(--line);border-radius:11px}.contact-choice legend{padding:0 5px;font-size:.9rem;font-weight:700;color:#393542}.contact-options{display:flex;gap:12px;flex-wrap:wrap}.contact-options .check{margin:3px 10px 8px 0}
 .notice{border:1px solid #e7dce6;background:#faf5f8;border-radius:13px;padding:16px 17px;color:#514955;font-size:.91rem}
 .notice strong{color:#352638}
 .privacy{font-size:.84rem;line-height:1.6}
@@ -115,13 +116,28 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
   <form name="modeling-application" method="POST" action="/" enctype="multipart/form-data" id="application" data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="modeling-application">
     <div hidden><label>Leave this field empty: <input name="bot-field"></label></div>
+    <fieldset class="contact-choice">
+      <legend>How would you prefer us to contact you?</legend>
+      <div class="contact-options">
+        <label class="check"><input type="radio" name="contact_method" value="email" required checked aria-controls="emailContact"> <span>Email</span></label>
+        <label class="check"><input type="radio" name="contact_method" value="whatsapp" required aria-controls="whatsappContact"> <span>WhatsApp</span></label>
+      </div>
+    </fieldset>
     <div class="grid">
       <label class="field">Full name
         <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your full name" required>
       </label>
-      <label class="field">Email address
-        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
-      </label>
+      <div id="emailContact">
+        <label class="field">Email address
+          <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
+        </label>
+      </div>
+      <div id="whatsappContact" hidden>
+        <label class="field">WhatsApp number
+          <input name="phone" type="tel" maxlength="24" autocomplete="tel" placeholder="+385 91 234 5678" disabled>
+        </label>
+        <p class="hint">Include your country code. We’ll use this number only to contact you about your application.</p>
+      </div>
       <label class="field">Country of residence
         <select name="country" autocomplete="country-name" required>
           <option value="">Select your country</option>
@@ -434,7 +450,7 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     </label>
 
     <div class="notice privacy">
-      <strong>Privacy and use.</strong> Data controller: Stromind j.d.o.o. We use your name, email, country, optional profile name, confirmations and photos only to review this application and contact you about it. The form and compressed photos are processed and stored by Netlify. A notification email with links to the submitted photos is sent to <a href="mailto:info@stromind.de">info@stromind.de</a>; the photos are not attached to that email. Anyone who obtains a file link may be able to open that photo, so submit only images you are comfortable sharing for this private review. Photos are not posted on this website or sent to clients. If the application does not proceed, Stromind will delete the submission within 72 hours; Netlify notes that direct file links may remain accessible for up to 24 hours after deletion. If you proceed, a separate agreement and privacy notice will explain any later profile use. You may request access, correction or deletion at <a href="mailto:info@stromind.de">info@stromind.de</a>. Do not upload another person’s photos or identity documents. Age must be verified separately before any profile is published. Submitting is free and creates no obligation.
+      <strong>Privacy and use.</strong> Data controller: Stromind j.d.o.o. We use your name, selected contact method and corresponding email address or WhatsApp number, country, optional profile name, confirmations and photos only to review this application and contact you about it through the method you choose. The form and compressed photos are processed and stored by Netlify. A notification email with links to the submitted photos is sent to <a href="mailto:info@stromind.de">info@stromind.de</a>; the photos are not attached to that email. Anyone who obtains a file link may be able to open that photo, so submit only images you are comfortable sharing for this private review. Photos are not posted on this website or sent to clients. If the application does not proceed, Stromind will delete the submission within 72 hours; Netlify notes that direct file links may remain accessible for up to 24 hours after deletion. If you proceed, a separate agreement and privacy notice will explain any later profile use. You may request access, correction or deletion at <a href="mailto:info@stromind.de">info@stromind.de</a>. Do not upload another person’s photos or identity documents. Age must be verified separately before any profile is published. Submitting is free and creates no obligation.
     </div>
 
     <p id="formError" class="error" role="status" aria-live="polite"></p>
@@ -511,6 +527,24 @@ async function preparePhoto(file) {
   }
 }
 
+const contactMethodInputs = document.querySelectorAll('input[name="contact_method"]');
+const emailContact = document.getElementById("emailContact");
+const whatsappContact = document.getElementById("whatsappContact");
+const emailInput = document.querySelector('input[name="email"]');
+const phoneInput = document.querySelector('input[name="phone"]');
+function updateContactMethod() {
+  const method = document.querySelector('input[name="contact_method"]:checked')?.value || "email";
+  const useEmail = method === "email";
+  emailContact.hidden = !useEmail;
+  whatsappContact.hidden = useEmail;
+  emailInput.disabled = !useEmail;
+  emailInput.required = useEmail;
+  phoneInput.disabled = useEmail;
+  phoneInput.required = !useEmail;
+}
+contactMethodInputs.forEach(input => input.addEventListener("change", updateContactMethod));
+updateContactMethod();
+
 document.querySelectorAll(".photo-input").forEach(input => {
   input.addEventListener("change", async () => {
     const file = input.files && input.files[0];
@@ -554,7 +588,7 @@ document.getElementById("application").addEventListener("submit", async event =>
   try {
     const response = await fetch("/", { method: "POST", body: new FormData(form) });
     if (!response.ok) throw new Error("We could not send your application. Please try again in a moment.");
-    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Thank you for applying.</h2><p>Your private application and photos were received for review.</p></div></div><div class="notice"><strong>What happens next?</strong><br>We will review your application privately and contact you at the email address you provided. Your photos are not published automatically; any future profile use requires your separate approval.</div>';
+    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Thank you for applying.</h2><p>Your private application and photos were received for review.</p></div></div><div class="notice"><strong>What happens next?</strong><br>We will review your application privately and contact you using the method you selected. Your photos are not published automatically; any future profile use requires your separate approval.</div>';
   } catch (e) {
     error.textContent = e.message || "We could not send your application. Please try again.";
     button.disabled = false;
