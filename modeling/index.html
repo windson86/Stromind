@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light"><meta name="robots" content="noindex,nofollow,noarchive">
+<title>Stromind Modeling Agency — Design Preview</title>
+<style>
+:root{--ink:#22202a;--muted:#696573;--line:#e7e2e8;--plum:#613a61;--plum-dark:#39243d;--rose:#c9909f;--paper:#f8f6f5;--white:#fff;--green:#28745b;--shadow:0 20px 60px rgba(48,30,48,.09)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--plum)}
+main{max-width:1120px;margin:26px auto 60px;padding:0 20px}
+.brandbar{display:flex;align-items:center;justify-content:space-between;padding:4px 3px 17px}
+.brand{font-size:.86rem;font-weight:800;letter-spacing:.16em;color:var(--plum-dark)}
+.brand span{font-weight:500;letter-spacing:.12em;color:var(--muted);margin-left:8px}
+.top-note{font-size:.84rem;color:var(--muted)}
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:390px;border-radius:24px;background:#54404f;box-shadow:var(--shadow);display:flex;align-items:flex-end;padding:clamp(28px,6vw,64px);color:#fff}
+.hero:before{content:"";position:absolute;z-index:-2;inset:-10px;background:url("studio-bg.jpg") center 42%/cover no-repeat;filter:blur(2px);transform:scale(1.025)}
+.hero:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(34,21,38,.87) 0%,rgba(43,29,45,.66) 53%,rgba(43,29,45,.24) 100%)}
+.hero-copy{max-width:650px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.12);padding:7px 12px;border-radius:999px;font-size:.75rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase}
+.eyebrow:before{content:"";width:7px;height:7px;border-radius:50%;background:#e6b7c4}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:500;font-size:clamp(2.5rem,7vw,4.7rem);line-height:1.04;letter-spacing:-.035em;margin:18px 0 15px}
+.hero p{max-width:570px;color:rgba(255,255,255,.89);font-size:1.05rem;margin:0}
+.hero-caption{position:absolute;right:18px;bottom:14px;max-width:225px;text-align:right;font-size:.7rem;line-height:1.35;color:rgba(255,255,255,.82);background:rgba(32,20,34,.42);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:6px 10px;backdrop-filter:blur(5px)}
+.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 30px}
+.trust{background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 16px;display:flex;align-items:center;gap:11px;color:#514c59;font-size:.9rem}
+.trust b{color:var(--plum)}
+.trust-icon{width:27px;height:27px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;background:#f5edf2;color:var(--plum);font-weight:800}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
+.card,.side-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.card{padding:clamp(22px,4vw,38px)}
+.side-card{padding:23px;position:sticky;top:18px}
+.section-heading{display:flex;gap:14px;align-items:flex-start;margin:0 0 20px}
+.step{display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:50%;background:#f2e9f0;color:var(--plum);font-weight:800}
+h2{font:500 1.55rem/1.2 Georgia,"Times New Roman",serif;margin:0 0 5px;color:#322638}
+.section-heading p{font-size:.91rem;color:var(--muted);margin:0}
+.divider{height:1px;background:var(--line);margin:25px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label.field{display:block;font-size:.9rem;font-weight:700;color:#393542}
+input[type=text],input[type=email],select{display:block;width:100%;margin-top:7px;padding:12px 13px;border:1px solid #d8d1da;border-radius:10px;background:#fff;color:var(--ink);font:inherit;transition:border-color .15s,box-shadow .15s}
+input:focus,select:focus{outline:0;border-color:var(--plum);box-shadow:0 0 0 3px rgba(97,58,97,.12)}
+select{appearance:auto;cursor:pointer}
+input::placeholder{color:#99939e}
+.hint{font-size:.86rem;color:var(--muted);margin:7px 0}
+.photo{border:1px solid var(--line);border-radius:15px;padding:18px;margin:14px 0;background:linear-gradient(145deg,#fff 60%,#fbf7f9)}
+.photo-head{display:flex;align-items:flex-start;gap:12px}
+.photo-number{font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:var(--plum);font-weight:800}
+.photo h3{font-size:1rem;margin:1px 0 4px}
+.photo p{color:var(--muted);font-size:.88rem;margin:0 0 12px}
+.upload-control{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px}
+.file-picker{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:11px 17px;border:1px solid #d9c9d8;border-radius:11px;background:#f8f1f7;color:var(--plum-dark);font-weight:750;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.file-picker:hover{background:#f1e6f0;border-color:var(--rose);transform:translateY(-1px)}
+.file-picker:focus-within{outline:3px solid rgba(97,58,97,.2);outline-offset:2px}
+.file-picker input[type=file]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.upload-icon{font-size:1.15rem;line-height:1}
+.file-name{color:var(--muted);font-size:.87rem;overflow-wrap:anywhere}
+.preview{display:none;width:120px;height:120px;object-fit:cover;border-radius:12px;margin-top:12px;border:1px solid var(--line)}
+.check{display:flex;gap:11px;align-items:flex-start;margin:14px 0;color:#46414d;font-size:.9rem}
+.check input{accent-color:var(--plum);margin:5px 0 0;flex:0 0 auto;width:16px;height:16px}
+.notice{border:1px solid #e7dce6;background:#faf5f8;border-radius:13px;padding:16px 17px;color:#514955;font-size:.91rem}
+.notice strong{color:#352638}
+.privacy{font-size:.84rem;line-height:1.6}
+button{width:100%;margin-top:17px;background:var(--plum);color:#fff;border:0;border-radius:11px;padding:15px 20px;font:700 1rem system-ui;cursor:pointer;box-shadow:0 8px 18px rgba(97,58,97,.18);transition:transform .15s,background .15s}
+button:hover{background:var(--plum-dark);transform:translateY(-1px)}
+button:disabled{opacity:.58;cursor:not-allowed;transform:none}
+.preview-banner{margin:0 0 14px;padding:12px 16px;border:1px solid #dec98f;border-radius:12px;background:#fff8e4;color:#594916;font-size:.92rem}
+input:disabled,select:disabled{background:#f5f3f5;color:#77717c;cursor:not-allowed}
+.file-picker:has(input:disabled){opacity:.58;cursor:not-allowed;transform:none}
+.error{color:#a01828;font-weight:650;margin:12px 0}
+.small{font-size:.82rem}
+.side-card h2{font-size:1.36rem}
+.side-card p{font-size:.9rem;color:var(--muted)}
+.side-list{padding:0;list-style:none;margin:17px 0}
+.side-list li{display:flex;gap:10px;margin:12px 0;font-size:.88rem;color:#514c59}
+.side-list li:before{content:"✓";display:grid;place-items:center;background:#eef5f0;color:var(--green);font-weight:800;width:21px;height:21px;flex:0 0 21px;border-radius:50%}
+.side-note{border-top:1px solid var(--line);padding-top:15px;font-size:.8rem!important}
+footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side-card{position:static;grid-row:1}.trust-row{grid-template-columns:1fr}.trust{padding:11px 14px}.hero{min-height:330px}.hero-caption{max-width:200px;text-align:right}}
+@media(max-width:560px){main{padding:0 12px;margin-top:12px}.brandbar{align-items:flex-start;gap:8px;flex-direction:column}.hero{min-height:385px;border-radius:18px;padding:26px 22px 60px}.hero:after{background:linear-gradient(90deg,rgba(34,21,38,.88),rgba(43,29,45,.56))}.hero-caption{right:12px;bottom:10px;max-width:calc(100% - 24px)}.grid{grid-template-columns:1fr}.card{padding:21px 17px}.side-card{padding:19px}}
+</style>
+</head>
+<body>
+<main>
+<header class="brandbar">
+  <div class="brand">STROMIND <span>MODELING AGENCY</span></div>
+  <div class="top-note">DESIGN PREVIEW · APPLICATIONS NOT OPEN</div>
+</header>
+
+<div class="preview-banner" role="status"><strong>Design preview.</strong> You can inspect the form and choose a sample file locally. Nothing is uploaded, sent or stored.</div>
+<section class="hero" aria-label="Fashion modeling studio">
+  <div class="hero-copy">
+    <span class="eyebrow">New talent · Private application</span>
+    <h1>Your next chapter<br>starts with a portfolio.</h1>
+    <p>Explore a lingerie modeling opportunity with a clear, consent-led process. Start with a private application; nothing is published unless you approve it separately.</p>
+  </div>
+  <span class="hero-caption">Illustrative studio image · not an agency roster</span>
+</section>
+
+<div class="trust-row" aria-label="Application information">
+  <div class="trust"><span class="trust-icon">18+</span><span><b>Adults only</b><br>Applicants must be 18 or older.</span></div>
+  <div class="trust"><span class="trust-icon">⌑</span><span><b>Private review</b><br>Your photos are not posted automatically.</span></div>
+  <div class="trust"><span class="trust-icon">✓</span><span><b>Your approval matters</b><br>Review the final profile before publication.</span></div>
+</div>
+
+<div class="layout">
+<section class="card">
+  <div class="section-heading">
+    <span class="step">1</span>
+    <div><h2>Tell us about yourself</h2><p>Share a few details so we can contact you about this pilot.</p></div>
+  </div>
+
+  <form action="#" method="post" enctype="multipart/form-data" id="application" onsubmit="return false;">
+    <div class="grid">
+      <label class="field">Full name
+        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required>
+      </label>
+      <label class="field">Email address
+        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
+      </label>
+      <label class="field">Country of residence
+        <select name="country" autocomplete="country-name" required>
+          <option value="" disabled>Select your country</option>
+          <option value="Afghanistan">Afghanistan</option>
+          <option value="Albania">Albania</option>
+          <option value="Algeria">Algeria</option>
+          <option value="American Samoa">American Samoa</option>
+          <option value="Andorra">Andorra</option>
+          <option value="Angola">Angola</option>
+          <option value="Anguilla">Anguilla</option>
+          <option value="Antarctica">Antarctica</option>
+          <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+          <option value="Argentina">Argentina</option>
+          <option value="Armenia">Armenia</option>
+          <option value="Aruba">Aruba</option>
+          <option value="Australia">Australia</option>
+          <option value="Austria">Austria</option>
+          <option value="Azerbaijan">Azerbaijan</option>
+          <option value="Bahamas">Bahamas</option>
+          <option value="Bahrain">Bahrain</option>
+          <option value="Bangladesh">Bangladesh</option>
+          <option value="Barbados">Barbados</option>
+          <option value="Belarus">Belarus</option>
+          <option value="Belgium">Belgium</option>
+          <option value="Belize">Belize</option>
+          <option value="Benin">Benin</option>
+          <option value="Bermuda">Bermuda</option>
+          <option value="Bhutan">Bhutan</option>
+          <option value="Bolivia, Plurinational State of">Bolivia, Plurinational State of</option>
+          <option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
+          <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+          <option value="Botswana">Botswana</option>
+          <option value="Bouvet Island">Bouvet Island</option>
+          <option value="Brazil">Brazil</option>
+          <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+          <option value="Brunei Darussalam">Brunei Darussalam</option>
+          <option value="Bulgaria">Bulgaria</option>
+          <option value="Burkina Faso">Burkina Faso</option>
+          <option value="Burundi">Burundi</option>
+          <option value="Cabo Verde">Cabo Verde</option>
+          <option value="Cambodia">Cambodia</option>
+          <option value="Cameroon">Cameroon</option>
+          <option value="Canada">Canada</option>
+          <option value="Cayman Islands">Cayman Islands</option>
+          <option value="Central African Republic">Central African Republic</option>
+          <option value="Chad">Chad</option>
+          <option value="Chile">Chile</option>
+          <option value="China">China</option>
+          <option value="Christmas Island">Christmas Island</option>
+          <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+          <option value="Colombia">Colombia</option>
+          <option value="Comoros">Comoros</option>
+          <option value="Congo">Congo</option>
+          <option value="Congo, The Democratic Republic of the">Congo, The Democratic Republic of the</option>
+          <option value="Cook Islands">Cook Islands</option>
+          <option value="Costa Rica">Costa Rica</option>
+          <option value="Croatia">Croatia</option>
+          <option value="Cuba">Cuba</option>
+          <option value="Curaçao">Curaçao</option>
+          <option value="Cyprus">Cyprus</option>
+          <option value="Czechia">Czechia</option>
+          <option value="Côte d&#x27;Ivoire">Côte d&#x27;Ivoire</option>
+          <option value="Denmark">Denmark</option>
+          <option value="Djibouti">Djibouti</option>
+          <option value="Dominica">Dominica</option>
+          <option value="Dominican Republic">Dominican Republic</option>
+          <option value="Ecuador">Ecuador</option>
+          <option value="Egypt">Egypt</option>
+          <option value="El Salvador">El Salvador</option>
+          <option value="Equatorial Guinea">Equatorial Guinea</option>
+          <option value="Eritrea">Eritrea</option>
+          <option value="Estonia">Estonia</option>
+          <option value="Eswatini">Eswatini</option>
+          <option value="Ethiopia">Ethiopia</option>
+          <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+          <option value="Faroe Islands">Faroe Islands</option>
+          <option value="Fiji">Fiji</option>
+          <option value="Finland">Finland</option>
+          <option value="France">France</option>
+          <option value="French Guiana">French Guiana</option>
+          <option value="French Polynesia">French Polynesia</option>
+          <option value="French Southern Territories">French Southern Territories</option>
+          <option value="Gabon">Gabon</option>
+          <option value="Gambia">Gambia</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Germany">Germany</option>
+          <option value="Ghana">Ghana</option>
+          <option value="Gibraltar">Gibraltar</option>
+          <option value="Greece">Greece</option>
+          <option value="Greenland">Greenland</option>
+          <option value="Grenada">Grenada</option>
+          <option value="Guadeloupe">Guadeloupe</option>
+          <option value="Guam">Guam</option>
+          <option value="Guatemala">Guatemala</option>
+          <option value="Guernsey">Guernsey</option>
+          <option value="Guinea">Guinea</option>
+          <option value="Guinea-Bissau">Guinea-Bissau</option>
+          <option value="Guyana">Guyana</option>
+          <option value="Haiti">Haiti</option>
+          <option value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
+          <option value="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
+          <option value="Honduras">Honduras</option>
+          <option value="Hong Kong">Hong Kong</option>
+          <option value="Hungary">Hungary</option>
+          <option value="Iceland">Iceland</option>
+          <option value="India">India</option>
+          <option value="Indonesia">Indonesia</option>
+          <option value="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
+          <option value="Iraq">Iraq</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Isle of Man">Isle of Man</option>
+          <option value="Israel">Israel</option>
+          <option value="Italy">Italy</option>
+          <option value="Jamaica">Jamaica</option>
+          <option value="Japan">Japan</option>
+          <option value="Jersey">Jersey</option>
+          <option value="Jordan">Jordan</option>
+          <option value="Kazakhstan">Kazakhstan</option>
+          <option value="Kenya">Kenya</option>
+          <option value="Kiribati">Kiribati</option>
+          <option value="Korea, Democratic People&#x27;s Republic of">Korea, Democratic People&#x27;s Republic of</option>
+          <option value="Korea, Republic of">Korea, Republic of</option>
+          <option value="Kuwait">Kuwait</option>
+          <option value="Kyrgyzstan">Kyrgyzstan</option>
+          <option value="Lao People&#x27;s Democratic Republic">Lao People&#x27;s Democratic Republic</option>
+          <option value="Latvia">Latvia</option>
+          <option value="Lebanon">Lebanon</option>
+          <option value="Lesotho">Lesotho</option>
+          <option value="Liberia">Liberia</option>
+          <option value="Libya">Libya</option>
+          <option value="Liechtenstein">Liechtenstein</option>
+          <option value="Lithuania">Lithuania</option>
+          <option value="Luxembourg">Luxembourg</option>
+          <option value="Macao">Macao</option>
+          <option value="Madagascar">Madagascar</option>
+          <option value="Malawi">Malawi</option>
+          <option value="Malaysia">Malaysia</option>
+          <option value="Maldives">Maldives</option>
+          <option value="Mali">Mali</option>
+          <option value="Malta">Malta</option>
+          <option value="Marshall Islands">Marshall Islands</option>
+          <option value="Martinique">Martinique</option>
+          <option value="Mauritania">Mauritania</option>
+          <option value="Mauritius">Mauritius</option>
+          <option value="Mayotte">Mayotte</option>
+          <option value="Mexico">Mexico</option>
+          <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+          <option value="Moldova, Republic of">Moldova, Republic of</option>
+          <option value="Monaco">Monaco</option>
+          <option value="Mongolia">Mongolia</option>
+          <option value="Montenegro">Montenegro</option>
+          <option value="Montserrat">Montserrat</option>
+          <option value="Morocco">Morocco</option>
+          <option value="Mozambique">Mozambique</option>
+          <option value="Myanmar">Myanmar</option>
+          <option value="Namibia">Namibia</option>
+          <option value="Nauru">Nauru</option>
+          <option value="Nepal">Nepal</option>
+          <option value="Netherlands">Netherlands</option>
+          <option value="New Caledonia">New Caledonia</option>
+          <option value="New Zealand">New Zealand</option>
+          <option value="Nicaragua">Nicaragua</option>
+          <option value="Niger">Niger</option>
+          <option value="Nigeria">Nigeria</option>
+          <option value="Niue">Niue</option>
+          <option value="Norfolk Island">Norfolk Island</option>
+          <option value="North Macedonia">North Macedonia</option>
+          <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+          <option value="Norway">Norway</option>
+          <option value="Oman">Oman</option>
+          <option value="Pakistan">Pakistan</option>
+          <option value="Palau">Palau</option>
+          <option value="Palestine, State of">Palestine, State of</option>
+          <option value="Panama">Panama</option>
+          <option value="Papua New Guinea">Papua New Guinea</option>
+          <option value="Paraguay">Paraguay</option>
+          <option value="Peru">Peru</option>
+          <option value="Philippines" selected>Philippines</option>
+          <option value="Pitcairn">Pitcairn</option>
+          <option value="Poland">Poland</option>
+          <option value="Portugal">Portugal</option>
+          <option value="Puerto Rico">Puerto Rico</option>
+          <option value="Qatar">Qatar</option>
+          <option value="Romania">Romania</option>
+          <option value="Russian Federation">Russian Federation</option>
+          <option value="Rwanda">Rwanda</option>
+          <option value="Réunion">Réunion</option>
+          <option value="Saint Barthélemy">Saint Barthélemy</option>
+          <option value="Saint Helena, Ascension and Tristan da Cunha">Saint Helena, Ascension and Tristan da Cunha</option>
+          <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+          <option value="Saint Lucia">Saint Lucia</option>
+          <option value="Saint Martin (French part)">Saint Martin (French part)</option>
+          <option value="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
+          <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+          <option value="Samoa">Samoa</option>
+          <option value="San Marino">San Marino</option>
+          <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+          <option value="Saudi Arabia">Saudi Arabia</option>
+          <option value="Senegal">Senegal</option>
+          <option value="Serbia">Serbia</option>
+          <option value="Seychelles">Seychelles</option>
+          <option value="Sierra Leone">Sierra Leone</option>
+          <option value="Singapore">Singapore</option>
+          <option value="Sint Maarten (Dutch part)">Sint Maarten (Dutch part)</option>
+          <option value="Slovakia">Slovakia</option>
+          <option value="Slovenia">Slovenia</option>
+          <option value="Solomon Islands">Solomon Islands</option>
+          <option value="Somalia">Somalia</option>
+          <option value="South Africa">South Africa</option>
+          <option value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
+          <option value="South Sudan">South Sudan</option>
+          <option value="Spain">Spain</option>
+          <option value="Sri Lanka">Sri Lanka</option>
+          <option value="Sudan">Sudan</option>
+          <option value="Suriname">Suriname</option>
+          <option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
+          <option value="Sweden">Sweden</option>
+          <option value="Switzerland">Switzerland</option>
+          <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+          <option value="Taiwan, Province of China">Taiwan, Province of China</option>
+          <option value="Tajikistan">Tajikistan</option>
+          <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+          <option value="Thailand">Thailand</option>
+          <option value="Timor-Leste">Timor-Leste</option>
+          <option value="Togo">Togo</option>
+          <option value="Tokelau">Tokelau</option>
+          <option value="Tonga">Tonga</option>
+          <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+          <option value="Tunisia">Tunisia</option>
+          <option value="Turkmenistan">Turkmenistan</option>
+          <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+          <option value="Tuvalu">Tuvalu</option>
+          <option value="Türkiye">Türkiye</option>
+          <option value="Uganda">Uganda</option>
+          <option value="Ukraine">Ukraine</option>
+          <option value="United Arab Emirates">United Arab Emirates</option>
+          <option value="United Kingdom">United Kingdom</option>
+          <option value="United States">United States</option>
+          <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+          <option value="Uruguay">Uruguay</option>
+          <option value="Uzbekistan">Uzbekistan</option>
+          <option value="Vanuatu">Vanuatu</option>
+          <option value="Venezuela, Bolivarian Republic of">Venezuela, Bolivarian Republic of</option>
+          <option value="Viet Nam">Viet Nam</option>
+          <option value="Virgin Islands, British">Virgin Islands, British</option>
+          <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+          <option value="Wallis and Futuna">Wallis and Futuna</option>
+          <option value="Western Sahara">Western Sahara</option>
+          <option value="Yemen">Yemen</option>
+          <option value="Zambia">Zambia</option>
+          <option value="Zimbabwe">Zimbabwe</option>
+          <option value="Åland Islands">Åland Islands</option>
+        </select>
+        <span class="hint">Philippines is preselected. You can choose another country.</span>
+      </label>
+      <label class="field">Preferred profile name <span class="hint">(optional)</span>
+        <input name="public_name" type="text" maxlength="80" placeholder="Name you may use publicly">
+      </label>
+    </div>
+
+    <label class="check"><input name="adult_confirm" type="checkbox" value="yes" required>
+      <span>I confirm that I am at least 18 years old and that all submitted photos show me as an adult.</span>
+    </label>
+
+    <div class="divider"></div>
+    <div class="section-heading">
+      <span class="step">2</span>
+      <div><h2>Add two portfolio photos</h2><p>These are for private consideration only. JPG, PNG or WebP, up to 10 MB each.</p></div>
+    </div>
+
+    <div class="photo">
+      <div class="photo-head">
+        <span class="step">01</span>
+        <div><span class="photo-number">Suggested portfolio photo</span><h3>Face visible · wearing a bra</h3><p>Use a recent, unfiltered photo with your face clearly visible.</p></div>
+      </div>
+      <label class="field">Choose photo 1
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_face" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 1"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+      </label>
+      <img class="preview" alt="Preview of photo 1">
+      <label class="check"><input name="consent_face" type="checkbox" value="yes" required>
+        <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
+      </label>
+    </div>
+
+    <div class="photo">
+      <div class="photo-head">
+        <span class="step">02</span>
+        <div><span class="photo-number">Suggested portfolio photo</span><h3>Wearing a bra and panties · legs visible</h3><p>You may keep your face out of this photo if you prefer.</p></div>
+      </div>
+      <label class="field">Choose photo 2
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 2"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+      </label>
+      <img class="preview" alt="Preview of photo 2">
+      <label class="check"><input name="consent_body" type="checkbox" value="yes" required>
+        <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
+      </label>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-heading">
+      <span class="step">3</span>
+      <div><h2>Review and confirm</h2><p>Submitting an application does not commit you to future work.</p></div>
+    </div>
+
+    <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required>
+      <span>I am the adult person shown in both photos, and I took the photos or have the photographer’s permission to submit them for this pilot.</span>
+    </label>
+    <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required>
+      <span>I have read the privacy notice and agree that my application details and selected photos may be sent by email for private review.</span>
+    </label>
+
+    <div class="notice privacy">
+      <strong>Planned private review.</strong> If the pilot launches, the application details and selected photos are intended for private review by Stromind. They would not be published automatically or shared with clients. The final operator details, privacy information and retention period will be confirmed before applications open. <strong>This preview is disabled:</strong> no information or photos are sent or stored.
+    </div>
+
+    <label class="field small" aria-hidden="true" style="position:absolute;left:-10000px">Leave this field empty
+      <input name="website" type="text" tabindex="-1" autocomplete="off">
+    </label>
+
+    <p id="formError" class="error" role="status" aria-live="polite"></p>
+    <button type="button" id="submitButton" disabled>Applications are not open yet</button>
+    <p class="hint small" style="text-align:center;margin-top:12px">Preview only — you cannot submit this form.</p>
+  </form>
+</section>
+
+<aside class="side-card">
+  <span class="photo-number">HOW THE PILOT WORKS</span>
+  <h2>A thoughtful start to your portfolio.</h2>
+  <p>We’re inviting adult applicants to explore whether this modeling opportunity is right for them.</p>
+  <ul class="side-list">
+    <li>Send two sample photos for private review.</li>
+    <li>Discuss the profile, boundaries and terms before deciding.</li>
+    <li>Approve the final photos and profile before anything goes live.</li>
+  </ul>
+  <p class="side-note">The studio image is illustrative and does not depict current agency models. Submitting this form is free and creates no obligation.</p>
+</aside>
+</div>
+
+<footer>STROMIND · <a href="mailto:info@stromind.de">info@stromind.de</a></footer>
+</main>
+<script>
+document.querySelectorAll(".photo-input").forEach(function(input){
+  input.addEventListener("change",function(){
+    const file=input.files && input.files[0];
+    const preview=input.closest(".photo").querySelector(".preview");
+    if(!file){preview.removeAttribute("src");preview.style.display="none";return;}
+    const fileName=input.closest(".upload-control").querySelector(".file-name");
+    if(file.size>10*1024*1024){input.value="";preview.style.display="none";fileName.textContent="No photo selected";document.getElementById("formError").textContent="Each photo must be 10 MB or smaller.";return;}
+    if(!["image/jpeg","image/png","image/webp"].includes(file.type)){input.value="";preview.style.display="none";fileName.textContent="No photo selected";document.getElementById("formError").textContent="Please choose a JPG, PNG or WebP image.";return;}
+    document.getElementById("formError").textContent="";
+    fileName.textContent=file.name;
+    preview.src=URL.createObjectURL(file);preview.style.display="block";
+  });
+});
+document.getElementById("application").addEventListener("submit",function(event){
+  event.preventDefault();
+});
+</script>
+</body>
+</html>
