@@ -89,7 +89,7 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
   <div class="top-note">UPLOAD TEST · PREVIEW ONLY</div>
 </header>
 
-<div class="preview-banner" role="status"><strong>Test upload only.</strong> Anyone with this preview link can open the form. Submitted details and photos go to Netlify; they are not published, and no notification email is configured.</div>
+<div class="preview-banner" role="status"><strong>Test upload only.</strong> Anyone with this preview link can open the form. Photos go to Netlify; they are not published. You do not need to enter a real name or email for this technical test.</div>
 <section class="hero" aria-label="Fashion modeling studio">
   <div class="hero-copy">
     <span class="eyebrow">New talent · Private application</span>
@@ -116,14 +116,14 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     <input type="hidden" name="form-name" value="modeling-application-test">
     <div hidden><label>Leave this field empty: <input name="bot-field"></label></div>
     <div class="grid">
-      <label class="field">Full name
-        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required>
+      <label class="field">Test name <span class="hint">(optional)</span>
+        <input name="full_name" type="text" maxlength="120" autocomplete="off" placeholder="Upload test">
       </label>
-      <label class="field">Email address
-        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
+      <label class="field">Email address <span class="hint">(optional)</span>
+        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com">
       </label>
-      <label class="field">Country of residence
-        <select name="country" autocomplete="country-name" required>
+      <label class="field">Country of residence <span class="hint">(optional)</span>
+        <select name="country" autocomplete="country-name">
           <option value="">Select your country</option>
           <option value="Afghanistan">Afghanistan</option>
           <option value="Albania">Albania</option>
