@@ -86,10 +86,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
 <main>
 <header class="brandbar">
   <div class="brand">STROMIND <span>MODELING AGENCY</span></div>
-  <div class="top-note">PRIVATE APPLICATION · ADULTS 18+</div>
+  <div class="top-note">UPLOAD TEST · PRIVATE PREVIEW</div>
 </header>
 
-<div class="preview-banner" role="status"><strong>Private application preview.</strong> The application flow is being prepared. The fields below are disabled and this preview does not collect, upload, send or store anything.</div>
+<div class="preview-banner" role="status"><strong>Test upload only.</strong> This private preview sends the submitted details and photos to Netlify. They are not published, and no notification email is configured.</div>
 <section class="hero" aria-label="Fashion modeling studio">
   <div class="hero-copy">
     <span class="eyebrow">New talent · Private application</span>
@@ -112,18 +112,19 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
     <div><h2>Tell us about yourself</h2><p>Share a few details so we can contact you about this pilot.</p></div>
   </div>
 
-  <form name="modeling-application" method="POST" action="/" enctype="multipart/form-data" id="application">
+  <form name="modeling-application-test" method="POST" action="/" enctype="multipart/form-data" id="application" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="modeling-application-test">
     <div hidden><label>Leave this field empty: <input name="bot-field"></label></div>
     <div class="grid">
       <label class="field">Full name
-        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required disabled>
+        <input name="full_name" type="text" maxlength="120" autocomplete="name" placeholder="Your legal name" required>
       </label>
       <label class="field">Email address
-        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required disabled>
+        <input name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com" required>
       </label>
       <label class="field">Country of residence
-        <select name="country" autocomplete="country-name" required disabled>
-          <option value="" disabled>Select your country</option>
+        <select name="country" autocomplete="country-name" required>
+          <option value="">Select your country</option>
           <option value="Afghanistan">Afghanistan</option>
           <option value="Albania">Albania</option>
           <option value="Algeria">Algeria</option>
@@ -377,18 +378,18 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <span class="hint">Philippines is preselected. You can choose another country.</span>
       </label>
       <label class="field">Preferred profile name <span class="hint">(optional)</span>
-        <input name="public_name" type="text" maxlength="80" placeholder="Name you may use publicly" disabled>
+        <input name="public_name" type="text" maxlength="80" placeholder="Name you may use publicly">
       </label>
     </div>
 
-    <label class="check"><input name="adult_confirm" type="checkbox" value="yes" required disabled>
+    <label class="check"><input name="adult_confirm" type="checkbox" value="yes" required>
       <span>I confirm that I am at least 18 years old and that all submitted photos show me as an adult.</span>
     </label>
 
     <div class="divider"></div>
     <div class="section-heading">
       <span class="step">2</span>
-      <div><h2>Add two portfolio photos</h2><p>These are for private consideration only. JPG, PNG or WebP. Original files up to 20 MB each are reduced to about 3 MB before upload.</p></div>
+      <div><h2>Add portfolio photos</h2><p>Choose one or two JPG, PNG or WebP photos. Original files up to 20 MB each are reduced to 3 MB or less before upload.</p></div>
     </div>
 
     <div class="photo">
@@ -397,10 +398,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <div><span class="photo-number">Suggested portfolio photo</span><h3>Face visible · wearing a bra</h3><p>Use a recent, unfiltered photo with your face clearly visible.</p></div>
       </div>
       <label class="field">Choose photo 1
-        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_face" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 1" disabled></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_face" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 1"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
       </label>
       <img class="preview" alt="Preview of photo 1">
-      <label class="check"><input name="consent_face" type="checkbox" value="yes" required disabled>
+      <label class="check"><input name="consent_face" type="checkbox" value="yes" required>
         <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
       </label>
     </div>
@@ -411,10 +412,10 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
         <div><span class="photo-number">Suggested portfolio photo</span><h3>Wearing a bra and panties · legs visible</h3><p>You may keep your face out of this photo if you prefer.</p></div>
       </div>
       <label class="field">Choose photo 2
-        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" required aria-label="Choose photo 2" disabled></span><span class="file-name" aria-live="polite">No photo selected</span></span>
+        <span class="upload-control"><span class="file-picker"><span class="upload-icon" aria-hidden="true">↑</span><span>Choose a photo</span><input class="photo-input" name="photo_body" type="file" accept="image/jpeg,image/png,image/webp" aria-label="Choose photo 2"></span><span class="file-name" aria-live="polite">No photo selected</span></span>
       </label>
       <img class="preview" alt="Preview of photo 2">
-      <label class="check"><input name="consent_body" type="checkbox" value="yes" required disabled>
+      <label class="check"><input name="consent_body" type="checkbox" value="yes">
         <span>I consent to this specific photo being reviewed for my application. It may be used in a profile only after I separately approve the final profile and its use.</span>
       </label>
     </div>
@@ -425,24 +426,20 @@ footer{text-align:center;color:#817b86;font-size:.79rem;padding:25px 12px 0}
       <div><h2>Review and confirm</h2><p>Submitting an application does not commit you to future work.</p></div>
     </div>
 
-    <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required disabled>
-      <span>I am the adult person shown in both photos, and I took the photos or have the photographer’s permission to submit them for this pilot.</span>
+    <label class="check"><input name="rights_confirm" type="checkbox" value="yes" required>
+      <span>I am the adult person shown in the submitted photo(s), and I took them or have the photographer’s permission to submit them for this test.</span>
     </label>
-    <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required disabled>
-      <span>I have read the privacy notice and agree that my application details and selected photos may be sent by email for private review.</span>
+    <label class="check"><input name="privacy_confirm" type="checkbox" value="yes" required>
+      <span>I have read the test privacy notice and agree that my application details and selected photos will be uploaded to Netlify for private review.</span>
     </label>
 
     <div class="notice privacy">
-      <strong>Privacy and use.</strong> Stromind j.d.o.o. will use your application details and two photos only for private review. If this form opens, Netlify will store the submission and photos; an email notification to <a href="mailto:info@stromind.de">info@stromind.de</a> will contain links to the photos, not photo attachments. The submission, photos and notification email will be deleted from the project systems within 72 hours. They will not be published automatically or sent to clients. Any profile use requires your separate approval. Do not upload another person’s photos or identity documents. Your age will be verified separately before any profile is published.
+      <strong>Test privacy notice.</strong> This test uploads your form details and compressed photos to Netlify, where the project owner can view them. No email is sent, and nothing is published. Use only photos whose subject has agreed to this upload and temporary storage on Netlify. The owner will delete the test submission after checking it. Netlify says uploaded-file links may remain accessible for up to 24 hours after a submission is deleted. This is a technical test, not the final application privacy notice.
     </div>
 
-    <label class="field small" aria-hidden="true" style="position:absolute;left:-10000px">Leave this field empty
-      <input name="website" type="text" tabindex="-1" autocomplete="off" disabled>
-    </label>
-
     <p id="formError" class="error" role="status" aria-live="polite"></p>
-    <button type="submit" id="submitButton" disabled>Applications are not open yet</button>
-    <p class="hint small" style="text-align:center;margin-top:12px">Private preview — you cannot submit this form yet.</p>
+    <button type="submit" id="submitButton">Send test upload</button>
+    <p class="hint small" style="text-align:center;margin-top:12px">Test only. Do not use this preview for a real application.</p>
   </form>
 </section>
 
@@ -557,7 +554,7 @@ document.getElementById("application").addEventListener("submit", async event =>
   try {
     const response = await fetch("/", { method: "POST", body: new FormData(form) });
     if (!response.ok) throw new Error("We could not send your application. Please try again in a moment.");
-    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Thank you for applying.</h2><p>Your application and photo links were sent for private review. Nothing is published automatically.</p></div></div><div class="notice"><strong>What happens next?</strong><br>We will review your application and contact you by email. Your submission and photos are scheduled for deletion within 72 hours. Before any profile goes live, your age, final profile and photo use must be verified and approved separately by you.</div>';
+    form.innerHTML = '<div class="section-heading"><span class="step">✓</span><div><h2>Test upload received.</h2><p>Netlify received the submission and photos. No email was sent, and nothing is published.</p></div></div><div class="notice"><strong>Test complete.</strong><br>The project owner can inspect this submission in Netlify Forms and delete it after checking the upload.</div>';
   } catch (e) {
     error.textContent = e.message || "We could not send your application. Please try again.";
     button.disabled = false;
